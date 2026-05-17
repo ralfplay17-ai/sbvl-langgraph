@@ -3,7 +3,11 @@ FROM langflowai/langflow:latest
 RUN pip install --no-cache-dir \
     pyswarms==1.3.0 \
     yfinance==0.2.28 \
-    newsapi-python==0.2.7
+    newsapi-python==0.2.7 \
+    pandas \
+    numpy \
+    scipy \
+    requests
 
 RUN mkdir -p /app/flows
 
