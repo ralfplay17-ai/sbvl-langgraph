@@ -16,7 +16,7 @@ Sistema de soporte a la toma de decisiones basado en Swarm Intelligence con PySw
 - BCRP API
 
 ## Autor
-Ramiro - Universidad [Tu Universidad]
+Ramiro Alfaro Honores - UPAO
 
 ## Fecha
 Mayo 2026
