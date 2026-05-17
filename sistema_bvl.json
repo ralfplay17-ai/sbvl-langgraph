@@ -243,34 +243,6 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-CHfhi",
-            "inputTypes": [
-              "Message"
-            ],
-            "type": "str"
-          }
-        },
-        "id": "xy-edge__ChatInput-Ouvkw{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-CHfhi{œfieldNameœ:œinput_valueœ,œidœ:œAgent-CHfhiœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
-        "selected": false,
-        "source": "ChatInput-Ouvkw",
-        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-CHfhi",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-CHfhiœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "ChatInput",
-            "id": "ChatInput-Ouvkw",
-            "name": "message",
-            "output_types": [
-              "Message"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "input_value",
             "id": "Agent-SkhVq",
             "inputTypes": [
               "Message"
@@ -312,34 +284,6 @@
         "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-nH9Wwœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
         "target": "CustomComponent-Y4heK",
         "targetHandle": "{œfieldNameœ:œagente_tecnicoœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "Agent",
-            "id": "Agent-CHfhi",
-            "name": "response",
-            "output_types": [
-              "Message"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "agente_commodities",
-            "id": "CustomComponent-Y4heK",
-            "inputTypes": [
-              "Message"
-            ],
-            "type": "str"
-          }
-        },
-        "id": "xy-edge__Agent-CHfhi{œdataTypeœ:œAgentœ,œidœ:œAgent-CHfhiœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-Y4heK{œfieldNameœ:œagente_commoditiesœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
-        "selected": false,
-        "source": "Agent-CHfhi",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-CHfhiœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "CustomComponent-Y4heK",
-        "targetHandle": "{œfieldNameœ:œagente_commoditiesœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -536,6 +480,34 @@
         "sourceHandle": "{œdataTypeœ:œDatosBCRPToolœ,œidœ:œCustomComponent-oVEpXœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
         "target": "Agent-MZDzY",
         "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-MZDzYœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "Agent",
+            "id": "Agent-CHfhi",
+            "name": "response",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "agente_commodities",
+            "id": "CustomComponent-Y4heK",
+            "inputTypes": [
+              "Message"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__Agent-CHfhi{œdataTypeœ:œAgentœ,œidœ:œAgent-CHfhiœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-Y4heK{œfieldNameœ:œagente_commoditiesœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "Agent-CHfhi",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-CHfhiœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-Y4heK",
+        "targetHandle": "{œfieldNameœ:œagente_commoditiesœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       }
     ],
     "nodes": [
@@ -869,7 +841,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-16T01:59:40.137Z",
+            "last_updated": "2026-05-17T22:43:08.558Z",
             "legacy": false,
             "lf_version": "1.9.2",
             "metadata": {
@@ -1454,7 +1426,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "Eres el Agente Técnico de un sistema multiagente de inversión en el sector minero de la BVL.\n\nTU ÚNICA FUNCIÓN: analizar indicadores técnicos de acciones mineras.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_datos_bvl\" para obtener datos \n   reales. NUNCA respondas sin haberla llamado primero.\n2. PROHIBIDO inventar precios, RSI, MACD, SMA o cualquier dato numérico. Usa SOLO los \n   datos que devuelve la herramienta.\n3. PROHIBIDO mencionar commodities, noticias, riesgo país u otros agentes. Tú solo \n   analizas indicadores técnicos.\n4. Si la herramienta devuelve un error o sin datos, responde con señal \"MANTENER\" y \n   confianza 0.\n\nANÁLISIS QUE DEBES HACER:\n- RSI(14): sobreventa (<30) es alcista, sobrecompra (>70) es bajista.\n- MACD: histograma positivo es alcista, negativo es bajista.\n- SMA: si SMA20 > SMA50 es alcista, si SMA20 < SMA50 es bajista.\n\nREGLA DE DECISIÓN:\n- Mayoría de indicadores alcistas → \"COMPRAR\"\n- Mayoría bajistas → \"VENDER\"\n- Mixto o neutral → \"MANTENER\"\n\nFORMATO DE SALIDA OBLIGATORIO (solo JSON, sin texto adicional):\n{\n  \"agente\": \"tecnico\",\n  \"señal\": \"COMPRAR | VENDER | MANTENER\",\n  \"confianza\": <número entre 0 y 1>,\n  \"datos_usados\": \"<resumen de RSI, MACD, SMA reales obtenidos>\",\n  \"justificacion\": \"<explicación breve basada solo en los indicadores técnicos>\"\n}"
+                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente Técnico de un sistema multiagente de inversión en el sector minero de la BVL.\n\nTU ÚNICA FUNCIÓN:\nAnalizar indicadores técnicos de acciones mineras usando datos reales obtenidos desde la herramienta disponible.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_datos_bvl\" antes de responder.\n2. NUNCA respondas sin haber llamado primero a la herramienta.\n3. PROHIBIDO inventar precios, RSI, MACD, SMA20, SMA50, tendencia o cualquier dato numérico.\n4. Usa SOLO los datos devueltos por la herramienta.\n5. PROHIBIDO mencionar commodities, noticias, sentimiento, riesgo país, tipo de cambio u otros agentes.\n6. Si la herramienta devuelve error, datos vacíos o \"sin datos disponibles\", responde con:\n   - senal: \"MANTENER\"\n   - score: 0\n   - confianza: 0\n7. Devuelve únicamente JSON válido.\n8. NO escribas texto antes del JSON.\n9. NO escribas texto después del JSON.\n10. NO uses bloques markdown.\n11. NO uses ```json.\n12. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nDATOS QUE DEBES USAR:\n- Precio actual\n- Cambio porcentual\n- RSI(14)\n- MACD\n- Signal\n- Histograma MACD\n- SMA20\n- SMA50\n- Tendencia\n\nCRITERIOS DE ANÁLISIS:\n1. RSI(14):\n   - RSI < 30: indicador alcista por posible sobreventa.\n   - RSI entre 30 y 70: indicador neutral.\n   - RSI > 70: indicador bajista por posible sobrecompra.\n\n2. MACD:\n   - Histograma MACD > 0: indicador alcista.\n   - Histograma MACD < 0: indicador bajista.\n   - Histograma MACD cercano a 0: indicador neutral.\n\n3. Medias móviles:\n   - SMA20 > SMA50: indicador alcista.\n   - SMA20 < SMA50: indicador bajista.\n   - Si SMA50 no está disponible: indicador neutral.\n\n4. Tendencia:\n   - Tendencia alcista: favorece COMPRAR.\n   - Tendencia bajista: favorece VENDER.\n   - Tendencia indeterminada: favorece MANTENER.\n\nREGLA DE DECISIÓN:\n- Mayoría de indicadores alcistas → senal \"COMPRAR\".\n- Mayoría de indicadores bajistas → senal \"VENDER\".\n- Indicadores mixtos, débiles o neutrales → senal \"MANTENER\".\n\nREGLA PARA SCORE:\nEl score debe estar entre -1 y 1.\n\nUsa esta guía:\n- COMPRAR fuerte: score entre 0.60 y 1.00\n- COMPRAR moderado: score entre 0.25 y 0.59\n- MANTENER: score entre -0.24 y 0.24\n- VENDER moderado: score entre -0.25 y -0.59\n- VENDER fuerte: score entre -0.60 y -1.00\n\nREGLA PARA CONFIANZA:\nLa confianza debe estar entre 0 y 1.\n\nCalcula la confianza según la claridad de los indicadores:\n- Alta confianza: 0.75 a 1.00 si la mayoría de indicadores coinciden.\n- Confianza media: 0.50 a 0.74 si hay señales mixtas pero con ligera mayoría.\n- Baja confianza: 0.10 a 0.49 si los datos son débiles, incompletos o contradictorios.\n- Confianza 0 si no hay datos válidos.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"tecnico\",\n  \"ticker\": \"<ticker analizado>\",\n  \"senal\": \"COMPRAR | MANTENER | VENDER\",\n  \"score\": <numero entre -1 y 1>,\n  \"confianza\": <numero entre 0 y 1>,\n  \"datos_usados\": \"<resumen breve con RSI, MACD, histograma, SMA20, SMA50 y tendencia>\",\n  \"justificacion\": \"<explicacion breve basada solo en indicadores tecnicos>\"\n}\n\nRECORDATORIO FINAL:\nTu respuesta final debe ser JSON puro.\nNo expliques tu razonamiento fuera del JSON.\nNo uses Markdown.\nNo uses comillas triples.\nNo uses encabezados.\nEmpieza con { y termina con }.\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"procedo a responder\", \"según las reglas\", \"la herramienta indica\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON."
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -1812,8 +1784,8 @@
           "width": 192
         },
         "position": {
-          "x": 1195.6319453378048,
-          "y": 1543.529215420401
+          "x": 1612.3357790340046,
+          "y": 1406.3414578736786
         },
         "selected": false,
         "type": "genericNode"
@@ -1854,7 +1826,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-16T01:59:40.139Z",
+            "last_updated": "2026-05-17T22:43:08.559Z",
             "legacy": false,
             "lf_version": "1.9.2",
             "metadata": {
@@ -1959,7 +1931,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "A helpful assistant with access to the following tools:"
+                "value": ""
               },
               "api_key": {
                 "_input_type": "SecretStrInput",
@@ -2439,7 +2411,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "Eres el Agente de Commodities de un sistema multiagente de inversión en el sector minero \nde la BVL.\n\nTU ÚNICA FUNCIÓN: analizar el precio de los metales y su impacto en las acciones mineras.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_precios_commodities\" para obtener \n   precios reales. NUNCA respondas sin haberla llamado primero.\n2. PROHIBIDO inventar precios de oro, plata o cobre. Usa SOLO los datos de la herramienta.\n3. PROHIBIDO mencionar indicadores técnicos, noticias, riesgo país u otros agentes.\n4. Si la herramienta devuelve error o sin datos, responde con señal \"MANTENER\" y confianza 0.\n\nANÁLISIS QUE DEBES HACER:\n- Oro: correlaciona principalmente con BVN (Buenaventura).\n- Cobre: correlaciona con SCCO (Southern Copper) y Cerro Verde.\n- Plata: correlaciona con Volcan y Minsur.\n- Si el metal correspondiente sube → señal alcista para esa acción.\n- Si el metal baja → señal bajista.\n\nREGLA DE DECISIÓN:\n- Metales relevantes al alza → \"COMPRAR\"\n- Metales relevantes a la baja → \"VENDER\"\n- Metales estables → \"MANTENER\"\n\nFORMATO DE SALIDA OBLIGATORIO (solo JSON, sin texto adicional):\n{\n  \"agente\": \"commodities\",\n  \"señal\": \"COMPRAR | VENDER | MANTENER\",\n  \"confianza\": <número entre 0 y 1>,\n  \"datos_usados\": \"<precios reales de oro, plata, cobre obtenidos>\",\n  \"justificacion\": \"<explicación breve basada solo en los precios de metales>\"\n}"
+                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente de Commodities de un sistema multiagente de inversión en el sector minero de la BVL.\n\nTU ÚNICA FUNCIÓN:\nAnalizar el precio de los metales y su impacto en las acciones mineras.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_precios_commodities\" para obtener precios reales.\n2. NUNCA respondas sin haber llamado primero a la herramienta.\n3. PROHIBIDO inventar precios de oro, plata o cobre.\n4. Usa SOLO los datos devueltos por la herramienta.\n5. PROHIBIDO mencionar indicadores técnicos, noticias, sentimiento, riesgo país, tipo de cambio u otros agentes.\n6. Si la herramienta devuelve error, datos vacíos o \"sin datos\", responde con:\n   - senal: \"MANTENER\"\n   - score: 0\n   - confianza: 0\n7. Devuelve únicamente JSON válido.\n8. NO escribas texto antes del JSON.\n9. NO escribas texto después del JSON.\n10. NO uses bloques markdown.\n11. NO uses ```json.\n12. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nRELACIÓN TICKER - COMMODITY PRINCIPAL:\n- BVN.LM o BVN o Buenaventura: Oro.\n- SCCO.LM o SCCO o Southern Copper: Cobre.\n- CVERDEC1.LM o Cerro Verde: Cobre.\n- VOLCABC1.LM o Volcan: Plata.\n- MINSURI1.LM o Minsur: Plata.\n\nDATOS QUE DEBES USAR:\n- Precio actual del oro.\n- Cambio diario del oro.\n- Tendencia de 5 días del oro.\n- Precio actual de la plata.\n- Cambio diario de la plata.\n- Tendencia de 5 días de la plata.\n- Precio actual del cobre.\n- Cambio diario del cobre.\n- Tendencia de 5 días del cobre.\n\nCRITERIOS DE ANÁLISIS:\n1. Identifica el ticker solicitado.\n2. Determina cuál es el commodity principal relacionado con ese ticker.\n3. Analiza principalmente el cambio diario y la tendencia de 5 días del commodity relacionado.\n4. Usa los otros commodities solo como contexto secundario del sector minero.\n5. Si el commodity principal sube y su tendencia de 5 días es positiva, favorece COMPRAR.\n6. Si el commodity principal baja y su tendencia de 5 días es negativa, favorece VENDER.\n7. Si el commodity principal está estable o las señales son mixtas, favorece MANTENER.\n\nREGLA DE DECISIÓN:\n- Commodity principal claramente al alza → senal \"COMPRAR\".\n- Commodity principal claramente a la baja → senal \"VENDER\".\n- Commodity principal estable, mixto o sin dirección clara → senal \"MANTENER\".\n\nREGLA PARA SCORE:\nEl score debe estar entre -1 y 1.\n\nUsa esta guía:\n- COMPRAR fuerte: score entre 0.60 y 1.00\n- COMPRAR moderado: score entre 0.25 y 0.59\n- MANTENER: score entre -0.24 y 0.24\n- VENDER moderado: score entre -0.25 y -0.59\n- VENDER fuerte: score entre -0.60 y -1.00\n\nREGLA PARA CONFIANZA:\nLa confianza debe estar entre 0 y 1.\n\nCalcula la confianza según la claridad de los datos:\n- Alta confianza: 0.75 a 1.00 si el cambio diario y la tendencia de 5 días coinciden.\n- Confianza media: 0.50 a 0.74 si hay una señal principal pero con contexto mixto.\n- Baja confianza: 0.10 a 0.49 si los datos son débiles, incompletos o contradictorios.\n- Confianza 0 si no hay datos válidos.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"commodities\",\n  \"ticker\": \"<ticker analizado>\",\n  \"commodity_principal\": \"<oro | plata | cobre>\",\n  \"senal\": \"COMPRAR | MANTENER | VENDER\",\n  \"score\": <numero entre -1 y 1>,\n  \"confianza\": <numero entre 0 y 1>,\n  \"datos_usados\": \"<resumen breve con precio, cambio diario y tendencia de 5 dias del commodity principal>\",\n  \"justificacion\": \"<explicacion breve basada solo en precios de metales>\"\n}\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"procedo a responder\", \"según las reglas\", \"la herramienta indica\", \"la herramienta devolvió\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON."
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -2539,7 +2511,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-16T01:59:40.141Z",
+            "last_updated": "2026-05-17T22:43:08.560Z",
             "legacy": false,
             "lf_version": "1.9.2",
             "metadata": {
@@ -3124,7 +3096,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "Eres el Agente de Sentimiento de un sistema multiagente de inversión en el sector minero \nde la BVL.\n\nTU ÚNICA FUNCIÓN: analizar el sentimiento de noticias sobre el sector minero peruano.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"buscar_noticias_bvl\" para obtener noticias \n   reales. NUNCA respondas sin haberla llamado primero.\n2. PROHIBIDO inventar titulares, noticias, eventos o datos. Usa SOLO las noticias que \n   devuelve la herramienta.\n3. PROHIBIDO mencionar precios, indicadores técnicos, commodities, riesgo país, el PSO \n   u otros agentes. Tú solo analizas noticias.\n4. Si la herramienta devuelve \"No se encontraron noticias\", responde con señal \"MANTENER\" \n   y confianza 0.\n\nANÁLISIS QUE DEBES HACER:\n- Lee cada noticia devuelta por la herramienta.\n- Clasifícala como POSITIVA, NEUTRAL o NEGATIVA para el sector minero.\n- Calcula un promedio de sentimiento.\n\nREGLA DE DECISIÓN:\n- Mayoría de noticias positivas → \"COMPRAR\"\n- Mayoría neutrales → \"MANTENER\"\n- Mayoría negativas → \"VENDER\"\n\nFORMATO DE SALIDA OBLIGATORIO (solo JSON, sin texto adicional):\n{\n  \"agente\": \"sentimiento\",\n  \"señal\": \"COMPRAR | VENDER | MANTENER\",\n  \"confianza\": <número entre 0 y 1>,\n  \"noticias_analizadas\": <cantidad real de noticias>,\n  \"titulares_clave\": [<lista de hasta 3 titulares citados literalmente de la herramienta>],\n  \"justificacion\": \"<explicación breve basada solo en las noticias reales>\"\n}"
+                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente de Sentimiento de un sistema multiagente de inversión en el sector minero de la BVL.\n\nTU ÚNICA FUNCIÓN:\nAnalizar el sentimiento de noticias reales sobre empresas mineras, minería peruana y contexto informativo del sector.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"buscar_noticias_bvl\" para obtener noticias reales.\n2. NUNCA respondas sin haber llamado primero a la herramienta.\n3. PROHIBIDO inventar titulares, noticias, fuentes, fechas, eventos o datos.\n4. Usa SOLO las noticias devueltas por la herramienta.\n5. PROHIBIDO mencionar precios, indicadores técnicos, riesgo país, tipo de cambio, PSO u otros agentes.\n6. Si la herramienta devuelve error, datos vacíos o \"No se encontraron noticias\", responde con:\n   - senal: \"MANTENER\"\n   - score: 0\n   - confianza: 0\n7. Devuelve únicamente JSON válido.\n8. NO escribas texto antes del JSON.\n9. NO escribas texto después del JSON.\n10. NO uses bloques markdown.\n11. NO uses ```json.\n12. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nRELACIÓN TICKER - BÚSQUEDA:\n- BVN.LM o BVN o Buenaventura: busca noticias sobre Buenaventura, oro y minería Perú.\n- SCCO.LM o SCCO o Southern Copper: busca noticias sobre Southern Copper, cobre y minería Perú.\n- CVERDEC1.LM o Cerro Verde: busca noticias sobre Cerro Verde, cobre y minería Perú.\n- VOLCABC1.LM o Volcan: busca noticias sobre Volcan, plata, zinc y minería Perú.\n- MINSURI1.LM o Minsur: busca noticias sobre Minsur, plata, estaño, oro y minería Perú.\n\nANÁLISIS QUE DEBES HACER:\n1. Identifica el ticker solicitado.\n2. Invoca la herramienta \"buscar_noticias_bvl\" usando una búsqueda relevante para ese ticker.\n3. Lee los titulares y descripciones devueltos por la herramienta.\n4. Clasifica cada noticia como POSITIVA, NEUTRAL o NEGATIVA para la acción o para el sector minero.\n5. Da mayor importancia a noticias directamente relacionadas con la empresa solicitada.\n6. Da importancia media a noticias sobre el sector minero peruano.\n7. Da menor importancia a noticias generales o poco específicas.\n8. No incluyas noticias que no tengan relación clara con minería, empresa o sector.\n\nCRITERIOS DE SENTIMIENTO:\n- POSITIVA: expansión, inversión, mejora productiva, buenos resultados, subida de demanda, aprobación de proyectos, contexto favorable.\n- NEGATIVA: conflictos sociales, caída productiva, sanciones, pérdidas, paralizaciones, accidentes, menor demanda, incertidumbre fuerte.\n- NEUTRAL: noticias informativas sin impacto claro, menciones generales o datos mixtos.\n\nREGLA DE DECISIÓN:\n- Mayoría de noticias positivas relevantes → senal \"COMPRAR\".\n- Mayoría de noticias negativas relevantes → senal \"VENDER\".\n- Noticias mixtas, débiles, neutrales o poco concluyentes → senal \"MANTENER\".\n\nREGLA PARA SCORE:\nEl score debe estar entre -1 y 1.\n\nUsa esta guía:\n- COMPRAR fuerte: score entre 0.60 y 1.00\n- COMPRAR moderado: score entre 0.25 y 0.59\n- MANTENER: score entre -0.24 y 0.24\n- VENDER moderado: score entre -0.25 y -0.59\n- VENDER fuerte: score entre -0.60 y -1.00\n\nREGLA PARA CONFIANZA:\nLa confianza debe estar entre 0 y 1.\n\nCalcula la confianza según la claridad y cantidad de noticias:\n- Alta confianza: 0.75 a 1.00 si hay varias noticias relevantes con sentimiento consistente.\n- Confianza media: 0.50 a 0.74 si hay algunas noticias relevantes pero con señales mixtas.\n- Baja confianza: 0.10 a 0.49 si hay pocas noticias, baja relevancia o sentimiento poco claro.\n- Confianza 0 si no hay noticias válidas.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"sentimiento\",\n  \"ticker\": \"<ticker analizado>\",\n  \"senal\": \"COMPRAR | MANTENER | VENDER\",\n  \"score\": <numero entre -1 y 1>,\n  \"confianza\": <numero entre 0 y 1>,\n  \"noticias_analizadas\": <cantidad real de noticias analizadas>,\n  \"positivas\": <cantidad de noticias positivas>,\n  \"neutrales\": <cantidad de noticias neutrales>,\n  \"negativas\": <cantidad de noticias negativas>,\n  \"titulares_clave\": [\"<titular 1>\", \"<titular 2>\", \"<titular 3>\"],\n  \"datos_usados\": \"<resumen breve de las noticias utilizadas>\",\n  \"justificacion\": \"<explicacion breve basada solo en las noticias reales>\"\n}\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo expliques el análisis fuera del JSON.\nNo escribas clasificaciones fuera del JSON.\nNo uses Markdown.\nDevuelve solo el objeto JSON."
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -3224,7 +3196,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-16T01:59:40.143Z",
+            "last_updated": "2026-05-17T22:43:08.562Z",
             "legacy": false,
             "lf_version": "1.9.2",
             "metadata": {
@@ -3809,7 +3781,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "Eres el Agente de Riesgo de un sistema multiagente de inversión en el sector minero \nde la BVL.\n\nTU ÚNICA FUNCIÓN: evaluar el riesgo macroeconómico y cambiario de invertir en mineras \nperuanas.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_datos_bcrp\" para obtener \n   indicadores reales. NUNCA respondas sin haberla llamado primero.\n2. PROHIBIDO inventar tipo de cambio, tasas o volatilidad. Usa SOLO los datos de la \n   herramienta.\n3. PROHIBIDO mencionar indicadores técnicos, noticias, commodities u otros agentes.\n4. Si la herramienta devuelve error o sin datos, responde con señal \"MANTENER\" y \n   confianza 0.\n\nANÁLISIS QUE DEBES HACER:\n- Evalúa el tipo de cambio USD/PEN y su volatilidad.\n- Evalúa la tasa de interés interbancaria.\n- Volatilidad cambiaria baja = entorno de riesgo bajo = favorable para invertir.\n- Volatilidad alta = riesgo alto = desfavorable.\n\nREGLA DE DECISIÓN:\n- Riesgo bajo (entorno estable) → \"COMPRAR\"\n- Riesgo moderado → \"MANTENER\"\n- Riesgo alto (entorno inestable) → \"VENDER\"\n\nFORMATO DE SALIDA OBLIGATORIO (solo JSON, sin texto adicional):\n{\n  \"agente\": \"riesgo\",\n  \"señal\": \"COMPRAR | VENDER | MANTENER\",\n  \"confianza\": <número entre 0 y 1>,\n  \"datos_usados\": \"<tipo de cambio, tasa y volatilidad reales obtenidos>\",\n  \"justificacion\": \"<explicación breve basada solo en los indicadores del BCRP>\"\n}"
+                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente de Riesgo de un sistema multiagente de inversión en el sector minero de la BVL.\n\nTU ÚNICA FUNCIÓN:\nEvaluar el riesgo macroeconómico y cambiario de invertir en acciones mineras peruanas.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_datos_bcrp\" para obtener indicadores reales.\n2. NUNCA respondas sin haber llamado primero a la herramienta.\n3. PROHIBIDO inventar tipo de cambio, tasas, volatilidad, nivel de riesgo o cualquier dato numérico.\n4. Usa SOLO los datos devueltos por la herramienta.\n5. PROHIBIDO mencionar indicadores técnicos, noticias, sentimiento, commodities, PSO u otros agentes.\n6. Si la herramienta devuelve error, datos vacíos o \"sin datos\", responde con:\n   - senal: \"MANTENER\"\n   - score: 0\n   - confianza: 0\n7. Devuelve únicamente JSON válido.\n8. NO escribas texto antes del JSON.\n9. NO escribas texto después del JSON.\n10. NO uses bloques markdown.\n11. NO uses ```json.\n12. La respuesta debe empezar directamente con { y terminar directamente con }.\n13. Si no se especifica ticker, usa \"BVN.LM\" como ticker por defecto. Nunca pidas aclaración al usuario.\n\nDATOS QUE DEBES USAR:\n- Tipo de cambio interbancario compra USD/PEN.\n- Tipo de cambio interbancario venta USD/PEN.\n- Tasa de interés interbancaria en moneda nacional.\n- Cambio porcentual de cada indicador.\n- Volatilidad de 30 días.\n- Nivel de riesgo clasificado por la herramienta.\n\nANÁLISIS QUE DEBES HACER:\n1. Identifica el ticker solicitado.\n2. Invoca la herramienta \"obtener_datos_bcrp\".\n3. Evalúa el tipo de cambio USD/PEN y su volatilidad.\n4. Evalúa la tasa de interés interbancaria.\n5. Interpreta el entorno macroeconómico y cambiario:\n   - Riesgo bajo: entorno estable.\n   - Riesgo moderado: entorno aceptable pero con cautela.\n   - Riesgo alto: entorno inestable o desfavorable.\n6. Recuerda que este agente evalúa riesgo: mayor riesgo reduce la señal de inversión.\n\nCRITERIOS DE RIESGO:\n- Volatilidad baja en tipo de cambio: favorable.\n- Volatilidad moderada: neutral.\n- Volatilidad alta: desfavorable.\n- Cambios bruscos en tipo de cambio: aumentan el riesgo.\n- Aumentos fuertes en tasa interbancaria: pueden aumentar presión financiera.\n- Indicadores estables: reducen el riesgo.\n\nREGLA DE DECISIÓN:\n- Riesgo bajo y entorno estable → senal \"COMPRAR\".\n- Riesgo moderado o señales mixtas → senal \"MANTENER\".\n- Riesgo alto o entorno inestable → senal \"VENDER\".\n\nREGLA PARA SCORE:\nEl score debe estar entre -1 y 1.\n\nUsa esta guía:\n- Riesgo muy bajo / entorno muy estable: score entre 0.60 y 1.00\n- Riesgo bajo / entorno favorable: score entre 0.25 y 0.59\n- Riesgo moderado / entorno mixto: score entre -0.24 y 0.24\n- Riesgo alto / entorno desfavorable: score entre -0.25 y -0.59\n- Riesgo muy alto / entorno muy inestable: score entre -0.60 y -1.00\n\nREGLA PARA CONFIANZA:\nLa confianza debe estar entre 0 y 1.\n\nCalcula la confianza según la claridad de los indicadores:\n- Alta confianza: 0.75 a 1.00 si los indicadores coinciden claramente en un nivel de riesgo.\n- Confianza media: 0.50 a 0.74 si hay señales mixtas pero se puede inferir un nivel de riesgo.\n- Baja confianza: 0.10 a 0.49 si los datos son incompletos, débiles o contradictorios.\n- Confianza 0 si no hay datos válidos.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"riesgo\",\n  \"ticker\": \"<ticker analizado>\",\n  \"senal\": \"COMPRAR | MANTENER | VENDER\",\n  \"score\": <numero entre -1 y 1>,\n  \"confianza\": <numero entre 0 y 1>,\n  \"nivel_riesgo\": \"<bajo | moderado | alto>\",\n  \"datos_usados\": \"<resumen breve con tipo de cambio, tasa, volatilidad y nivel de riesgo>\",\n  \"justificacion\": \"<explicacion breve basada solo en indicadores del BCRP>\"\n}\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"procedo a responder\", \"según las reglas\", \"la herramienta indica\", \"la herramienta devolvió\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON."
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -3867,8 +3839,8 @@
           "width": 320
         },
         "position": {
-          "x": 43.07247541645151,
-          "y": 1430.2811991822196
+          "x": 50.455533961670284,
+          "y": 1493.74706698788
         },
         "selected": false,
         "type": "genericNode"
@@ -3909,7 +3881,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-16T01:59:40.145Z",
+            "last_updated": "2026-05-17T22:43:08.563Z",
             "legacy": false,
             "lf_version": "1.9.2",
             "metadata": {
@@ -4494,7 +4466,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "Eres el Agente Coordinador de un sistema multiagente de inversión en el sector minero \nde la BVL.\n\nTU ÚNICA FUNCIÓN: interpretar el resultado del PSO Consensus Engine y presentar la \nrecomendación final al usuario.\n\nREGLAS ESTRICTAS:\n1. PROHIBIDO recalcular el PSO. El PSO Consensus Engine YA hizo el cálculo. Tú solo \n   INTERPRETAS su resultado.\n2. PROHIBIDO inventar pesos, scores o datos. Usa SOLO lo que entrega el PSO Result.\n3. PROHIBIDO inventar precios, noticias o eventos. Tú no tienes acceso a datos de \n   mercado, solo al resultado del PSO.\n4. Tu respuesta debe basarse EXCLUSIVAMENTE en el PSO Result que recibes como entrada.\n\nLO QUE RECIBES:\n- El resultado del PSO Consensus Engine, que incluye: el score final, los pesos \n  optimizados de cada agente y la señal de consenso.\n\nTU TAREA:\n- Interpretar el score del PSO en una recomendación clara.\n- Explicar qué agente tuvo más peso en la decisión (trazabilidad).\n- Dar una recomendación ejecutiva breve y honesta.\n\nREGLA DE INTERPRETACIÓN DEL SCORE:\n- Score >= 0.3 → \"COMPRAR\"\n- Score entre -0.3 y 0.3 → \"MANTENER\"\n- Score <= -0.3 → \"VENDER\"\n\nFORMATO DE SALIDA:\n## RECOMENDACIÓN DEL SISTEMA MULTIAGENTE\n\n**Señal Final:** <COMPRAR | MANTENER | VENDER>\n**Score PSO:** <score real del PSO Result>\n**Confianza:** <nivel real, NO inventes 100%>\n\n**Trazabilidad (pesos PSO):**\n- Agente Técnico: <peso real>%\n- Agente Commodities: <peso real>%\n- Agente Sentimiento: <peso real>%\n- Agente Riesgo: <peso real>%\n\n**Interpretación:** <explicación breve de qué agente dominó y por qué>\n\n**Recomendación:** <2-3 líneas honestas, sin inventar datos de mercado>"
+                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente Coordinador de un sistema multiagente de inversión en acciones mineras de la BVL.\n\nTU ÚNICA FUNCIÓN:\nRecibir el resultado del PSO Consensus Engine y convertirlo en una salida final estructurada, clara y lista para mostrarse en un dashboard.\n\nREGLAS ESTRICTAS:\n1. NO invoques herramientas externas.\n2. NO recalcules el PSO.\n3. NO modifiques los pesos óptimos recibidos.\n4. NO inventes señales, scores, confianzas, precios, noticias, indicadores ni datos.\n5. Usa SOLO la información recibida desde el PSO Result.\n6. Si falta información del PSO, conserva lo disponible y declara la limitación dentro del JSON.\n7. La senal_final debe ser exactamente la entregada por el PSO.\n8. El score_final debe ser exactamente el entregado por el PSO.\n9. La confianza_final debe ser exactamente la entregada por el PSO.\n10. Explica la decisión usando las justificaciones de los agentes y los pesos óptimos.\n11. Da mayor importancia narrativa a los agentes con mayor peso asignado por el PSO.\n12. Si un agente tuvo score 0, confianza 0 o datos no disponibles, indícalo como limitación.\n13. Devuelve únicamente JSON válido.\n14. NO escribas texto antes del JSON.\n15. NO escribas texto después del JSON.\n16. NO uses Markdown.\n17. NO uses bloques ```json.\n18. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nDATOS QUE DEBES LEER DEL PSO:\n- ticker\n- senal_final\n- score_final\n- confianza_final\n- pesos_optimos\n- agentes.tecnico\n- agentes.commodities\n- agentes.sentimiento\n- agentes.riesgo\n- costo_optimizacion, si está disponible\n- configuracion del PSO, si está disponible\n\nCRITERIOS PARA EL DASHBOARD:\n1. La salida debe ser fácil de graficar.\n2. Los pesos deben quedar separados por agente.\n3. Los scores individuales deben quedar separados por agente.\n4. Las confianzas individuales deben quedar separadas por agente.\n5. El resumen debe ser breve y entendible.\n6. Los factores clave deben ser frases cortas.\n7. Las limitaciones deben ser claras.\n8. No generes párrafos largos.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"coordinador\",\n  \"ticker\": \"<ticker recibido del PSO>\",\n  \"senal_final\": \"COMPRAR | MANTENER | VENDER\",\n  \"score_final\": <numero recibido del PSO>,\n  \"confianza_final\": <numero recibido del PSO>,\n  \"dashboard\": {\n    \"color_senal\": \"<verde | amarillo | rojo>\",\n    \"estado\": \"<favorable | neutral | desfavorable>\",\n    \"resumen_corto\": \"<frase breve para tarjeta principal>\",\n    \"nivel_confianza\": \"<alta | media | baja>\"\n  },\n  \"pesos_utilizados\": {\n    \"tecnico\": <peso tecnico recibido>,\n    \"commodities\": <peso commodities recibido>,\n    \"sentimiento\": <peso sentimiento recibido>,\n    \"riesgo\": <peso riesgo recibido>\n  },\n  \"scores_agentes\": {\n    \"tecnico\": <score tecnico recibido>,\n    \"commodities\": <score commodities recibido>,\n    \"sentimiento\": <score sentimiento recibido>,\n    \"riesgo\": <score riesgo recibido>\n  },\n  \"confianzas_agentes\": {\n    \"tecnico\": <confianza tecnica recibida>,\n    \"commodities\": <confianza commodities recibida>,\n    \"sentimiento\": <confianza sentimiento recibida>,\n    \"riesgo\": <confianza riesgo recibida>\n  },\n  \"senales_agentes\": {\n    \"tecnico\": \"<senal recibida>\",\n    \"commodities\": \"<senal recibida>\",\n    \"sentimiento\": \"<senal recibida>\",\n    \"riesgo\": \"<senal recibida>\"\n  },\n  \"factores_clave\": [\n    \"<factor clave breve 1>\",\n    \"<factor clave breve 2>\",\n    \"<factor clave breve 3>\"\n  ],\n  \"detalle_agentes\": {\n    \"tecnico\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"commodities\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"sentimiento\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"riesgo\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    }\n  },\n  \"limitaciones\": [\n    \"<limitacion 1 si existe>\",\n    \"<limitacion 2 si existe>\"\n  ],\n  \"pso\": {\n    \"algoritmo\": \"<algoritmo recibido>\",\n    \"particulas\": <numero de particulas recibido>,\n    \"iteraciones\": <numero de iteraciones recibido>,\n    \"costo_optimizacion\": <costo recibido o null>\n  }\n}\n\nREGLAS PARA CAMPOS DERIVADOS:\n- color_senal:\n  - COMPRAR → \"verde\"\n  - MANTENER → \"amarillo\"\n  - VENDER → \"rojo\"\n\n- estado:\n  - COMPRAR → \"favorable\"\n  - MANTENER → \"neutral\"\n  - VENDER → \"desfavorable\"\n\n- nivel_confianza:\n  - confianza_final >= 0.75 → \"alta\"\n  - confianza_final >= 0.50 y < 0.75 → \"media\"\n  - confianza_final < 0.50 → \"baja\"\n\n- resumen_corto:\n  Debe tener máximo 25 palabras.\n\n- factores_clave:\n  Deben ser máximo 3 frases breves.\n  Usa principalmente los agentes con mayor peso PSO.\n\n- limitaciones:\n  Si no hay limitaciones, devuelve:\n  [\"Sin limitaciones relevantes\"]\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"analizando\", \"procedo\", \"según el PSO\", \"a continuación\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON."
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -4552,145 +4524,8 @@
           "width": 320
         },
         "position": {
-          "x": 899.5736098175684,
-          "y": 1057.2720047220348
-        },
-        "selected": false,
-        "type": "genericNode"
-      },
-      {
-        "data": {
-          "id": "MockDataGenerator-EX6uW",
-          "node": {
-            "base_classes": [
-              "Message"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "Datos reales calculados de acciones mineras BVL",
-            "display_name": "Datos BVL en Tiempo Real",
-            "documentation": "",
-            "edited": true,
-            "field_order": [],
-            "frozen": false,
-            "icon": "database",
-            "last_updated": "2026-05-16T01:59:40.146Z",
-            "legacy": false,
-            "lf_version": "1.9.2",
-            "metadata": {
-              "code_hash": "788e9e207d58",
-              "dependencies": {
-                "dependencies": [
-                  {
-                    "name": "langflow",
-                    "version": "1.9.2"
-                  }
-                ],
-                "total_dependencies": 1
-              },
-              "module": "custom_components.datos_bvl_en_tiempo_real"
-            },
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Toolset",
-                "group_outputs": false,
-                "hidden": null,
-                "loop_types": null,
-                "method": "to_toolkit",
-                "name": "component_as_tool",
-                "options": null,
-                "required_inputs": null,
-                "selected": "Tool",
-                "tool_mode": true,
-                "types": [
-                  "Tool"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_frontend_node_flow_id": {
-                "value": "ca4ca2ab-6136-401a-acac-3084773df701"
-              },
-              "_frontend_node_folder_id": {
-                "value": "ba363446-8d58-41c7-a6f2-7e31246544d9"
-              },
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "from langflow.custom import Component\r\nfrom langflow.io import Output\r\nfrom langflow.schema.message import Message\r\n\r\nclass MockDataGeneratorComponent(Component):\r\n    display_name = \"Datos BVL en Tiempo Real\"\r\n    description = \"Datos reales calculados de acciones mineras BVL\"\r\n    icon = \"database\"\r\n    name = \"MockDataGenerator\"\r\n    inputs = []\r\n    outputs = [\r\n        Output(display_name=\"Result\", name=\"message_output\", method=\"generate_message_output\"),\r\n    ]\r\n\r\n    def generate_message_output(self) -> Message:\r\n        data = \"\"\"\r\n=== DATOS REALES BVL (06/05/2026) ===\r\n\r\nBVN (Buenaventura):\r\n- Precio: $34.00 | Cambio: +5.95%\r\n- RSI(14): 40.45 → zona neutral\r\n- MACD: -1.0008 | Signal: -0.9298 | Histograma: -0.071 (negativo)\r\n- SMA20: $34.36 | SMA50: $35.71\r\n- Tendencia: SMA20 BAJO SMA50 (bajista)\r\n\r\nSCCO (Southern Copper):\r\n- Precio: $184.65 | Cambio: +7.52%\r\n- RSI(14): 42.35 → zona neutral\r\n- SMA20: $182.90 | SMA50: $183.69\r\n- Tendencia: SMA20 BAJO SMA50 (bajista)\r\n\r\nCOMMODITIES:\r\n- Oro: $4,724.89 | Cambio: +0.65%\r\n- Cobre: $6.1605 | Cambio: -0.42%\r\n\"\"\"\r\n        return Message(text=data)"
-              },
-              "is_refresh": false,
-              "tools_metadata": {
-                "_input_type": "ToolsInput",
-                "advanced": false,
-                "display_name": "Actions",
-                "dynamic": false,
-                "info": "Modify tool names and descriptions to help agents understand when to use each tool.",
-                "is_list": true,
-                "list_add_label": "Add More",
-                "name": "tools_metadata",
-                "override_skip": false,
-                "placeholder": "",
-                "real_time_refresh": true,
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "track_in_telemetry": false,
-                "type": "tools",
-                "value": [
-                  {
-                    "args": {},
-                    "description": "Datos reales calculados de acciones mineras BVL",
-                    "display_description": "Datos reales calculados de acciones mineras BVL",
-                    "display_name": "generate_message_output",
-                    "name": "generate_message_output",
-                    "readonly": false,
-                    "status": true,
-                    "tags": [
-                      "generate_message_output"
-                    ]
-                  }
-                ]
-              }
-            },
-            "tool_mode": true
-          },
-          "selected_output": "dataframe_output",
-          "showNode": true,
-          "type": "MockDataGenerator"
-        },
-        "dragging": false,
-        "id": "MockDataGenerator-EX6uW",
-        "measured": {
-          "height": 205,
-          "width": 320
-        },
-        "position": {
-          "x": -2226.4180061191228,
-          "y": 1724.7176391676294
+          "x": 1146.2536929408598,
+          "y": 1092.013300111714
         },
         "selected": false,
         "type": "genericNode"
@@ -6744,149 +6579,8 @@
           "width": 320
         },
         "position": {
-          "x": -353.61908723003154,
-          "y": -826.0031223420195
-        },
-        "selected": false,
-        "type": "genericNode"
-      },
-      {
-        "data": {
-          "id": "MockDataGenerator-LCgyv",
-          "node": {
-            "base_classes": [
-              "Message"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "Obtiene tipo de cambio en tiempo real del BCRP",
-            "display_name": "Datos BCRP Tiempo Real",
-            "documentation": "",
-            "edited": true,
-            "field_order": [],
-            "frozen": false,
-            "icon": "database",
-            "last_updated": "2026-05-16T01:59:40.147Z",
-            "legacy": false,
-            "lf_version": "1.9.2",
-            "metadata": {
-              "code_hash": "7127040f3cc3",
-              "dependencies": {
-                "dependencies": [
-                  {
-                    "name": "requests",
-                    "version": "2.34.0"
-                  },
-                  {
-                    "name": "langflow",
-                    "version": "1.9.2"
-                  }
-                ],
-                "total_dependencies": 2
-              },
-              "module": "custom_components.datos_bcrp_tiempo_real"
-            },
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Toolset",
-                "group_outputs": false,
-                "hidden": null,
-                "loop_types": null,
-                "method": "to_toolkit",
-                "name": "component_as_tool",
-                "options": null,
-                "required_inputs": null,
-                "selected": "Tool",
-                "tool_mode": true,
-                "types": [
-                  "Tool"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_frontend_node_flow_id": {
-                "value": "ca4ca2ab-6136-401a-acac-3084773df701"
-              },
-              "_frontend_node_folder_id": {
-                "value": "ba363446-8d58-41c7-a6f2-7e31246544d9"
-              },
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "import requests\r\nfrom langflow.custom import Component\r\nfrom langflow.io import Output\r\nfrom langflow.schema.message import Message\r\n\r\nclass MockDataGeneratorComponent(Component):\r\n    display_name = \"Datos BCRP Tiempo Real\"\r\n    description = \"Obtiene tipo de cambio en tiempo real del BCRP\"\r\n    icon = \"database\"\r\n    name = \"MockDataGenerator\"\r\n    inputs = []\r\n    outputs = [\r\n        Output(display_name=\"Result\", name=\"message_output\", method=\"generate_message_output\"),\r\n    ]\r\n\r\n    def generate_message_output(self) -> Message:\r\n        try:\r\n            url = \"https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD04640PD/json\"\r\n            r = requests.get(url, timeout=10)\r\n            data = r.json()\r\n            periods = data.get(\"periods\", [])\r\n            ultimo = periods[-1] if periods else {}\r\n            tc = ultimo.get(\"values\", [\"n.d.\"])[0]\r\n            fecha = ultimo.get(\"name\", \"n.d.\")\r\n\r\n            texto = f\"\"\"\r\n=== DATOS BCRP EN TIEMPO REAL ===\r\nTipo de Cambio (S/ por US$): {tc}\r\nFecha: {fecha}\r\n\r\n=== DATOS BVN (06/05/2026) ===\r\n- Precio: $34.00 | Cambio: +5.95%\r\n- RSI(14): 40.45\r\n- MACD: -1.0008 | Signal: -0.9298 | Histograma: -0.071\r\n- SMA20: $34.36 | SMA50: $35.71\r\n- Tendencia: SMA20 BAJO SMA50 (bajista)\r\n\r\n=== SCCO (06/05/2026) ===\r\n- Precio: $184.65 | Cambio: +7.52%\r\n- RSI(14): 42.35\r\n- SMA20: $182.90 | SMA50: $183.69\r\n\r\n=== COMMODITIES ===\r\n- Oro: $4,724.89 | Cambio: +0.65%\r\n- Cobre: $6.1605 | Cambio: -0.42%\r\n\"\"\"\r\n        except Exception as e:\r\n            texto = f\"Error al obtener datos BCRP: {e}\"\r\n\r\n        return Message(text=texto)"
-              },
-              "is_refresh": false,
-              "tools_metadata": {
-                "_input_type": "ToolsInput",
-                "advanced": false,
-                "display_name": "Actions",
-                "dynamic": false,
-                "info": "Modify tool names and descriptions to help agents understand when to use each tool.",
-                "is_list": true,
-                "list_add_label": "Add More",
-                "name": "tools_metadata",
-                "override_skip": false,
-                "placeholder": "",
-                "real_time_refresh": true,
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "track_in_telemetry": false,
-                "type": "tools",
-                "value": [
-                  {
-                    "args": {},
-                    "description": "Obtiene tipo de cambio en tiempo real del BCRP",
-                    "display_description": "Obtiene tipo de cambio en tiempo real del BCRP",
-                    "display_name": "generate_message_output",
-                    "name": "generate_message_output",
-                    "readonly": false,
-                    "status": true,
-                    "tags": [
-                      "generate_message_output"
-                    ]
-                  }
-                ]
-              }
-            },
-            "tool_mode": true
-          },
-          "selected_output": "dataframe_output",
-          "showNode": true,
-          "type": "MockDataGenerator"
-        },
-        "dragging": false,
-        "id": "MockDataGenerator-LCgyv",
-        "measured": {
-          "height": 205,
-          "width": 320
-        },
-        "position": {
-          "x": -2244.962684703369,
-          "y": 2004.7666486675591
+          "x": -383.8224139064855,
+          "y": -732.3728096450121
         },
         "selected": false,
         "type": "genericNode"
@@ -6916,7 +6610,7 @@
             "legacy": false,
             "lf_version": "1.9.2",
             "metadata": {
-              "code_hash": "08b23528dc51",
+              "code_hash": "9c10253904e3",
               "dependencies": {
                 "dependencies": [
                   {
@@ -7077,7 +6771,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "code",
-                "value": "import numpy as np\r\nimport pyswarms as ps\r\nfrom langflow.custom import Component\r\nfrom langflow.io import MessageTextInput, Output\r\nfrom langflow.schema.message import Message\r\n\r\n\r\nclass PSOConsensusComponent(Component):\r\n    display_name = \"PSO Consensus Engine\"\r\n    description = \"Optimiza pesos de agentes usando PySwarms GlobalBestPSO (50 partículas, 100 iter.)\"\r\n    icon = \"cpu\"\r\n    name = \"PSOConsensusComponent\"\r\n\r\n    inputs = [\r\n        MessageTextInput(name=\"agente_tecnico\", display_name=\"Señal Agente Técnico\"),\r\n        MessageTextInput(name=\"agente_commodities\", display_name=\"Señal Agente Commodities\"),\r\n        MessageTextInput(name=\"agente_sentimiento\", display_name=\"Señal Agente Sentimiento\"),\r\n        MessageTextInput(name=\"agente_riesgo\", display_name=\"Señal Agente Riesgo\"),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"PSO Result\", name=\"message_output\", method=\"run_pso\")\r\n    ]\r\n\r\n    def señal_a_valor(self, texto: str) -> float:\r\n        \"\"\"Convierte texto de señal a valor numérico.\"\"\"\r\n        texto = texto.upper()\r\n        if any(x in texto for x in [\"COMPRAR\", \"POSITIVO\", \"BAJO\"]):\r\n            return 1.0\r\n        elif any(x in texto for x in [\"VENDER\", \"NEGATIVO\", \"ALTO\"]):\r\n            return -1.0\r\n        return 0.0\r\n\r\n    def extraer_confianza(self, texto: str) -> float:\r\n        \"\"\"Extrae el nivel de confianza del agente (0-1).\"\"\"\r\n        import re\r\n        # Busca patrones como \"confianza\": 0.85 o \"confianza\": 85\r\n        match = re.search(r'\"confianza\":\\s*(\\d+\\.?\\d*)', texto.lower())\r\n        if match:\r\n            valor = float(match.group(1))\r\n            return valor if valor <= 1.0 else valor / 100.0\r\n        return 0.5  # default si no encuentra\r\n\r\n    def run_pso(self) -> Message:\r\n        # Extraer señales y confianzas\r\n        señales = np.array([\r\n            self.señal_a_valor(self.agente_tecnico),\r\n            self.señal_a_valor(self.agente_commodities),\r\n            self.señal_a_valor(self.agente_sentimiento),\r\n            self.señal_a_valor(self.agente_riesgo),\r\n        ])\r\n\r\n        confianzas = np.array([\r\n            self.extraer_confianza(self.agente_tecnico),\r\n            self.extraer_confianza(self.agente_commodities),\r\n            self.extraer_confianza(self.agente_sentimiento),\r\n            self.extraer_confianza(self.agente_riesgo),\r\n        ])\r\n\r\n        # Función objetivo: minimiza la varianza de las señales ponderadas\r\n        # y maximiza la incorporación de agentes con alta confianza\r\n        def objective_function(particles):\r\n            \"\"\"\r\n            Función de costo para PSO.\r\n            Busca pesos que:\r\n            1. Balanceen las señales de forma coherente\r\n            2. Den más peso a agentes con mayor confianza\r\n            3. Minimicen la incertidumbre del consenso\r\n            \"\"\"\r\n            costs = []\r\n            for particle in particles:\r\n                # Normalizar pesos\r\n                pesos = np.abs(particle)\r\n                pesos = pesos / pesos.sum()\r\n\r\n                # Score ponderado\r\n                score = np.dot(pesos, señales)\r\n\r\n                # Penalización 1: Desalineación con confianzas\r\n                # Los agentes con más confianza deberían tener más peso\r\n                peso_confianza_mismatch = np.sum((pesos - confianzas) ** 2)\r\n\r\n                # Penalización 2: Pesos muy desbalanceados (evita concentración extrema)\r\n                entropia = -np.sum(pesos * np.log(pesos + 1e-10))\r\n                desbalance_penalty = -entropia  # Maximizamos entropía (distribución más uniforme)\r\n\r\n                # Penalización 3: Coherencia de la señal\r\n                # Si las señales son mixtas, penalizar scores extremos\r\n                señales_activas = np.abs(señales) > 0.1\r\n                if señales_activas.sum() > 1:  # Hay múltiples señales\r\n                    señales_en_conflicto = (señales[señales_activas] > 0).sum() > 0 and (señales[señales_activas] < 0).sum() > 0\r\n                    if señales_en_conflicto and abs(score) > 0.7:\r\n                        coherencia_penalty = abs(score) * 2\r\n                    else:\r\n                        coherencia_penalty = 0\r\n                else:\r\n                    coherencia_penalty = 0\r\n\r\n                # Costo total\r\n                cost = (\r\n                    peso_confianza_mismatch * 0.4 +\r\n                    desbalance_penalty * 0.3 +\r\n                    coherencia_penalty * 0.3\r\n                )\r\n\r\n                costs.append(cost)\r\n\r\n            return np.array(costs)\r\n\r\n        # Configuración PSO según requisitos\r\n        options = {\r\n            'c1': 0.5,  # Cognitive parameter\r\n            'c2': 0.3,  # Social parameter\r\n            'w': 0.9    # Inertia weight\r\n        }\r\n        bounds = (np.zeros(4), np.ones(4))\r\n\r\n        # GlobalBestPSO con parámetros según requisitos\r\n        optimizer = ps.single.GlobalBestPSO(\r\n            n_particles=50,   # ✅ Requisito: ≥50 partículas\r\n            dimensions=4,\r\n            options=options,\r\n            bounds=bounds\r\n        )\r\n\r\n        # Optimización con 100 iteraciones\r\n        cost, best_pos = optimizer.optimize(\r\n            objective_function,\r\n            iters=100,  # ✅ Requisito: 100 iteraciones\r\n            verbose=False\r\n        )\r\n\r\n        # Normalizar pesos óptimos\r\n        pesos_optimos = np.abs(best_pos)\r\n        pesos_optimos = pesos_optimos / pesos_optimos.sum()\r\n\r\n        # Calcular score final\r\n        score_final = float(np.dot(pesos_optimos, señales))\r\n\r\n        # Decisión según umbrales\r\n        if score_final > 0.3:\r\n            decision = \"COMPRAR\"\r\n        elif score_final < -0.3:\r\n            decision = \"VENDER\"\r\n        else:\r\n            decision = \"MANTENER\"\r\n\r\n        # Confianza ajustada\r\n        confianza = min(abs(score_final) * 100, 100)\r\n\r\n        # Resultado formateado\r\n        resultado = f\"\"\"=== PSO CONSENSUS ENGINE (PySwarms GlobalBestPSO) ===\r\n\r\nConfiguración PSO:\r\n- Partículas: 50\r\n- Iteraciones: 100\r\n- Algoritmo: Global Best PSO\r\n\r\nSeñales de entrada:\r\n- Agente Técnico:     {señales[0]:+.1f} (confianza: {confianzas[0]:.2f})\r\n- Agente Commodities: {señales[1]:+.1f} (confianza: {confianzas[1]:.2f})\r\n- Agente Sentimiento: {señales[2]:+.1f} (confianza: {confianzas[2]:.2f})\r\n- Agente Riesgo:      {señales[3]:+.1f} (confianza: {confianzas[3]:.2f})\r\n\r\nPesos óptimos (optimizados por PSO):\r\n- Agente Técnico:     {pesos_optimos[0]*100:.1f}%\r\n- Agente Commodities: {pesos_optimos[1]*100:.1f}%\r\n- Agente Sentimiento: {pesos_optimos[2]*100:.1f}%\r\n- Agente Riesgo:      {pesos_optimos[3]*100:.1f}%\r\n\r\nScore PSO Final: {score_final:+.4f}\r\nDECISIÓN: {decision}\r\nConfianza: {confianza:.1f}%\r\n\r\nCosto de optimización: {cost:.6f}\r\n\"\"\"\r\n\r\n        return Message(text=resultado)"
+                "value": "import numpy as np\r\nimport pyswarms as ps\r\nimport json\r\nimport re\r\n\r\nfrom langflow.custom import Component\r\nfrom langflow.io import MessageTextInput, Output\r\nfrom langflow.schema.message import Message\r\n\r\n\r\nclass PSOConsensusComponent(Component):\r\n    display_name = \"PSO Consensus Engine\"\r\n    description = \"Optimiza pesos de agentes usando PySwarms GlobalBestPSO (50 partículas, 100 iter.)\"\r\n    icon = \"cpu\"\r\n    name = \"PSOConsensusComponent\"\r\n\r\n    inputs = [\r\n        MessageTextInput(name=\"agente_tecnico\", display_name=\"Señal Agente Técnico\"),\r\n        MessageTextInput(name=\"agente_commodities\", display_name=\"Señal Agente Commodities\"),\r\n        MessageTextInput(name=\"agente_sentimiento\", display_name=\"Señal Agente Sentimiento\"),\r\n        MessageTextInput(name=\"agente_riesgo\", display_name=\"Señal Agente Riesgo\"),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"PSO Result\", name=\"message_output\", method=\"run_pso\")\r\n    ]\r\n\r\n    def normalizar_texto(self, entrada) -> str:\r\n        \"\"\"\r\n        Convierte cualquier entrada de Langflow a texto.\r\n        Puede recibir string, Message, dict u otros objetos.\r\n        \"\"\"\r\n        if entrada is None:\r\n            return \"\"\r\n\r\n        if isinstance(entrada, dict):\r\n            return json.dumps(entrada, ensure_ascii=False)\r\n\r\n        if hasattr(entrada, \"text\"):\r\n            return str(entrada.text)\r\n\r\n        if hasattr(entrada, \"content\"):\r\n            return str(entrada.content)\r\n\r\n        if hasattr(entrada, \"data\"):\r\n            try:\r\n                return json.dumps(entrada.data, ensure_ascii=False)\r\n            except Exception:\r\n                return str(entrada.data)\r\n\r\n        return str(entrada)\r\n\r\n    def extraer_json(self, entrada) -> dict:\r\n        \"\"\"\r\n        Extrae JSON desde la salida de un agente.\r\n        Acepta JSON puro o texto que contenga un JSON dentro.\r\n        \"\"\"\r\n        texto = self.normalizar_texto(entrada).strip()\r\n\r\n        if not texto:\r\n            return {}\r\n\r\n        # Intento 1: parsear directamente como JSON\r\n        try:\r\n            return json.loads(texto)\r\n        except Exception:\r\n            pass\r\n\r\n        # Intento 2: extraer el primer bloque entre { ... }\r\n        match = re.search(r\"\\{.*\\}\", texto, re.DOTALL)\r\n        if match:\r\n            try:\r\n                return json.loads(match.group())\r\n            except Exception:\r\n                return {}\r\n\r\n        return {}\r\n\r\n    def senal_a_valor(self, senal: str) -> float:\r\n        \"\"\"\r\n        Convierte COMPRAR / MANTENER / VENDER a valor numérico.\r\n        \"\"\"\r\n        senal = str(senal).upper().strip()\r\n\r\n        if senal == \"COMPRAR\":\r\n            return 1.0\r\n        elif senal == \"VENDER\":\r\n            return -1.0\r\n        elif senal == \"MANTENER\":\r\n            return 0.0\r\n\r\n        return 0.0\r\n\r\n    def procesar_agente(self, entrada, nombre_agente: str) -> dict:\r\n        \"\"\"\r\n        Procesa la salida de cada agente.\r\n        Prioriza score si existe.\r\n        Si no hay score, usa senal/señal.\r\n        \"\"\"\r\n        data = self.extraer_json(entrada)\r\n        texto = self.normalizar_texto(entrada)\r\n\r\n        agente = data.get(\"agente\", nombre_agente)\r\n        ticker = data.get(\"ticker\", \"\")\r\n\r\n        # Acepta \"senal\" sin tilde y \"señal\" con tilde\r\n        senal = data.get(\"senal\", data.get(\"señal\", \"MANTENER\"))\r\n\r\n        # Prioridad 1: usar score si existe\r\n        try:\r\n            score = float(data.get(\"score\"))\r\n        except Exception:\r\n            score = self.senal_a_valor(senal)\r\n\r\n        # Limitar score a rango [-1, 1]\r\n        score = max(-1.0, min(1.0, score))\r\n\r\n        # Confianza\r\n        try:\r\n            confianza = float(data.get(\"confianza\", 0.5))\r\n        except Exception:\r\n            confianza = 0.5\r\n\r\n        # Si confianza viene como porcentaje, convertir a 0-1\r\n        if confianza > 1:\r\n            confianza = confianza / 100.0\r\n\r\n        confianza = max(0.0, min(1.0, confianza))\r\n\r\n        datos_usados = data.get(\"datos_usados\", \"\")\r\n        justificacion = data.get(\"justificacion\", data.get(\"razon\", \"\"))\r\n\r\n        # Fallback si el JSON no pudo leerse\r\n        if not data:\r\n            texto_upper = texto.upper()\r\n\r\n            if \"COMPRAR\" in texto_upper:\r\n                senal = \"COMPRAR\"\r\n                score = 1.0\r\n            elif \"VENDER\" in texto_upper:\r\n                senal = \"VENDER\"\r\n                score = -1.0\r\n            else:\r\n                senal = \"MANTENER\"\r\n                score = 0.0\r\n\r\n            confianza = 0.5\r\n            datos_usados = \"No se pudo extraer JSON estructurado\"\r\n            justificacion = \"Se aplicó lectura de respaldo desde texto.\"\r\n\r\n        return {\r\n            \"agente\": agente,\r\n            \"ticker\": ticker,\r\n            \"senal\": senal,\r\n            \"score\": score,\r\n            \"confianza\": confianza,\r\n            \"datos_usados\": datos_usados,\r\n            \"justificacion\": justificacion,\r\n        }\r\n\r\n    def run_pso(self) -> Message:\r\n        agentes = [\r\n            self.procesar_agente(self.agente_tecnico, \"tecnico\"),\r\n            self.procesar_agente(self.agente_commodities, \"commodities\"),\r\n            self.procesar_agente(self.agente_sentimiento, \"sentimiento\"),\r\n            self.procesar_agente(self.agente_riesgo, \"riesgo\"),\r\n        ]\r\n\r\n        scores = np.array([agente[\"score\"] for agente in agentes], dtype=float)\r\n        confianzas = np.array([agente[\"confianza\"] for agente in agentes], dtype=float)\r\n\r\n        # Evitar que todas las confianzas sean cero\r\n        if confianzas.sum() == 0:\r\n            confianzas = np.array([0.25, 0.25, 0.25, 0.25], dtype=float)\r\n        else:\r\n            confianzas = confianzas / confianzas.sum()\r\n\r\n        def objective_function(particles):\r\n            costs = []\r\n\r\n            for particle in particles:\r\n                pesos = np.abs(particle)\r\n\r\n                if pesos.sum() == 0:\r\n                    pesos = np.array([0.25, 0.25, 0.25, 0.25])\r\n                else:\r\n                    pesos = pesos / pesos.sum()\r\n\r\n                score_pso = np.dot(pesos, scores)\r\n\r\n                # Penaliza que los pesos se alejen mucho de las confianzas\r\n                confianza_penalty = np.sum((pesos - confianzas) ** 2)\r\n\r\n                # Favorece distribución no extremadamente concentrada\r\n                entropia = -np.sum(pesos * np.log(pesos + 1e-10))\r\n                desbalance_penalty = -entropia\r\n\r\n                # Penaliza decisiones extremas cuando hay señales enfrentadas\r\n                senales_activas = np.abs(scores) > 0.1\r\n                if senales_activas.sum() > 1:\r\n                    hay_positivas = (scores[senales_activas] > 0).sum() > 0\r\n                    hay_negativas = (scores[senales_activas] < 0).sum() > 0\r\n\r\n                    if hay_positivas and hay_negativas and abs(score_pso) > 0.7:\r\n                        coherencia_penalty = abs(score_pso) * 2\r\n                    else:\r\n                        coherencia_penalty = 0\r\n                else:\r\n                    coherencia_penalty = 0\r\n\r\n                cost = (\r\n                    confianza_penalty * 0.4 +\r\n                    desbalance_penalty * 0.3 +\r\n                    coherencia_penalty * 0.3\r\n                )\r\n\r\n                costs.append(cost)\r\n\r\n            return np.array(costs)\r\n\r\n        options = {\r\n            \"c1\": 0.5,\r\n            \"c2\": 0.3,\r\n            \"w\": 0.9,\r\n        }\r\n\r\n        bounds = (\r\n            np.zeros(4),\r\n            np.ones(4),\r\n        )\r\n\r\n        optimizer = ps.single.GlobalBestPSO(\r\n            n_particles=50,\r\n            dimensions=4,\r\n            options=options,\r\n            bounds=bounds,\r\n        )\r\n\r\n        cost, best_pos = optimizer.optimize(\r\n            objective_function,\r\n            iters=100,\r\n            verbose=False,\r\n        )\r\n\r\n        pesos_optimos = np.abs(best_pos)\r\n\r\n        if pesos_optimos.sum() == 0:\r\n            pesos_optimos = np.array([0.25, 0.25, 0.25, 0.25])\r\n        else:\r\n            pesos_optimos = pesos_optimos / pesos_optimos.sum()\r\n\r\n        score_final = float(np.dot(pesos_optimos, scores))\r\n\r\n        if score_final >= 0.25:\r\n            decision = \"COMPRAR\"\r\n        elif score_final <= -0.25:\r\n            decision = \"VENDER\"\r\n        else:\r\n            decision = \"MANTENER\"\r\n\r\n        # Confianza final ponderada por los pesos óptimos\r\n        confianza_final = float(np.dot(pesos_optimos, np.array([a[\"confianza\"] for a in agentes])))\r\n        confianza_final = max(0.0, min(1.0, confianza_final))\r\n\r\n        tickers = [a[\"ticker\"] for a in agentes if a[\"ticker\"]]\r\n        ticker_final = tickers[0] if tickers else \"DESCONOCIDO\"\r\n\r\n        resultado = {\r\n            \"motor\": \"PSO Consensus Engine\",\r\n            \"algoritmo\": \"PySwarms GlobalBestPSO\",\r\n            \"configuracion\": {\r\n                \"particulas\": 50,\r\n                \"iteraciones\": 100,\r\n                \"dimensiones\": 4,\r\n            },\r\n            \"ticker\": ticker_final,\r\n            \"senal_final\": decision,\r\n            \"score_final\": round(score_final, 4),\r\n            \"confianza_final\": round(confianza_final, 4),\r\n            \"pesos_optimos\": {\r\n                \"tecnico\": round(float(pesos_optimos[0]), 4),\r\n                \"commodities\": round(float(pesos_optimos[1]), 4),\r\n                \"sentimiento\": round(float(pesos_optimos[2]), 4),\r\n                \"riesgo\": round(float(pesos_optimos[3]), 4),\r\n            },\r\n            \"agentes\": {\r\n                \"tecnico\": agentes[0],\r\n                \"commodities\": agentes[1],\r\n                \"sentimiento\": agentes[2],\r\n                \"riesgo\": agentes[3],\r\n            },\r\n            \"costo_optimizacion\": round(float(cost), 6),\r\n        }\r\n\r\n        return Message(text=json.dumps(resultado, ensure_ascii=False, indent=2))"
               }
             },
             "tool_mode": false
@@ -7092,8 +6786,8 @@
           "width": 320
         },
         "position": {
-          "x": 515.6865309334805,
-          "y": 1079.7286249955935
+          "x": 621.80820881521,
+          "y": 1049.01597046756
         },
         "selected": false,
         "type": "genericNode"
@@ -7108,7 +6802,7 @@
             "beta": false,
             "conditional_paths": [],
             "custom_fields": {},
-            "description": "",
+            "description": "Tool para buscar noticias del sector minero BVL.",
             "display_name": "Noticias BVL Tool",
             "documentation": "",
             "edited": true,
@@ -7123,7 +6817,7 @@
             "legacy": false,
             "lf_version": "1.9.2",
             "metadata": {
-              "code_hash": "86c2ee366792",
+              "code_hash": "4f9829e2f444",
               "dependencies": {
                 "dependencies": [
                   {
@@ -7203,7 +6897,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "code",
-                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, IntInput, Output, SecretStrInput\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport requests\r\nfrom datetime import datetime, timedelta\r\n\r\n\r\nclass NoticiasBVLToolComponent(Component):\r\n    display_name = \"Noticias BVL Tool\"\r\n    description = \"Tool para buscar noticias del sector minero BVL.\"\r\n    icon = \"newspaper\"\r\n    name = \"NoticiasBVLTool\"\r\n\r\n    inputs = [\r\n        SecretStrInput(\r\n            name=\"api_key\",\r\n            display_name=\"NewsAPI Key\",\r\n            required=True,\r\n        ),\r\n        StrInput(\r\n            name=\"default_query\",\r\n            display_name=\"Query por defecto\",\r\n            value=\"Buenaventura OR Southern Copper OR minería Perú OR cobre OR oro\",\r\n        ),\r\n        IntInput(\r\n            name=\"days_back\",\r\n            display_name=\"Días hacia atrás\",\r\n            value=7,\r\n        ),\r\n        IntInput(\r\n            name=\"max_results\",\r\n            display_name=\"Máximo de noticias\",\r\n            value=15,\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        api_key = self.api_key\r\n        default_query = self.default_query\r\n        days_back = self.days_back\r\n        max_results = self.max_results\r\n\r\n        def buscar_noticias(input_text: str = \"\") -> str:\r\n            query = input_text if input_text else default_query\r\n            fecha_desde = (datetime.now() - timedelta(days=days_back)).strftime(\"%Y-%m-%d\")\r\n\r\n            url = \"https://newsapi.org/v2/everything\"\r\n            params = {\r\n                \"q\": query,\r\n                \"language\": \"es\",\r\n                \"from\": fecha_desde,\r\n                \"sortBy\": \"publishedAt\",\r\n                \"pageSize\": min(max_results, 50),\r\n                \"apiKey\": api_key,\r\n            }\r\n\r\n            try:\r\n                response = requests.get(url, params=params, timeout=15)\r\n                response.raise_for_status()\r\n                data = response.json()\r\n\r\n                if data.get(\"status\") != \"ok\":\r\n                    return f\"Error NewsAPI: {data.get('message', 'desconocido')}\"\r\n\r\n                articulos = data.get(\"articles\", [])\r\n                if not articulos:\r\n                    return \"No se encontraron noticias.\"\r\n\r\n                noticias = []\r\n                for i, art in enumerate(articulos, 1):\r\n                    titular = art.get(\"title\", \"Sin título\")\r\n                    descripcion = art.get(\"description\", \"\") or \"\"\r\n                    fuente = art.get(\"source\", {}).get(\"name\", \"Desconocida\")\r\n                    fecha = art.get(\"publishedAt\", \"\")[:10]\r\n                    noticias.append(\r\n                        f\"[{i}] {titular} | {fecha} | {fuente}\\n   {descripcion}\"\r\n                    )\r\n\r\n                return \"\\n\\n\".join(noticias)\r\n\r\n            except Exception as e:\r\n                return f\"Error: {str(e)}\"\r\n\r\n        tool = LangchainTool(\r\n            name=\"buscar_noticias_bvl\",\r\n            description=(\r\n                \"Busca noticias del sector minero peruano y commodities. \"\r\n                \"Input: términos de búsqueda (string). \"\r\n                \"Output: lista de noticias con titular, fecha y fuente.\"\r\n            ),\r\n            func=buscar_noticias,\r\n        )\r\n\r\n        return tool"
+                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, IntInput, Output, SecretStrInput\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport requests\r\nfrom datetime import datetime, timedelta\r\n\r\n\r\nclass NoticiasBVLToolComponent(Component):\r\n    display_name = \"Noticias BVL Tool\"\r\n    description = \"Tool para buscar noticias del sector minero BVL.\"\r\n    icon = \"newspaper\"\r\n    name = \"NoticiasBVLTool\"\r\n\r\n    inputs = [\r\n        SecretStrInput(\r\n            name=\"api_key\",\r\n            display_name=\"NewsAPI Key\",\r\n            required=True,\r\n        ),\r\n        StrInput(\r\n            name=\"default_query\",\r\n            display_name=\"Query por defecto\",\r\n            value=\"Buenaventura OR Southern Copper OR Volcan OR Minsur OR Cerro Verde OR minería Perú OR cobre OR oro OR plata\",\r\n        ),\r\n        IntInput(\r\n            name=\"days_back\",\r\n            display_name=\"Días hacia atrás\",\r\n            value=30,\r\n        ),\r\n        IntInput(\r\n            name=\"max_results\",\r\n            display_name=\"Máximo de noticias\",\r\n            value=15,\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        api_key = self.api_key\r\n        default_query = self.default_query\r\n        days_back = self.days_back\r\n        max_results = self.max_results\r\n\r\n        def buscar_noticias(input_text: str = \"\") -> str:\r\n            query = input_text if input_text else default_query\r\n            fecha_desde = (datetime.now() - timedelta(days=days_back)).strftime(\"%Y-%m-%d\")\r\n\r\n            url = \"https://newsapi.org/v2/everything\"\r\n            params = {\r\n                \"q\": query,\r\n                \"language\": \"es\",\r\n                \"from\": fecha_desde,\r\n                \"sortBy\": \"publishedAt\",\r\n                \"pageSize\": min(max_results, 50),\r\n                \"apiKey\": api_key,\r\n            }\r\n\r\n            try:\r\n                response = requests.get(url, params=params, timeout=15)\r\n                response.raise_for_status()\r\n                data = response.json()\r\n\r\n                if data.get(\"status\") != \"ok\":\r\n                    return f\"Error NewsAPI: {data.get('message', 'desconocido')}\"\r\n\r\n                articulos = data.get(\"articles\", [])\r\n                if not articulos:\r\n                    return \"No se encontraron noticias.\"\r\n\r\n                noticias = []\r\n                for i, art in enumerate(articulos, 1):\r\n                    titular = art.get(\"title\", \"Sin título\")\r\n                    descripcion = art.get(\"description\", \"\") or \"\"\r\n                    fuente = art.get(\"source\", {}).get(\"name\", \"Desconocida\")\r\n                    fecha = art.get(\"publishedAt\", \"\")[:10]\r\n                    noticias.append(\r\n                        f\"[{i}] {titular} | {fecha} | {fuente}\\n   {descripcion}\"\r\n                    )\r\n\r\n                return \"\\n\\n\".join(noticias)\r\n\r\n            except Exception as e:\r\n                return f\"Error: {str(e)}\"\r\n\r\n        tool = LangchainTool(\r\n            name=\"buscar_noticias_bvl\",\r\n            description=(\r\n                \"Busca noticias del sector minero peruano y commodities. \"\r\n                \"Input: términos de búsqueda (string). \"\r\n                \"Output: lista de noticias con titular, fecha y fuente.\"\r\n            ),\r\n            func=buscar_noticias,\r\n        )\r\n\r\n        return tool"
               },
               "days_back": {
                 "_input_type": "IntInput",
@@ -7223,7 +6917,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": true,
                 "type": "int",
-                "value": 7
+                "value": 30
               },
               "default_query": {
                 "_input_type": "StrInput",
@@ -7244,7 +6938,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "Buenaventura OR Southern Copper OR minería Perú OR cobre OR oro"
+                "value": "mining Peru"
               },
               "max_results": {
                 "_input_type": "IntInput",
@@ -7275,12 +6969,12 @@
         "dragging": false,
         "id": "CustomComponent-j7vwK",
         "measured": {
-          "height": 425,
+          "height": 453,
           "width": 320
         },
         "position": {
-          "x": -1025.0691206595152,
-          "y": 1358.3124108621455
+          "x": -987.3149623139476,
+          "y": 1373.4140742003726
         },
         "selected": false,
         "type": "genericNode"
@@ -7518,8 +7212,8 @@
           "width": 320
         },
         "position": {
-          "x": -417.9490593967421,
-          "y": 1776.463897573212
+          "x": -376.4334496145076,
+          "y": 1828.114490030999
         },
         "selected": false,
         "type": "genericNode"
@@ -7620,20 +7314,20 @@
           "width": 320
         },
         "position": {
-          "x": -977.8230060594323,
-          "y": 882.7222765433057
+          "x": -968.6274016312038,
+          "y": 947.2889384169421
         },
         "selected": false,
         "type": "genericNode"
       }
     ],
     "viewport": {
-      "x": 740.0669084170216,
-      "y": -139.37735650537365,
-      "zoom": 0.504880197365532
+      "x": 693.6993138077925,
+      "y": 302.4853676245001,
+      "zoom": 0.319728844992273
     }
   },
-  "description": "Sistema Multiagente basado en Swarm Intelligence para la toma de deciones en las inversiones del sector minero de la Bolsa de Valores de Lima.",
+  "description": "Bridging Prompts for Brilliance.",
   "endpoint_name": null,
   "id": "ca4ca2ab-6136-401a-acac-3084773df701",
   "is_component": false,
