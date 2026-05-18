@@ -19,4 +19,4 @@ Sistema de soporte a la toma de decisiones basado en Swarm Intelligence con PySw
 Ramiro Alfaro Honores - UPAO
 
 ## Fecha
-Mayo 2026
+Junio 2026
