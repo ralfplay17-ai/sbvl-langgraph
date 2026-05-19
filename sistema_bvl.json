@@ -7,7 +7,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "ChatInput",
-            "id": "ChatInput-Ouvkw",
+            "id": "ChatInput-zpHDh",
             "name": "message",
             "output_types": [
               "Message"
@@ -15,19 +15,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-nH9Ww",
+            "id": "Agent-O9bP1",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__ChatInput-Ouvkw{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-nH9Ww{œfieldNameœ:œinput_valueœ,œidœ:œAgent-nH9Wwœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-ChatInput-zpHDh{œdataTypeœ:œChatInputœ,œidœ:œChatInput-zpHDhœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-O9bP1{œfieldNameœ:œinput_valueœ,œidœ:œAgent-O9bP1œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "ChatInput-Ouvkw",
-        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-nH9Ww",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-nH9Wwœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "ChatInput-zpHDh",
+        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-zpHDhœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-O9bP1",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-O9bP1œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -35,7 +35,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-EPz5g",
+            "id": "DeepSeekModelComponent-KYI7Z",
             "name": "model_output",
             "output_types": [
               "LanguageModel"
@@ -43,19 +43,19 @@
           },
           "targetHandle": {
             "fieldName": "model",
-            "id": "Agent-nH9Ww",
+            "id": "Agent-O9bP1",
             "inputTypes": [
               "LanguageModel"
             ],
             "type": "model"
           }
         },
-        "id": "xy-edge__DeepSeekModelComponent-EPz5g{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-EPz5gœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-nH9Ww{œfieldNameœ:œmodelœ,œidœ:œAgent-nH9Wwœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "id": "reactflow__edge-DeepSeekModelComponent-KYI7Z{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-KYI7Zœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-O9bP1{œfieldNameœ:œmodelœ,œidœ:œAgent-O9bP1œ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
         "selected": false,
-        "source": "DeepSeekModelComponent-EPz5g",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-EPz5gœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-nH9Ww",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-nH9Wwœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+        "source": "DeepSeekModelComponent-KYI7Z",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-KYI7Zœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-O9bP1",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-O9bP1œ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
       },
       {
         "animated": false,
@@ -63,7 +63,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-9O4ZI",
+            "id": "DeepSeekModelComponent-9rVrE",
             "name": "model_output",
             "output_types": [
               "LanguageModel"
@@ -71,19 +71,19 @@
           },
           "targetHandle": {
             "fieldName": "model",
-            "id": "Agent-CHfhi",
+            "id": "Agent-vfY8N",
             "inputTypes": [
               "LanguageModel"
             ],
             "type": "model"
           }
         },
-        "id": "xy-edge__DeepSeekModelComponent-9O4ZI{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9O4ZIœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-CHfhi{œfieldNameœ:œmodelœ,œidœ:œAgent-CHfhiœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "id": "reactflow__edge-DeepSeekModelComponent-9rVrE{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9rVrEœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-vfY8N{œfieldNameœ:œmodelœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
         "selected": false,
-        "source": "DeepSeekModelComponent-9O4ZI",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9O4ZIœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-CHfhi",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-CHfhiœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+        "source": "DeepSeekModelComponent-9rVrE",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9rVrEœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-vfY8N",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
       },
       {
         "animated": false,
@@ -91,7 +91,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-YeYak",
+            "id": "DeepSeekModelComponent-Ste6Y",
             "name": "model_output",
             "output_types": [
               "LanguageModel"
@@ -99,19 +99,19 @@
           },
           "targetHandle": {
             "fieldName": "model",
-            "id": "Agent-SkhVq",
+            "id": "Agent-2DK9d",
             "inputTypes": [
               "LanguageModel"
             ],
             "type": "model"
           }
         },
-        "id": "xy-edge__DeepSeekModelComponent-YeYak{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-YeYakœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-SkhVq{œfieldNameœ:œmodelœ,œidœ:œAgent-SkhVqœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "id": "reactflow__edge-DeepSeekModelComponent-Ste6Y{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-Ste6Yœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-2DK9d{œfieldNameœ:œmodelœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
         "selected": false,
-        "source": "DeepSeekModelComponent-YeYak",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-YeYakœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-SkhVq",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-SkhVqœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+        "source": "DeepSeekModelComponent-Ste6Y",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-Ste6Yœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-2DK9d",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
       },
       {
         "animated": false,
@@ -119,7 +119,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-7lNkN",
+            "id": "DeepSeekModelComponent-xKCYB",
             "name": "model_output",
             "output_types": [
               "LanguageModel"
@@ -127,19 +127,19 @@
           },
           "targetHandle": {
             "fieldName": "model",
-            "id": "Agent-MZDzY",
+            "id": "Agent-ivsIj",
             "inputTypes": [
               "LanguageModel"
             ],
             "type": "model"
           }
         },
-        "id": "xy-edge__DeepSeekModelComponent-7lNkN{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-7lNkNœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-MZDzY{œfieldNameœ:œmodelœ,œidœ:œAgent-MZDzYœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "id": "reactflow__edge-DeepSeekModelComponent-xKCYB{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-xKCYBœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-ivsIj{œfieldNameœ:œmodelœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
         "selected": false,
-        "source": "DeepSeekModelComponent-7lNkN",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-7lNkNœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-MZDzY",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-MZDzYœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+        "source": "DeepSeekModelComponent-xKCYB",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-xKCYBœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-ivsIj",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
       },
       {
         "animated": false,
@@ -147,7 +147,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-aa3H7",
+            "id": "DeepSeekModelComponent-5aspH",
             "name": "model_output",
             "output_types": [
               "LanguageModel"
@@ -155,19 +155,19 @@
           },
           "targetHandle": {
             "fieldName": "model",
-            "id": "Agent-C1nMs",
+            "id": "Agent-qveqL",
             "inputTypes": [
               "LanguageModel"
             ],
             "type": "model"
           }
         },
-        "id": "xy-edge__DeepSeekModelComponent-aa3H7{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-aa3H7œ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-C1nMs{œfieldNameœ:œmodelœ,œidœ:œAgent-C1nMsœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "id": "reactflow__edge-DeepSeekModelComponent-5aspH{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-5aspHœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-qveqL{œfieldNameœ:œmodelœ,œidœ:œAgent-qveqLœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
         "selected": false,
-        "source": "DeepSeekModelComponent-aa3H7",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-aa3H7œ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-C1nMs",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-C1nMsœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+        "source": "DeepSeekModelComponent-5aspH",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-5aspHœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-qveqL",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-qveqLœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
       },
       {
         "animated": false,
@@ -175,7 +175,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "PSOConsensusComponent",
-            "id": "CustomComponent-Y4heK",
+            "id": "PSOConsensusComponent-wv0t0",
             "name": "message_output",
             "output_types": [
               "Message"
@@ -183,19 +183,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-C1nMs",
+            "id": "Agent-qveqL",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__CustomComponent-Y4heK{œdataTypeœ:œPSOConsensusComponentœ,œidœ:œCustomComponent-Y4heKœ,œnameœ:œmessage_outputœ,œoutput_typesœ:[œMessageœ]}-Agent-C1nMs{œfieldNameœ:œinput_valueœ,œidœ:œAgent-C1nMsœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-PSOConsensusComponent-wv0t0{œdataTypeœ:œPSOConsensusComponentœ,œidœ:œPSOConsensusComponent-wv0t0œ,œnameœ:œmessage_outputœ,œoutput_typesœ:[œMessageœ]}-Agent-qveqL{œfieldNameœ:œinput_valueœ,œidœ:œAgent-qveqLœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "CustomComponent-Y4heK",
-        "sourceHandle": "{œdataTypeœ:œPSOConsensusComponentœ,œidœ:œCustomComponent-Y4heKœ,œnameœ:œmessage_outputœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-C1nMs",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-C1nMsœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "PSOConsensusComponent-wv0t0",
+        "sourceHandle": "{œdataTypeœ:œPSOConsensusComponentœ,œidœ:œPSOConsensusComponent-wv0t0œ,œnameœ:œmessage_outputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-qveqL",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-qveqLœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -203,7 +203,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-C1nMs",
+            "id": "Agent-qveqL",
             "name": "response",
             "output_types": [
               "Message"
@@ -211,7 +211,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-QDXYi",
+            "id": "ChatOutput-prohP",
             "inputTypes": [
               "Data",
               "JSON",
@@ -222,12 +222,12 @@
             "type": "other"
           }
         },
-        "id": "xy-edge__Agent-C1nMs{œdataTypeœ:œAgentœ,œidœ:œAgent-C1nMsœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-QDXYi{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-QDXYiœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-Agent-qveqL{œdataTypeœ:œAgentœ,œidœ:œAgent-qveqLœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-prohP{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-prohPœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "Agent-C1nMs",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-C1nMsœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "ChatOutput-QDXYi",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-QDXYiœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
+        "source": "Agent-qveqL",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-qveqLœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-prohP",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-prohPœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
       },
       {
         "animated": false,
@@ -235,7 +235,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "ChatInput",
-            "id": "ChatInput-Ouvkw",
+            "id": "ChatInput-zpHDh",
             "name": "message",
             "output_types": [
               "Message"
@@ -243,19 +243,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-SkhVq",
+            "id": "Agent-2DK9d",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__ChatInput-Ouvkw{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-SkhVq{œfieldNameœ:œinput_valueœ,œidœ:œAgent-SkhVqœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-ChatInput-zpHDh{œdataTypeœ:œChatInputœ,œidœ:œChatInput-zpHDhœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-2DK9d{œfieldNameœ:œinput_valueœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "ChatInput-Ouvkw",
-        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-SkhVq",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-SkhVqœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "ChatInput-zpHDh",
+        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-zpHDhœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-2DK9d",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -263,7 +263,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-nH9Ww",
+            "id": "Agent-O9bP1",
             "name": "response",
             "output_types": [
               "Message"
@@ -271,19 +271,19 @@
           },
           "targetHandle": {
             "fieldName": "agente_tecnico",
-            "id": "CustomComponent-Y4heK",
+            "id": "PSOConsensusComponent-wv0t0",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Agent-nH9Ww{œdataTypeœ:œAgentœ,œidœ:œAgent-nH9Wwœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-Y4heK{œfieldNameœ:œagente_tecnicoœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Agent-O9bP1{œdataTypeœ:œAgentœ,œidœ:œAgent-O9bP1œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-PSOConsensusComponent-wv0t0{œfieldNameœ:œagente_tecnicoœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Agent-nH9Ww",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-nH9Wwœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "CustomComponent-Y4heK",
-        "targetHandle": "{œfieldNameœ:œagente_tecnicoœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Agent-O9bP1",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-O9bP1œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "PSOConsensusComponent-wv0t0",
+        "targetHandle": "{œfieldNameœ:œagente_tecnicoœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -291,7 +291,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-SkhVq",
+            "id": "Agent-2DK9d",
             "name": "response",
             "output_types": [
               "Message"
@@ -299,19 +299,19 @@
           },
           "targetHandle": {
             "fieldName": "agente_sentimiento",
-            "id": "CustomComponent-Y4heK",
+            "id": "PSOConsensusComponent-wv0t0",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Agent-SkhVq{œdataTypeœ:œAgentœ,œidœ:œAgent-SkhVqœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-Y4heK{œfieldNameœ:œagente_sentimientoœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Agent-2DK9d{œdataTypeœ:œAgentœ,œidœ:œAgent-2DK9dœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-PSOConsensusComponent-wv0t0{œfieldNameœ:œagente_sentimientoœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Agent-SkhVq",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-SkhVqœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "CustomComponent-Y4heK",
-        "targetHandle": "{œfieldNameœ:œagente_sentimientoœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Agent-2DK9d",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-2DK9dœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "PSOConsensusComponent-wv0t0",
+        "targetHandle": "{œfieldNameœ:œagente_sentimientoœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -319,7 +319,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "ChatInput",
-            "id": "ChatInput-Ouvkw",
+            "id": "ChatInput-zpHDh",
             "name": "message",
             "output_types": [
               "Message"
@@ -327,19 +327,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-MZDzY",
+            "id": "Agent-ivsIj",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__ChatInput-Ouvkw{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-MZDzY{œfieldNameœ:œinput_valueœ,œidœ:œAgent-MZDzYœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-ChatInput-zpHDh{œdataTypeœ:œChatInputœ,œidœ:œChatInput-zpHDhœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Agent-ivsIj{œfieldNameœ:œinput_valueœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "ChatInput-Ouvkw",
-        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-Ouvkwœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-MZDzY",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-MZDzYœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "ChatInput-zpHDh",
+        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-zpHDhœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-ivsIj",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -347,7 +347,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-MZDzY",
+            "id": "Agent-ivsIj",
             "name": "response",
             "output_types": [
               "Message"
@@ -355,19 +355,19 @@
           },
           "targetHandle": {
             "fieldName": "agente_riesgo",
-            "id": "CustomComponent-Y4heK",
+            "id": "PSOConsensusComponent-wv0t0",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Agent-MZDzY{œdataTypeœ:œAgentœ,œidœ:œAgent-MZDzYœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-Y4heK{œfieldNameœ:œagente_riesgoœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Agent-ivsIj{œdataTypeœ:œAgentœ,œidœ:œAgent-ivsIjœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-PSOConsensusComponent-wv0t0{œfieldNameœ:œagente_riesgoœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Agent-MZDzY",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-MZDzYœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "CustomComponent-Y4heK",
-        "targetHandle": "{œfieldNameœ:œagente_riesgoœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Agent-ivsIj",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-ivsIjœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "PSOConsensusComponent-wv0t0",
+        "targetHandle": "{œfieldNameœ:œagente_riesgoœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -375,7 +375,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "NoticiasBVLTool",
-            "id": "CustomComponent-j7vwK",
+            "id": "NoticiasBVLTool-JBfQ6",
             "name": "tool_output",
             "output_types": [
               "Tool"
@@ -383,75 +383,19 @@
           },
           "targetHandle": {
             "fieldName": "tools",
-            "id": "Agent-SkhVq",
+            "id": "Agent-2DK9d",
             "inputTypes": [
               "Tool"
             ],
             "type": "other"
           }
         },
-        "id": "xy-edge__CustomComponent-j7vwK{œdataTypeœ:œNoticiasBVLToolœ,œidœ:œCustomComponent-j7vwKœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-SkhVq{œfieldNameœ:œtoolsœ,œidœ:œAgent-SkhVqœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-NoticiasBVLTool-JBfQ6{œdataTypeœ:œNoticiasBVLToolœ,œidœ:œNoticiasBVLTool-JBfQ6œ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-2DK9d{œfieldNameœ:œtoolsœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "CustomComponent-j7vwK",
-        "sourceHandle": "{œdataTypeœ:œNoticiasBVLToolœ,œidœ:œCustomComponent-j7vwKœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
-        "target": "Agent-SkhVq",
-        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-SkhVqœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "DatosBVLTool",
-            "id": "CustomComponent-H2KWY",
-            "name": "tool_output",
-            "output_types": [
-              "Tool"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "tools",
-            "id": "Agent-nH9Ww",
-            "inputTypes": [
-              "Tool"
-            ],
-            "type": "other"
-          }
-        },
-        "id": "xy-edge__CustomComponent-H2KWY{œdataTypeœ:œDatosBVLToolœ,œidœ:œCustomComponent-H2KWYœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-nH9Ww{œfieldNameœ:œtoolsœ,œidœ:œAgent-nH9Wwœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
-        "selected": false,
-        "source": "CustomComponent-H2KWY",
-        "sourceHandle": "{œdataTypeœ:œDatosBVLToolœ,œidœ:œCustomComponent-H2KWYœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
-        "target": "Agent-nH9Ww",
-        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-nH9Wwœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "DatosCommoditiesTool",
-            "id": "CustomComponent-L0hmS",
-            "name": "tool_output",
-            "output_types": [
-              "Tool"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "tools",
-            "id": "Agent-CHfhi",
-            "inputTypes": [
-              "Tool"
-            ],
-            "type": "other"
-          }
-        },
-        "id": "xy-edge__CustomComponent-L0hmS{œdataTypeœ:œDatosCommoditiesToolœ,œidœ:œCustomComponent-L0hmSœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-CHfhi{œfieldNameœ:œtoolsœ,œidœ:œAgent-CHfhiœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
-        "selected": false,
-        "source": "CustomComponent-L0hmS",
-        "sourceHandle": "{œdataTypeœ:œDatosCommoditiesToolœ,œidœ:œCustomComponent-L0hmSœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
-        "target": "Agent-CHfhi",
-        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-CHfhiœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
+        "source": "NoticiasBVLTool-JBfQ6",
+        "sourceHandle": "{œdataTypeœ:œNoticiasBVLToolœ,œidœ:œNoticiasBVLTool-JBfQ6œ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
+        "target": "Agent-2DK9d",
+        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
       },
       {
         "animated": false,
@@ -459,7 +403,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "DatosBCRPTool",
-            "id": "CustomComponent-oVEpX",
+            "id": "DatosBCRPTool-hYVCJ",
             "name": "tool_output",
             "output_types": [
               "Tool"
@@ -467,19 +411,19 @@
           },
           "targetHandle": {
             "fieldName": "tools",
-            "id": "Agent-MZDzY",
+            "id": "Agent-ivsIj",
             "inputTypes": [
               "Tool"
             ],
             "type": "other"
           }
         },
-        "id": "xy-edge__CustomComponent-oVEpX{œdataTypeœ:œDatosBCRPToolœ,œidœ:œCustomComponent-oVEpXœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-MZDzY{œfieldNameœ:œtoolsœ,œidœ:œAgent-MZDzYœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-DatosBCRPTool-hYVCJ{œdataTypeœ:œDatosBCRPToolœ,œidœ:œDatosBCRPTool-hYVCJœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-ivsIj{œfieldNameœ:œtoolsœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "CustomComponent-oVEpX",
-        "sourceHandle": "{œdataTypeœ:œDatosBCRPToolœ,œidœ:œCustomComponent-oVEpXœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
-        "target": "Agent-MZDzY",
-        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-MZDzYœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
+        "source": "DatosBCRPTool-hYVCJ",
+        "sourceHandle": "{œdataTypeœ:œDatosBCRPToolœ,œidœ:œDatosBCRPTool-hYVCJœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
+        "target": "Agent-ivsIj",
+        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
       },
       {
         "animated": false,
@@ -487,7 +431,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-CHfhi",
+            "id": "Agent-vfY8N",
             "name": "response",
             "output_types": [
               "Message"
@@ -495,25 +439,81 @@
           },
           "targetHandle": {
             "fieldName": "agente_commodities",
-            "id": "CustomComponent-Y4heK",
+            "id": "PSOConsensusComponent-wv0t0",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Agent-CHfhi{œdataTypeœ:œAgentœ,œidœ:œAgent-CHfhiœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-Y4heK{œfieldNameœ:œagente_commoditiesœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Agent-vfY8N{œdataTypeœ:œAgentœ,œidœ:œAgent-vfY8Nœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-PSOConsensusComponent-wv0t0{œfieldNameœ:œagente_commoditiesœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Agent-CHfhi",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-CHfhiœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "CustomComponent-Y4heK",
-        "targetHandle": "{œfieldNameœ:œagente_commoditiesœ,œidœ:œCustomComponent-Y4heKœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Agent-vfY8N",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-vfY8Nœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "PSOConsensusComponent-wv0t0",
+        "targetHandle": "{œfieldNameœ:œagente_commoditiesœ,œidœ:œPSOConsensusComponent-wv0t0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "DatosBVLTool",
+            "id": "CustomComponent-aGlRm",
+            "name": "tool_output",
+            "output_types": [
+              "Tool"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "tools",
+            "id": "Agent-O9bP1",
+            "inputTypes": [
+              "Tool"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "xy-edge__CustomComponent-aGlRm{œdataTypeœ:œDatosBVLToolœ,œidœ:œCustomComponent-aGlRmœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-O9bP1{œfieldNameœ:œtoolsœ,œidœ:œAgent-O9bP1œ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
+        "selected": false,
+        "source": "CustomComponent-aGlRm",
+        "sourceHandle": "{œdataTypeœ:œDatosBVLToolœ,œidœ:œCustomComponent-aGlRmœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
+        "target": "Agent-O9bP1",
+        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-O9bP1œ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "DatosCommoditiesTool",
+            "id": "CustomComponent-8qnyb",
+            "name": "tool_output",
+            "output_types": [
+              "Tool"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "tools",
+            "id": "Agent-vfY8N",
+            "inputTypes": [
+              "Tool"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "xy-edge__CustomComponent-8qnyb{œdataTypeœ:œDatosCommoditiesToolœ,œidœ:œCustomComponent-8qnybœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}-Agent-vfY8N{œfieldNameœ:œtoolsœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}",
+        "selected": false,
+        "source": "CustomComponent-8qnyb",
+        "sourceHandle": "{œdataTypeœ:œDatosCommoditiesToolœ,œidœ:œCustomComponent-8qnybœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
+        "target": "Agent-vfY8N",
+        "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
       }
     ],
     "nodes": [
       {
         "data": {
-          "id": "ChatInput-Ouvkw",
+          "id": "ChatInput-zpHDh",
           "node": {
             "base_classes": [
               "Message"
@@ -537,7 +537,7 @@
             "frozen": false,
             "icon": "MessagesSquare",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "7a26c54d89ed",
               "dependencies": {
@@ -793,7 +793,7 @@
           "type": "ChatInput"
         },
         "dragging": false,
-        "id": "ChatInput-Ouvkw",
+        "id": "ChatInput-zpHDh",
         "measured": {
           "height": 52,
           "width": 192
@@ -808,7 +808,7 @@
       {
         "data": {
           "_connectionMode": true,
-          "id": "Agent-nH9Ww",
+          "id": "Agent-O9bP1",
           "node": {
             "base_classes": [
               "Message"
@@ -841,9 +841,9 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-17T22:43:08.558Z",
+            "last_updated": "2026-05-18T20:21:16.210Z",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "154c71cf7441",
               "dependencies": {
@@ -891,11 +891,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "ca4ca2ab-6136-401a-acac-3084773df701"
+                "value": "20cf6881-d257-40ee-94ed-8b944548e1d0"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "ba363446-8d58-41c7-a6f2-7e31246544d9"
+                "value": "443eebb9-7f07-4864-9e62-bfc0ae571990"
               },
               "_type": "Component",
               "add_current_date_tool": {
@@ -1203,61 +1203,10 @@
                       "context_length": 128000,
                       "max_tokens_field_name": "max_output_tokens",
                       "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
+                      "model_name_param": "model",
+                      "not_enabled_locally": true
                     },
                     "name": "gemini-2.5-flash",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-pro",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-preview-09-2025",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite-preview-09-2025",
                     "provider": "Google Generative AI"
                   }
                 ],
@@ -1478,7 +1427,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-nH9Ww",
+        "id": "Agent-O9bP1",
         "measured": {
           "height": 387,
           "width": 320
@@ -1492,7 +1441,7 @@
       },
       {
         "data": {
-          "id": "ChatOutput-QDXYi",
+          "id": "ChatOutput-prohP",
           "node": {
             "base_classes": [
               "Message"
@@ -1517,7 +1466,7 @@
             "frozen": false,
             "icon": "MessagesSquare",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "84009527d08c",
               "dependencies": {
@@ -1778,14 +1727,14 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-QDXYi",
+        "id": "ChatOutput-prohP",
         "measured": {
           "height": 52,
           "width": 192
         },
         "position": {
-          "x": 1612.3357790340046,
-          "y": 1406.3414578736786
+          "x": 1565.271615333039,
+          "y": 1401.112106351349
         },
         "selected": false,
         "type": "genericNode"
@@ -1793,7 +1742,7 @@
       {
         "data": {
           "_connectionMode": true,
-          "id": "Agent-CHfhi",
+          "id": "Agent-vfY8N",
           "node": {
             "base_classes": [
               "Message"
@@ -1826,9 +1775,9 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-17T22:43:08.559Z",
+            "last_updated": "2026-05-18T20:21:16.211Z",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "154c71cf7441",
               "dependencies": {
@@ -1876,11 +1825,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "ca4ca2ab-6136-401a-acac-3084773df701"
+                "value": "20cf6881-d257-40ee-94ed-8b944548e1d0"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "ba363446-8d58-41c7-a6f2-7e31246544d9"
+                "value": "443eebb9-7f07-4864-9e62-bfc0ae571990"
               },
               "_type": "Component",
               "add_current_date_tool": {
@@ -2188,61 +2137,10 @@
                       "context_length": 128000,
                       "max_tokens_field_name": "max_output_tokens",
                       "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
+                      "model_name_param": "model",
+                      "not_enabled_locally": true
                     },
                     "name": "gemini-2.5-flash",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-pro",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-preview-09-2025",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite-preview-09-2025",
                     "provider": "Google Generative AI"
                   }
                 ],
@@ -2463,7 +2361,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-CHfhi",
+        "id": "Agent-vfY8N",
         "measured": {
           "height": 387,
           "width": 320
@@ -2478,7 +2376,7 @@
       {
         "data": {
           "_connectionMode": true,
-          "id": "Agent-SkhVq",
+          "id": "Agent-2DK9d",
           "node": {
             "base_classes": [
               "Message"
@@ -2511,9 +2409,9 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-17T22:43:08.560Z",
+            "last_updated": "2026-05-18T20:21:16.212Z",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "154c71cf7441",
               "dependencies": {
@@ -2561,11 +2459,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "ca4ca2ab-6136-401a-acac-3084773df701"
+                "value": "20cf6881-d257-40ee-94ed-8b944548e1d0"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "ba363446-8d58-41c7-a6f2-7e31246544d9"
+                "value": "443eebb9-7f07-4864-9e62-bfc0ae571990"
               },
               "_type": "Component",
               "add_current_date_tool": {
@@ -2873,61 +2771,10 @@
                       "context_length": 128000,
                       "max_tokens_field_name": "max_output_tokens",
                       "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
+                      "model_name_param": "model",
+                      "not_enabled_locally": true
                     },
                     "name": "gemini-2.5-flash",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-pro",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-preview-09-2025",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite-preview-09-2025",
                     "provider": "Google Generative AI"
                   }
                 ],
@@ -3148,7 +2995,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-SkhVq",
+        "id": "Agent-2DK9d",
         "measured": {
           "height": 387,
           "width": 320
@@ -3163,7 +3010,7 @@
       {
         "data": {
           "_connectionMode": true,
-          "id": "Agent-MZDzY",
+          "id": "Agent-ivsIj",
           "node": {
             "base_classes": [
               "Message"
@@ -3196,9 +3043,9 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-17T22:43:08.562Z",
+            "last_updated": "2026-05-18T20:21:16.214Z",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "154c71cf7441",
               "dependencies": {
@@ -3246,11 +3093,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "ca4ca2ab-6136-401a-acac-3084773df701"
+                "value": "20cf6881-d257-40ee-94ed-8b944548e1d0"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "ba363446-8d58-41c7-a6f2-7e31246544d9"
+                "value": "443eebb9-7f07-4864-9e62-bfc0ae571990"
               },
               "_type": "Component",
               "add_current_date_tool": {
@@ -3558,61 +3405,10 @@
                       "context_length": 128000,
                       "max_tokens_field_name": "max_output_tokens",
                       "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
+                      "model_name_param": "model",
+                      "not_enabled_locally": true
                     },
                     "name": "gemini-2.5-flash",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-pro",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-preview-09-2025",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite-preview-09-2025",
                     "provider": "Google Generative AI"
                   }
                 ],
@@ -3833,7 +3629,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-MZDzY",
+        "id": "Agent-ivsIj",
         "measured": {
           "height": 387,
           "width": 320
@@ -3848,7 +3644,7 @@
       {
         "data": {
           "_connectionMode": true,
-          "id": "Agent-C1nMs",
+          "id": "Agent-qveqL",
           "node": {
             "base_classes": [
               "Message"
@@ -3881,9 +3677,9 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-17T22:43:08.563Z",
+            "last_updated": "2026-05-18T20:21:16.215Z",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "154c71cf7441",
               "dependencies": {
@@ -3931,11 +3727,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "ca4ca2ab-6136-401a-acac-3084773df701"
+                "value": "20cf6881-d257-40ee-94ed-8b944548e1d0"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "ba363446-8d58-41c7-a6f2-7e31246544d9"
+                "value": "443eebb9-7f07-4864-9e62-bfc0ae571990"
               },
               "_type": "Component",
               "add_current_date_tool": {
@@ -4243,61 +4039,10 @@
                       "context_length": 128000,
                       "max_tokens_field_name": "max_output_tokens",
                       "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
+                      "model_name_param": "model",
+                      "not_enabled_locally": true
                     },
                     "name": "gemini-2.5-flash",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-pro",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-preview-09-2025",
-                    "provider": "Google Generative AI"
-                  },
-                  {
-                    "category": "Google Generative AI",
-                    "icon": "GoogleGenerativeAI",
-                    "metadata": {
-                      "api_key_param": "google_api_key",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_output_tokens",
-                      "model_class": "ChatGoogleGenerativeAIFixed",
-                      "model_name_param": "model"
-                    },
-                    "name": "gemini-2.5-flash-lite-preview-09-2025",
                     "provider": "Google Generative AI"
                   }
                 ],
@@ -4373,6 +4118,7 @@
                     "description": "Specify the name of the output field.",
                     "display_name": "Name",
                     "edit_mode": "inline",
+                    "formatter": "text",
                     "name": "name",
                     "type": "str"
                   },
@@ -4381,6 +4127,7 @@
                     "description": "Describe the purpose of the output field.",
                     "display_name": "Description",
                     "edit_mode": "popover",
+                    "formatter": "text",
                     "name": "description",
                     "type": "str"
                   },
@@ -4389,6 +4136,7 @@
                     "description": "Indicate the data type of the output field (e.g., str, int, float, bool, dict).",
                     "display_name": "Type",
                     "edit_mode": "inline",
+                    "formatter": "text",
                     "name": "type",
                     "options": [
                       "str",
@@ -4404,6 +4152,7 @@
                     "description": "Set to True if this output field should be a list of the specified type.",
                     "display_name": "As List",
                     "edit_mode": "inline",
+                    "formatter": "text",
                     "name": "multiple",
                     "type": "boolean"
                   }
@@ -4518,7 +4267,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-C1nMs",
+        "id": "Agent-qveqL",
         "measured": {
           "height": 387,
           "width": 320
@@ -4532,7 +4281,7 @@
       },
       {
         "data": {
-          "id": "DeepSeekModelComponent-EPz5g",
+          "id": "DeepSeekModelComponent-KYI7Z",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -4561,7 +4310,7 @@
             "frozen": false,
             "icon": "DeepSeek",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "14e6103cc506",
               "dependencies": {
@@ -4929,9 +4678,9 @@
           "type": "DeepSeekModelComponent"
         },
         "dragging": false,
-        "id": "DeepSeekModelComponent-EPz5g",
+        "id": "DeepSeekModelComponent-KYI7Z",
         "measured": {
-          "height": 727,
+          "height": 453,
           "width": 320
         },
         "position": {
@@ -4943,7 +4692,7 @@
       },
       {
         "data": {
-          "id": "DeepSeekModelComponent-aa3H7",
+          "id": "DeepSeekModelComponent-5aspH",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -4972,7 +4721,7 @@
             "frozen": false,
             "icon": "DeepSeek",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "14e6103cc506",
               "dependencies": {
@@ -5340,9 +5089,9 @@
           "type": "DeepSeekModelComponent"
         },
         "dragging": false,
-        "id": "DeepSeekModelComponent-aa3H7",
+        "id": "DeepSeekModelComponent-5aspH",
         "measured": {
-          "height": 727,
+          "height": 453,
           "width": 320
         },
         "position": {
@@ -5354,7 +5103,7 @@
       },
       {
         "data": {
-          "id": "DeepSeekModelComponent-7lNkN",
+          "id": "DeepSeekModelComponent-xKCYB",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -5383,7 +5132,7 @@
             "frozen": false,
             "icon": "DeepSeek",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "14e6103cc506",
               "dependencies": {
@@ -5751,9 +5500,9 @@
           "type": "DeepSeekModelComponent"
         },
         "dragging": false,
-        "id": "DeepSeekModelComponent-7lNkN",
+        "id": "DeepSeekModelComponent-xKCYB",
         "measured": {
-          "height": 727,
+          "height": 453,
           "width": 320
         },
         "position": {
@@ -5765,7 +5514,7 @@
       },
       {
         "data": {
-          "id": "DeepSeekModelComponent-YeYak",
+          "id": "DeepSeekModelComponent-Ste6Y",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -5794,7 +5543,7 @@
             "frozen": false,
             "icon": "DeepSeek",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "14e6103cc506",
               "dependencies": {
@@ -6162,9 +5911,9 @@
           "type": "DeepSeekModelComponent"
         },
         "dragging": false,
-        "id": "DeepSeekModelComponent-YeYak",
+        "id": "DeepSeekModelComponent-Ste6Y",
         "measured": {
-          "height": 727,
+          "height": 453,
           "width": 320
         },
         "position": {
@@ -6176,7 +5925,7 @@
       },
       {
         "data": {
-          "id": "DeepSeekModelComponent-9O4ZI",
+          "id": "DeepSeekModelComponent-9rVrE",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -6205,7 +5954,7 @@
             "frozen": false,
             "icon": "DeepSeek",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "14e6103cc506",
               "dependencies": {
@@ -6573,9 +6322,9 @@
           "type": "DeepSeekModelComponent"
         },
         "dragging": false,
-        "id": "DeepSeekModelComponent-9O4ZI",
+        "id": "DeepSeekModelComponent-9rVrE",
         "measured": {
-          "height": 727,
+          "height": 453,
           "width": 320
         },
         "position": {
@@ -6587,7 +6336,7 @@
       },
       {
         "data": {
-          "id": "CustomComponent-Y4heK",
+          "id": "PSOConsensusComponent-wv0t0",
           "node": {
             "base_classes": [
               "Message"
@@ -6608,7 +6357,7 @@
             "frozen": false,
             "icon": "cpu",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "9c10253904e3",
               "dependencies": {
@@ -6780,7 +6529,7 @@
           "type": "PSOConsensusComponent"
         },
         "dragging": false,
-        "id": "CustomComponent-Y4heK",
+        "id": "PSOConsensusComponent-wv0t0",
         "measured": {
           "height": 469,
           "width": 320
@@ -6794,7 +6543,7 @@
       },
       {
         "data": {
-          "id": "CustomComponent-j7vwK",
+          "id": "NoticiasBVLTool-JBfQ6",
           "node": {
             "base_classes": [
               "Tool"
@@ -6815,7 +6564,7 @@
             "frozen": false,
             "icon": "newspaper",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "4f9829e2f444",
               "dependencies": {
@@ -6879,7 +6628,7 @@
                 "title_case": false,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "c7117b0601154d82ad5c112e4854a57c"
+                "value": ""
               },
               "code": {
                 "advanced": true,
@@ -6967,7 +6716,7 @@
           "type": "NoticiasBVLTool"
         },
         "dragging": false,
-        "id": "CustomComponent-j7vwK",
+        "id": "NoticiasBVLTool-JBfQ6",
         "measured": {
           "height": 453,
           "width": 320
@@ -6981,136 +6730,7 @@
       },
       {
         "data": {
-          "id": "CustomComponent-H2KWY",
-          "node": {
-            "base_classes": [
-              "Tool"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "",
-            "display_name": "Datos BVL Tool",
-            "documentation": "",
-            "edited": true,
-            "field_order": [
-              "default_tickers"
-            ],
-            "frozen": false,
-            "icon": "database",
-            "legacy": false,
-            "lf_version": "1.9.2",
-            "metadata": {
-              "code_hash": "47682f87cf1d",
-              "dependencies": {
-                "dependencies": [
-                  {
-                    "name": "langflow",
-                    "version": "1.9.2"
-                  },
-                  {
-                    "name": "langchain",
-                    "version": "1.2.18"
-                  },
-                  {
-                    "name": "yfinance",
-                    "version": "0.2.50"
-                  },
-                  {
-                    "name": "pandas",
-                    "version": "2.2.3"
-                  }
-                ],
-                "total_dependencies": 4
-              },
-              "module": "custom_components.datos_bvl_tool"
-            },
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Tool",
-                "group_outputs": false,
-                "hidden": null,
-                "loop_types": null,
-                "method": "build_tool",
-                "name": "tool_output",
-                "options": null,
-                "required_inputs": null,
-                "selected": "Tool",
-                "tool_mode": true,
-                "types": [
-                  "Tool"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport yfinance as yf\r\nimport pandas as pd\r\nimport time\r\nfrom datetime import datetime\r\n\r\n\r\nclass DatosBVLToolComponent(Component):\r\n    display_name = \"Datos BVL Tool\"\r\n    description = \"Tool con datos REALES de acciones mineras BVL desde Yahoo Finance.\"\r\n    icon = \"database\"\r\n    name = \"DatosBVLTool\"\r\n\r\n    inputs = [\r\n        StrInput(\r\n            name=\"default_tickers\",\r\n            display_name=\"Tickers por defecto\",\r\n            value=\"BVN.LM,SCCO.LM,VOLCABC1.LM,MINSURI1.LM,CVERDEC1.LM\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        default_tickers = self.default_tickers\r\n\r\n        nombres = {\r\n            \"BVN.LM\": \"Buenaventura\", \"BVN\": \"Buenaventura\",\r\n            \"SCCO.LM\": \"Southern Copper\", \"SCCO\": \"Southern Copper\",\r\n            \"VOLCABC1.LM\": \"Volcan\",\r\n            \"MINSURI1.LM\": \"Minsur\",\r\n            \"CVERDEC1.LM\": \"Cerro Verde\",\r\n        }\r\n\r\n        # Tickers de respaldo: si el .LM falla, probar la versión NYSE\r\n        respaldo = {\r\n            \"BVN.LM\": \"BVN\",\r\n            \"SCCO.LM\": \"SCCO\",\r\n        }\r\n\r\n        def descargar_con_reintento(ticker, intentos=3):\r\n            \"\"\"Intenta descargar datos con reintentos y ticker de respaldo.\"\"\"\r\n            for intento in range(intentos):\r\n                try:\r\n                    accion = yf.Ticker(ticker)\r\n                    hist = accion.history(period=\"60d\")\r\n                    if not hist.empty:\r\n                        return hist, ticker\r\n                except Exception:\r\n                    pass\r\n                time.sleep(2)  # esperar 2 segundos antes de reintentar\r\n\r\n            # Si falla, probar ticker de respaldo\r\n            if ticker in respaldo:\r\n                try:\r\n                    accion = yf.Ticker(respaldo[ticker])\r\n                    hist = accion.history(period=\"60d\")\r\n                    if not hist.empty:\r\n                        return hist, respaldo[ticker]\r\n                except Exception:\r\n                    pass\r\n\r\n            return None, ticker\r\n\r\n        def obtener_datos_bvl(input_text: str = \"\") -> str:\r\n            if input_text and input_text.strip():\r\n                tickers = [t.strip().upper() for t in input_text.split(\",\")]\r\n            else:\r\n                tickers = [t.strip() for t in default_tickers.split(\",\")]\r\n\r\n            resultado = [f\"=== DATOS REALES BVL ({datetime.now().strftime('%d/%m/%Y %H:%M')}) ===\"]\r\n\r\n            for ticker in tickers:\r\n                nombre = nombres.get(ticker, ticker)\r\n                hist, ticker_usado = descargar_con_reintento(ticker)\r\n\r\n                if hist is None or hist.empty:\r\n                    resultado.append(f\"\\n{nombre} ({ticker}): Sin datos disponibles tras reintentos\")\r\n                    continue\r\n\r\n                try:\r\n                    precio_actual = hist['Close'].iloc[-1]\r\n                    precio_anterior = hist['Close'].iloc[-2] if len(hist) > 1 else precio_actual\r\n                    cambio_pct = ((precio_actual - precio_anterior) / precio_anterior) * 100\r\n\r\n                    # RSI 14\r\n                    delta = hist['Close'].diff()\r\n                    ganancia = delta.where(delta > 0, 0).rolling(window=14).mean()\r\n                    perdida = -delta.where(delta < 0, 0).rolling(window=14).mean()\r\n                    rs = ganancia / perdida\r\n                    rsi = 100 - (100 / (1 + rs))\r\n                    rsi_actual = rsi.iloc[-1] if not pd.isna(rsi.iloc[-1]) else 50.0\r\n\r\n                    # MACD\r\n                    ema12 = hist['Close'].ewm(span=12, adjust=False).mean()\r\n                    ema26 = hist['Close'].ewm(span=26, adjust=False).mean()\r\n                    macd_linea = ema12 - ema26\r\n                    macd_signal = macd_linea.ewm(span=9, adjust=False).mean()\r\n                    macd_hist = macd_linea - macd_signal\r\n\r\n                    # SMAs\r\n                    sma20 = hist['Close'].rolling(window=20).mean().iloc[-1]\r\n                    sma50 = hist['Close'].rolling(window=50).mean().iloc[-1] if len(hist) >= 50 else None\r\n\r\n                    if rsi_actual >= 70:\r\n                        rsi_zona = \"sobrecompra\"\r\n                    elif rsi_actual <= 30:\r\n                        rsi_zona = \"sobreventa\"\r\n                    else:\r\n                        rsi_zona = \"neutral\"\r\n\r\n                    if sma50 is not None:\r\n                        tendencia = \"alcista\" if sma20 > sma50 else \"bajista\"\r\n                        sma50_str = f\"${sma50:.2f}\"\r\n                    else:\r\n                        tendencia = \"indeterminada\"\r\n                        sma50_str = \"N/A\"\r\n\r\n                    reporte = (\r\n                        f\"\\n{nombre} ({ticker_usado}):\\n\"\r\n                        f\"- Precio: ${precio_actual:.2f} | Cambio: {cambio_pct:+.2f}%\\n\"\r\n                        f\"- RSI(14): {rsi_actual:.2f} -> {rsi_zona}\\n\"\r\n                        f\"- MACD: {macd_linea.iloc[-1]:.4f} | Signal: {macd_signal.iloc[-1]:.4f} | Histograma: {macd_hist.iloc[-1]:.4f}\\n\"\r\n                        f\"- SMA20: ${sma20:.2f} | SMA50: {sma50_str}\\n\"\r\n                        f\"- Tendencia: {tendencia}\"\r\n                    )\r\n                    resultado.append(reporte)\r\n\r\n                except Exception as e:\r\n                    resultado.append(f\"\\n{nombre} ({ticker}): Error procesando datos - {str(e)}\")\r\n\r\n            return \"\\n\".join(resultado)\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_datos_bvl\",\r\n            description=(\r\n                \"Obtiene datos REALES de acciones mineras de la Bolsa de Valores de Lima (BVL) \"\r\n                \"desde Yahoo Finance: precio, cambio %, RSI(14), MACD, SMA20, SMA50, tendencia. \"\r\n                \"Acciones disponibles: Buenaventura (BVN.LM), Southern Copper (SCCO.LM), \"\r\n                \"Volcan (VOLCABC1.LM), Minsur (MINSURI1.LM), Cerro Verde (CVERDEC1.LM). \"\r\n                \"Input: tickers separados por coma. Si se omite, devuelve las 5 mineras.\"\r\n            ),\r\n            func=obtener_datos_bvl,\r\n        )\r\n        return tool"
-              },
-              "default_tickers": {
-                "_input_type": "StrInput",
-                "advanced": false,
-                "display_name": "Tickers por defecto",
-                "dynamic": false,
-                "info": "",
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "default_tickers",
-                "override_skip": false,
-                "placeholder": "",
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "track_in_telemetry": false,
-                "type": "str",
-                "value": "BVN,SCCO"
-              }
-            },
-            "tool_mode": false
-          },
-          "showNode": true,
-          "type": "DatosBVLTool"
-        },
-        "dragging": false,
-        "id": "CustomComponent-H2KWY",
-        "measured": {
-          "height": 179,
-          "width": 320
-        },
-        "position": {
-          "x": -902.7716444823694,
-          "y": 564.9985717238167
-        },
-        "selected": false,
-        "type": "genericNode"
-      },
-      {
-        "data": {
-          "id": "CustomComponent-oVEpX",
+          "id": "DatosBCRPTool-hYVCJ",
           "node": {
             "base_classes": [
               "Tool"
@@ -7127,7 +6747,7 @@
             "icon": "landmark",
             "last_updated": "2026-05-16T05:04:30.992Z",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
               "code_hash": "9a1e5d2c8e42",
               "dependencies": {
@@ -7206,7 +6826,7 @@
           "type": "DatosBCRPTool"
         },
         "dragging": false,
-        "id": "CustomComponent-oVEpX",
+        "id": "DatosBCRPTool-hYVCJ",
         "measured": {
           "height": 97,
           "width": 320
@@ -7220,7 +6840,7 @@
       },
       {
         "data": {
-          "id": "CustomComponent-L0hmS",
+          "id": "DatosCommoditiesTool-o4SDK",
           "node": {
             "base_classes": [
               "Tool"
@@ -7228,7 +6848,7 @@
             "beta": false,
             "conditional_paths": [],
             "custom_fields": {},
-            "description": "",
+            "description": "Tool con precios REALES de cobre, oro y plata desde Yahoo Finance.",
             "display_name": "Datos Commodities Tool",
             "documentation": "",
             "edited": true,
@@ -7236,25 +6856,29 @@
             "frozen": false,
             "icon": "trending-up",
             "legacy": false,
-            "lf_version": "1.9.2",
+            "lf_version": "1.9.3",
             "metadata": {
-              "code_hash": "88e5578e82c4",
+              "code_hash": "2d3610441a8e",
               "dependencies": {
                 "dependencies": [
                   {
                     "name": "langflow",
-                    "version": "1.9.2"
+                    "version": "1.9.3"
                   },
                   {
                     "name": "langchain",
-                    "version": "1.2.18"
+                    "version": "1.2.17"
+                  },
+                  {
+                    "name": "pydantic",
+                    "version": "2.12.5"
                   },
                   {
                     "name": "yfinance",
-                    "version": "0.2.50"
+                    "version": "0.2.28"
                   }
                 ],
-                "total_dependencies": 3
+                "total_dependencies": 4
               },
               "module": "custom_components.datos_commodities_tool"
             },
@@ -7299,7 +6923,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "code",
-                "value": "from langflow.custom import Component\r\nfrom langflow.io import Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport yfinance as yf\r\nfrom datetime import datetime\r\n\r\n\r\nclass DatosCommoditiesToolComponent(Component):\r\n    display_name = \"Datos Commodities Tool\"\r\n    description = \"Tool con precios REALES de cobre, oro y plata desde Yahoo Finance.\"\r\n    icon = \"trending-up\"\r\n    name = \"DatosCommoditiesTool\"\r\n\r\n    inputs = []\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n\r\n        def obtener_datos_commodities(input_text: str = \"\") -> str:\r\n            # Tickers de Yahoo Finance para commodities (futuros)\r\n            commodities = {\r\n                \"Oro\": \"GC=F\",       # Gold Futures\r\n                \"Plata\": \"SI=F\",     # Silver Futures\r\n                \"Cobre\": \"HG=F\",     # Copper Futures\r\n            }\r\n\r\n            resultado = [f\"=== COMMODITIES REALES ({datetime.now().strftime('%d/%m/%Y %H:%M')}) ===\"]\r\n\r\n            for nombre, ticker in commodities.items():\r\n                try:\r\n                    com = yf.Ticker(ticker)\r\n                    hist = com.history(period=\"5d\")\r\n\r\n                    if hist.empty:\r\n                        resultado.append(f\"\\n{nombre}: Sin datos\")\r\n                        continue\r\n\r\n                    precio_actual = hist['Close'].iloc[-1]\r\n                    precio_anterior = hist['Close'].iloc[-2] if len(hist) > 1 else precio_actual\r\n                    cambio_pct = ((precio_actual - precio_anterior) / precio_anterior) * 100\r\n\r\n                    # Tendencia 5 días\r\n                    precio_5d = hist['Close'].iloc[0]\r\n                    tendencia_5d = ((precio_actual - precio_5d) / precio_5d) * 100\r\n\r\n                    if cambio_pct > 0.5:\r\n                        sentido = \"alcista\"\r\n                    elif cambio_pct < -0.5:\r\n                        sentido = \"bajista\"\r\n                    else:\r\n                        sentido = \"estable\"\r\n\r\n                    resultado.append(\r\n                        f\"\\n{nombre} ({ticker}):\\n\"\r\n                        f\"- Precio: ${precio_actual:.2f}\\n\"\r\n                        f\"- Cambio diario: {cambio_pct:+.2f}% ({sentido})\\n\"\r\n                        f\"- Tendencia 5 días: {tendencia_5d:+.2f}%\"\r\n                    )\r\n\r\n                except Exception as e:\r\n                    resultado.append(f\"\\n{nombre}: Error - {str(e)}\")\r\n\r\n            return \"\\n\".join(resultado)\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_precios_commodities\",\r\n            description=(\r\n                \"Obtiene precios REALES de oro, plata y cobre desde Yahoo Finance (mercados de futuros). \"\r\n                \"Útil para correlacionar con acciones mineras: Oro→BVN, Cobre→SCCO/Cerro Verde, Plata→Volcan/Minsur. \"\r\n                \"Devuelve precio actual, cambio % diario y tendencia de 5 días.\"\r\n            ),\r\n            func=obtener_datos_commodities,\r\n        )\r\n        return tool"
+                "value": "from langflow.custom import Component\r\nfrom langflow.io import Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import StructuredTool\r\nfrom pydantic import BaseModel, Field\r\nimport yfinance as yf\r\nfrom datetime import datetime\r\n\r\n\r\nclass CommoditiesInput(BaseModel):\r\n    input_text: str = Field(\r\n        default=\"\",\r\n        description=\"Texto opcional. Puede dejarse vacío para obtener oro, plata y cobre.\"\r\n    )\r\n\r\n\r\nclass DatosCommoditiesToolComponent(Component):\r\n    display_name = \"Datos Commodities Tool\"\r\n    description = \"Tool con precios REALES de cobre, oro y plata desde Yahoo Finance.\"\r\n    icon = \"trending-up\"\r\n    name = \"DatosCommoditiesTool\"\r\n\r\n    inputs = []\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n\r\n        def obtener_datos_commodities(input_text: str = \"\") -> str:\r\n            commodities = {\r\n                \"Oro\": \"GC=F\",\r\n                \"Plata\": \"SI=F\",\r\n                \"Cobre\": \"HG=F\",\r\n            }\r\n\r\n            resultado = [f\"=== COMMODITIES REALES ({datetime.now().strftime('%d/%m/%Y %H:%M')}) ===\"]\r\n\r\n            for nombre, ticker in commodities.items():\r\n                try:\r\n                    com = yf.Ticker(ticker)\r\n                    hist = com.history(period=\"5d\")\r\n\r\n                    if hist.empty:\r\n                        resultado.append(f\"\\n{nombre}: Sin datos\")\r\n                        continue\r\n\r\n                    precio_actual = hist[\"Close\"].iloc[-1]\r\n                    precio_anterior = hist[\"Close\"].iloc[-2] if len(hist) > 1 else precio_actual\r\n                    cambio_pct = ((precio_actual - precio_anterior) / precio_anterior) * 100\r\n\r\n                    precio_5d = hist[\"Close\"].iloc[0]\r\n                    tendencia_5d = ((precio_actual - precio_5d) / precio_5d) * 100\r\n\r\n                    if cambio_pct > 0.5:\r\n                        sentido = \"alcista\"\r\n                    elif cambio_pct < -0.5:\r\n                        sentido = \"bajista\"\r\n                    else:\r\n                        sentido = \"estable\"\r\n\r\n                    resultado.append(\r\n                        f\"\\n{nombre} ({ticker}):\\n\"\r\n                        f\"- Precio: ${precio_actual:.2f}\\n\"\r\n                        f\"- Cambio diario: {cambio_pct:+.2f}% ({sentido})\\n\"\r\n                        f\"- Tendencia 5 días: {tendencia_5d:+.2f}%\"\r\n                    )\r\n\r\n                except Exception as e:\r\n                    resultado.append(f\"\\n{nombre}: Error - {str(e)}\")\r\n\r\n            return \"\\n\".join(resultado)\r\n\r\n        tool = StructuredTool.from_function(\r\n            name=\"obtener_precios_commodities\",\r\n            description=(\r\n                \"Obtiene precios REALES de oro, plata y cobre desde Yahoo Finance. \"\r\n                \"Puede llamarse sin argumentos o con un texto opcional. \"\r\n                \"Devuelve precio actual, cambio diario y tendencia de 5 días. \"\r\n                \"Útil para correlacionar con acciones mineras: Oro→BVN, \"\r\n                \"Cobre→SCCO/Cerro Verde, Plata→Volcan/Minsur.\"\r\n            ),\r\n            func=obtener_datos_commodities,\r\n            args_schema=CommoditiesInput,\r\n        )\r\n\r\n        return tool"
               }
             },
             "tool_mode": false
@@ -7308,31 +6932,428 @@
           "type": "DatosCommoditiesTool"
         },
         "dragging": false,
-        "id": "CustomComponent-L0hmS",
+        "id": "DatosCommoditiesTool-o4SDK",
         "measured": {
-          "height": 97,
+          "height": 141,
           "width": 320
         },
         "position": {
-          "x": -968.6274016312038,
-          "y": 947.2889384169421
+          "x": -870.8707532390226,
+          "y": 130.88882076332064
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-QXced",
+          "node": {
+            "base_classes": [
+              "Tool"
+            ],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Tool con datos REALES de acciones mineras.",
+            "display_name": "Datos BVL Tool",
+            "documentation": "",
+            "edited": true,
+            "field_order": [
+              "default_tickers"
+            ],
+            "frozen": false,
+            "icon": "database",
+            "legacy": false,
+            "lf_version": "1.9.3",
+            "metadata": {
+              "code_hash": "63c691e3c651",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": "1.9.3"
+                  },
+                  {
+                    "name": "langchain",
+                    "version": "1.2.17"
+                  },
+                  {
+                    "name": "yfinance",
+                    "version": "0.2.28"
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.datos_bvl_tool"
+            },
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Tool",
+                "group_outputs": false,
+                "hidden": null,
+                "loop_types": null,
+                "method": "build_tool",
+                "name": "tool_output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Tool",
+                "tool_mode": true,
+                "types": [
+                  "Tool"
+                ],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport yfinance as yf\r\nfrom datetime import datetime\r\n\r\n\r\nclass DatosBVLToolComponent(Component):\r\n    display_name = \"Datos BVL Tool\"\r\n    description = \"Tool con datos REALES de acciones mineras.\"\r\n    icon = \"database\"\r\n    name = \"DatosBVLTool\"\r\n\r\n    inputs = [\r\n        StrInput(\r\n            name=\"default_tickers\",\r\n            display_name=\"Tickers por defecto\",\r\n            value=\"BVN,SCCO\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        def obtener_datos_bvl(input_text: str = \"\") -> str:\r\n            ticker = input_text.strip() if input_text.strip() else \"BVN\"\r\n            \r\n            try:\r\n                data = yf.Ticker(ticker)\r\n                hist = data.history(period=\"60d\")\r\n                \r\n                if len(hist) == 0:\r\n                    return f\"Sin datos para {ticker}\"\r\n                \r\n                precio = hist['Close'].iloc[-1]\r\n                cambio = ((precio - hist['Close'].iloc[-2]) / hist['Close'].iloc[-2]) * 100\r\n                \r\n                return f\"=== {ticker} ===\\nPrecio: ${precio:.2f}\\nCambio: {cambio:+.2f}%\\nDatos: {len(hist)} días\"\r\n                \r\n            except Exception as e:\r\n                return f\"Error: {str(e)}\"\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_datos_bvl\",\r\n            description=\"Obtiene precio de BVN o SCCO desde Yahoo Finance.\",\r\n            func=obtener_datos_bvl,\r\n        )\r\n        return tool"
+              },
+              "default_tickers": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "display_name": "Tickers por defecto",
+                "dynamic": false,
+                "info": "",
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "default_tickers",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": "BVN,SCCO"
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "DatosBVLTool"
+        },
+        "dragging": false,
+        "id": "CustomComponent-QXced",
+        "measured": {
+          "height": 207,
+          "width": 320
+        },
+        "position": {
+          "x": -1254.5983163284507,
+          "y": 134.22386444802515
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-aGlRm",
+          "node": {
+            "base_classes": [
+              "Tool"
+            ],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Tool con datos e indicadores técnicos desde Alpha Vantage",
+            "display_name": "Datos BVL Tool",
+            "documentation": "",
+            "edited": true,
+            "field_order": [
+              "api_key",
+              "default_tickers"
+            ],
+            "frozen": false,
+            "icon": "database",
+            "legacy": false,
+            "lf_version": "1.9.3",
+            "metadata": {
+              "code_hash": "8fa286333347",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": "1.9.3"
+                  },
+                  {
+                    "name": "langchain",
+                    "version": "1.2.17"
+                  },
+                  {
+                    "name": "requests",
+                    "version": "2.33.1"
+                  },
+                  {
+                    "name": "pandas",
+                    "version": "2.2.3"
+                  }
+                ],
+                "total_dependencies": 4
+              },
+              "module": "custom_components.datos_bvl_tool"
+            },
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Tool",
+                "group_outputs": false,
+                "hidden": null,
+                "loop_types": null,
+                "method": "build_tool",
+                "name": "tool_output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Tool",
+                "tool_mode": true,
+                "types": [
+                  "Tool"
+                ],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "api_key": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "display_name": "Alpha Vantage API Key",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "api_key",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": ""
+              },
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, SecretStrInput, Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport requests\r\nimport pandas as pd\r\nimport time\r\n\r\n\r\nclass DatosBVLToolComponent(Component):\r\n    display_name = \"Datos BVL Tool\"\r\n    description = \"Tool con datos e indicadores técnicos desde Alpha Vantage\"\r\n    icon = \"database\"\r\n    name = \"DatosBVLTool\"\r\n\r\n    inputs = [\r\n        SecretStrInput(\r\n            name=\"api_key\",\r\n            display_name=\"Alpha Vantage API Key\",\r\n            required=True,\r\n        ),\r\n        StrInput(\r\n            name=\"default_tickers\",\r\n            display_name=\"Tickers por defecto\",\r\n            value=\"BVN,SCCO\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        api_key = self.api_key\r\n        default_tickers = self.default_tickers\r\n\r\n        def calcular_rsi(precios, periodo=14):\r\n            delta = precios.diff()\r\n            ganancia = delta.where(delta > 0, 0).rolling(window=periodo).mean()\r\n            perdida = -delta.where(delta < 0, 0).rolling(window=periodo).mean()\r\n            rs = ganancia / perdida\r\n            rsi = 100 - (100 / (1 + rs))\r\n            return rsi.iloc[-1] if not pd.isna(rsi.iloc[-1]) else 50.0\r\n\r\n        def obtener_datos_bvl(input_text: str = \"\") -> str:\r\n            if input_text and input_text.strip():\r\n                tickers = [t.strip().upper() for t in input_text.split(\",\")]\r\n            else:\r\n                tickers = [t.strip() for t in default_tickers.split(\",\")]\r\n\r\n            resultado = [\"=== DATOS REALES (Alpha Vantage) ===\"]\r\n\r\n            for ticker in tickers:\r\n                try:\r\n                    # Descargar histórico (últimos 60 días)\r\n                    url = f\"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&outputsize=compact&apikey={api_key}\"\r\n                    response = requests.get(url, timeout=15)\r\n                    data = response.json()\r\n\r\n                    if \"Time Series (Daily)\" not in data:\r\n                        resultado.append(f\"\\n{ticker}: Sin datos disponibles\")\r\n                        time.sleep(12)  # Rate limit\r\n                        continue\r\n\r\n                    # Convertir a DataFrame\r\n                    ts = data[\"Time Series (Daily)\"]\r\n                    df = pd.DataFrame.from_dict(ts, orient='index')\r\n                    df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']\r\n                    df = df.astype(float)\r\n                    df = df.sort_index()\r\n                    df = df.tail(60)  # Últimos 60 días\r\n\r\n                    if len(df) < 2:\r\n                        resultado.append(f\"\\n{ticker}: Datos insuficientes\")\r\n                        continue\r\n\r\n                    # Calcular indicadores\r\n                    precio_actual = df['Close'].iloc[-1]\r\n                    precio_anterior = df['Close'].iloc[-2]\r\n                    cambio_pct = ((precio_actual - precio_anterior) / precio_anterior) * 100\r\n\r\n                    # RSI\r\n                    rsi = calcular_rsi(df['Close'])\r\n\r\n                    # MACD\r\n                    ema12 = df['Close'].ewm(span=12, adjust=False).mean()\r\n                    ema26 = df['Close'].ewm(span=26, adjust=False).mean()\r\n                    macd = ema12 - ema26\r\n                    signal = macd.ewm(span=9, adjust=False).mean()\r\n                    hist = macd - signal\r\n\r\n                    # SMAs\r\n                    sma20 = df['Close'].rolling(window=20).mean().iloc[-1]\r\n                    sma50 = df['Close'].rolling(window=50).mean().iloc[-1] if len(df) >= 50 else None\r\n\r\n                    if rsi >= 70:\r\n                        rsi_zona = \"sobrecompra\"\r\n                    elif rsi <= 30:\r\n                        rsi_zona = \"sobreventa\"\r\n                    else:\r\n                        rsi_zona = \"neutral\"\r\n\r\n                    if sma50 is not None:\r\n                        tendencia = \"alcista\" if sma20 > sma50 else \"bajista\"\r\n                        sma50_str = f\"${sma50:.2f}\"\r\n                    else:\r\n                        tendencia = \"indeterminada\"\r\n                        sma50_str = \"N/A\"\r\n\r\n                    reporte = (\r\n                        f\"\\n{ticker}:\\n\"\r\n                        f\"- Precio: ${precio_actual:.2f} | Cambio: {cambio_pct:+.2f}%\\n\"\r\n                        f\"- RSI(14): {rsi:.2f} -> {rsi_zona}\\n\"\r\n                        f\"- MACD: {macd.iloc[-1]:.4f} | Signal: {signal.iloc[-1]:.4f} | Histograma: {hist.iloc[-1]:.4f}\\n\"\r\n                        f\"- SMA20: ${sma20:.2f} | SMA50: {sma50_str}\\n\"\r\n                        f\"- Tendencia: {tendencia}\"\r\n                    )\r\n                    resultado.append(reporte)\r\n\r\n                    time.sleep(12)  # Rate limit: 5 req/min\r\n\r\n                except Exception as e:\r\n                    resultado.append(f\"\\n{ticker}: Error - {str(e)}\")\r\n\r\n            return \"\\n\".join(resultado)\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_datos_bvl\",\r\n            description=(\r\n                \"Obtiene datos REALES e indicadores técnicos desde Alpha Vantage: \"\r\n                \"precio, cambio %, RSI(14), MACD, SMA20, SMA50, tendencia. \"\r\n                \"Acciones: Buenaventura (BVN), Southern Copper (SCCO). \"\r\n                \"Input: tickers separados por coma.\"\r\n            ),\r\n            func=obtener_datos_bvl,\r\n        )\r\n        return tool"
+              },
+              "default_tickers": {
+                "_input_type": "StrInput",
+                "advanced": false,
+                "display_name": "Tickers por defecto",
+                "dynamic": false,
+                "info": "",
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "default_tickers",
+                "override_skip": false,
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": "BVN"
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "DatosBVLTool"
+        },
+        "dragging": false,
+        "id": "CustomComponent-aGlRm",
+        "measured": {
+          "height": 305,
+          "width": 320
+        },
+        "position": {
+          "x": -1069.9850553220474,
+          "y": 425.60995405014745
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-8qnyb",
+          "node": {
+            "base_classes": [
+              "Tool"
+            ],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Tool con precios REALES de oro, plata, cobre desde Twelve Data",
+            "display_name": "Datos Commodities Tool",
+            "documentation": "",
+            "edited": true,
+            "field_order": [
+              "api_key"
+            ],
+            "frozen": false,
+            "icon": "coins",
+            "legacy": false,
+            "lf_version": "1.9.3",
+            "metadata": {
+              "code_hash": "4aa1ccabe5e5",
+              "dependencies": {
+                "dependencies": [
+                  {
+                    "name": "langflow",
+                    "version": "1.9.3"
+                  },
+                  {
+                    "name": "langchain",
+                    "version": "1.2.17"
+                  },
+                  {
+                    "name": "requests",
+                    "version": "2.33.1"
+                  }
+                ],
+                "total_dependencies": 3
+              },
+              "module": "custom_components.datos_commodities_tool"
+            },
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Tool",
+                "group_outputs": false,
+                "hidden": null,
+                "loop_types": null,
+                "method": "build_tool",
+                "name": "tool_output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Tool",
+                "tool_mode": true,
+                "types": [
+                  "Tool"
+                ],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "api_key": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "display_name": "Twelve Data API Key",
+                "dynamic": false,
+                "info": "",
+                "input_types": [],
+                "load_from_db": false,
+                "name": "api_key",
+                "override_skip": false,
+                "password": true,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "track_in_telemetry": false,
+                "type": "str",
+                "value": "e81a8f3d635e4f8aac10cd2230d43e0c"
+              },
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom import Component\r\nfrom langflow.io import SecretStrInput, Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport requests\r\n\r\n\r\nclass DatosCommoditiesToolComponent(Component):\r\n    display_name = \"Datos Commodities Tool\"\r\n    description = \"Tool con precios REALES de oro, plata, cobre desde Twelve Data\"\r\n    icon = \"coins\"\r\n    name = \"DatosCommoditiesTool\"\r\n\r\n    inputs = [\r\n        SecretStrInput(\r\n            name=\"api_key\",\r\n            display_name=\"Twelve Data API Key\",\r\n            required=True,\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        api_key = self.api_key\r\n\r\n        def obtener_datos_commodities(input_text: str = \"\") -> str:\r\n            # Símbolos en Twelve Data\r\n            commodities = {\r\n                \"XAU/USD\": \"Oro\",\r\n                \"XAG/USD\": \"Plata\",\r\n                \"HG/USD\": \"Cobre\"\r\n            }\r\n\r\n            resultado = [\"=== PRECIOS COMMODITIES (Twelve Data) ===\"]\r\n\r\n            for simbolo, nombre in commodities.items():\r\n                try:\r\n                    url = f\"https://api.twelvedata.com/price?symbol={simbolo}&apikey={api_key}\"\r\n                    response = requests.get(url, timeout=10)\r\n                    data = response.json()\r\n\r\n                    if \"price\" in data:\r\n                        precio = float(data[\"price\"])\r\n                        resultado.append(f\"\\n{nombre} ({simbolo}): ${precio:.2f}\")\r\n                    else:\r\n                        resultado.append(f\"\\n{nombre}: Sin datos disponibles\")\r\n\r\n                except Exception as e:\r\n                    resultado.append(f\"\\n{nombre}: Error - {str(e)}\")\r\n\r\n            return \"\\n\".join(resultado)\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_datos_commodities\",\r\n            description=(\r\n                \"Obtiene precios REALES de commodities desde Twelve Data: \"\r\n                \"oro (XAU/USD), plata (XAG/USD), cobre (HG/USD). \"\r\n                \"Devuelve precios actuales en USD.\"\r\n            ),\r\n            func=obtener_datos_commodities,\r\n        )\r\n        return tool"
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "DatosCommoditiesTool"
+        },
+        "dragging": false,
+        "id": "CustomComponent-8qnyb",
+        "measured": {
+          "height": 223,
+          "width": 320
+        },
+        "position": {
+          "x": -1027.3265106014353,
+          "y": 850.9385537417764
         },
         "selected": false,
         "type": "genericNode"
       }
     ],
     "viewport": {
-      "x": 693.6993138077925,
-      "y": 302.4853676245001,
-      "zoom": 0.319728844992273
+      "x": 776.9059798057908,
+      "y": 201.79544409740868,
+      "zoom": 0.2868424495073535
     }
   },
   "description": "Bridging Prompts for Brilliance.",
   "endpoint_name": null,
-  "id": "ca4ca2ab-6136-401a-acac-3084773df701",
+  "id": "20cf6881-d257-40ee-94ed-8b944548e1d0",
   "is_component": false,
-  "last_tested_version": "1.9.2",
+  "last_tested_version": "1.9.3",
   "locked": false,
-  "name": "SMA-BVL",
+  "name": "sistema_bvl",
   "tags": []
 }
