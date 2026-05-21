@@ -1,7 +1,7 @@
 FROM langflowai/langflow:latest
 
 RUN pip install --no-cache-dir \
-	pip install plotly pandas \
+    plotly \
     pyswarms==1.3.0 \
     yfinance==0.2.28 \
     newsapi-python==0.2.7 \
@@ -18,4 +18,4 @@ WORKDIR /app
 
 EXPOSE 7860
 
-CMD ["langflow", "run", "--host", "0.0.0.0", "--port", "7860"]
+CMD langflow run --host 0.0.0.0 --port ${PORT:-7860}

@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import requests
 import json
@@ -15,12 +16,12 @@ st.set_page_config(
 # -------------------------
 # CONFIG LANGFLOW Y APIs
 # -------------------------
-LANGFLOW_URL = "http://localhost:7860/api/v1/run/20cf6881-d257-40ee-94ed-8b944548e1d0"
-LANGFLOW_API_KEY = "sk-zLFi3KHZ-A7I4sNUipaIthBI6u5a9757XExRz19Qkm0"
-ALPHA_VANTAGE_KEY = "AWZAIY1FQ4QTZ3PA"  # ← REEMPLAZA CON TU API KEY
-
-# Flow ID para backtesting (ACTUALIZAR cuando crees el flujo)
-BACKTESTING_FLOW_ID = "FLOW_ID_BACKTESTING_AQUI"
+LANGFLOW_URL = os.environ.get(
+    "LANGFLOW_URL",
+    "http://localhost:7860/api/v1/run/20cf6881-d257-40ee-94ed-8b944548e1d0"
+)
+LANGFLOW_API_KEY = os.environ.get("LANGFLOW_API_KEY", "")
+ALPHA_VANTAGE_KEY = os.environ.get("ALPHA_VANTAGE_KEY", "")
 
 
 # -------------------------
