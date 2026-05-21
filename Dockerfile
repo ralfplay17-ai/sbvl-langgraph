@@ -1,6 +1,7 @@
 FROM langflowai/langflow:latest
 
 RUN pip install --no-cache-dir \
+	pip install plotly pandas \
     pyswarms==1.3.0 \
     yfinance==0.2.28 \
     newsapi-python==0.2.7 \

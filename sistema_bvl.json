@@ -63,90 +63,6 @@
         "data": {
           "sourceHandle": {
             "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-9rVrE",
-            "name": "model_output",
-            "output_types": [
-              "LanguageModel"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "model",
-            "id": "Agent-vfY8N",
-            "inputTypes": [
-              "LanguageModel"
-            ],
-            "type": "model"
-          }
-        },
-        "id": "reactflow__edge-DeepSeekModelComponent-9rVrE{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9rVrEœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-vfY8N{œfieldNameœ:œmodelœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
-        "selected": false,
-        "source": "DeepSeekModelComponent-9rVrE",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9rVrEœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-vfY8N",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-Ste6Y",
-            "name": "model_output",
-            "output_types": [
-              "LanguageModel"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "model",
-            "id": "Agent-2DK9d",
-            "inputTypes": [
-              "LanguageModel"
-            ],
-            "type": "model"
-          }
-        },
-        "id": "reactflow__edge-DeepSeekModelComponent-Ste6Y{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-Ste6Yœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-2DK9d{œfieldNameœ:œmodelœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
-        "selected": false,
-        "source": "DeepSeekModelComponent-Ste6Y",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-Ste6Yœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-2DK9d",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "DeepSeekModelComponent",
-            "id": "DeepSeekModelComponent-xKCYB",
-            "name": "model_output",
-            "output_types": [
-              "LanguageModel"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "model",
-            "id": "Agent-ivsIj",
-            "inputTypes": [
-              "LanguageModel"
-            ],
-            "type": "model"
-          }
-        },
-        "id": "reactflow__edge-DeepSeekModelComponent-xKCYB{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-xKCYBœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-ivsIj{œfieldNameœ:œmodelœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
-        "selected": false,
-        "source": "DeepSeekModelComponent-xKCYB",
-        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-xKCYBœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
-        "target": "Agent-ivsIj",
-        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "DeepSeekModelComponent",
             "id": "DeepSeekModelComponent-5aspH",
             "name": "model_output",
             "output_types": [
@@ -508,6 +424,90 @@
         "sourceHandle": "{œdataTypeœ:œDatosCommoditiesToolœ,œidœ:œCustomComponent-8qnybœ,œnameœ:œtool_outputœ,œoutput_typesœ:[œToolœ]}",
         "target": "Agent-vfY8N",
         "targetHandle": "{œfieldNameœ:œtoolsœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œToolœ],œtypeœ:œotherœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "DeepSeekModelComponent",
+            "id": "DeepSeekModelComponent-9rVrE",
+            "name": "model_output",
+            "output_types": [
+              "LanguageModel"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "model",
+            "id": "Agent-2DK9d",
+            "inputTypes": [
+              "LanguageModel"
+            ],
+            "type": "model"
+          }
+        },
+        "id": "xy-edge__DeepSeekModelComponent-9rVrE{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9rVrEœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-2DK9d{œfieldNameœ:œmodelœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "selected": false,
+        "source": "DeepSeekModelComponent-9rVrE",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-9rVrEœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-2DK9d",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-2DK9dœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "DeepSeekModelComponent",
+            "id": "DeepSeekModelComponent-Ste6Y",
+            "name": "model_output",
+            "output_types": [
+              "LanguageModel"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "model",
+            "id": "Agent-vfY8N",
+            "inputTypes": [
+              "LanguageModel"
+            ],
+            "type": "model"
+          }
+        },
+        "id": "xy-edge__DeepSeekModelComponent-Ste6Y{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-Ste6Yœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-vfY8N{œfieldNameœ:œmodelœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "selected": false,
+        "source": "DeepSeekModelComponent-Ste6Y",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-Ste6Yœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-vfY8N",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-vfY8Nœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "DeepSeekModelComponent",
+            "id": "DeepSeekModelComponent-xKCYB",
+            "name": "model_output",
+            "output_types": [
+              "LanguageModel"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "model",
+            "id": "Agent-ivsIj",
+            "inputTypes": [
+              "LanguageModel"
+            ],
+            "type": "model"
+          }
+        },
+        "id": "xy-edge__DeepSeekModelComponent-xKCYB{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-xKCYBœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}-Agent-ivsIj{œfieldNameœ:œmodelœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}",
+        "selected": false,
+        "source": "DeepSeekModelComponent-xKCYB",
+        "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-xKCYBœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
+        "target": "Agent-ivsIj",
+        "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
       }
     ],
     "nodes": [
@@ -799,8 +799,8 @@
           "width": 192
         },
         "position": {
-          "x": -1014.2870351037537,
-          "y": 1160.037714793624
+          "x": -898.4370218794778,
+          "y": 1223.3992333923768
         },
         "selected": false,
         "type": "genericNode"
@@ -841,7 +841,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-18T20:21:16.210Z",
+            "last_updated": "2026-05-21T04:59:33.017Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -1375,7 +1375,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente Técnico de un sistema multiagente de inversión en el sector minero de la BVL.\n\nTU ÚNICA FUNCIÓN:\nAnalizar indicadores técnicos de acciones mineras usando datos reales obtenidos desde la herramienta disponible.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_datos_bvl\" antes de responder.\n2. NUNCA respondas sin haber llamado primero a la herramienta.\n3. PROHIBIDO inventar precios, RSI, MACD, SMA20, SMA50, tendencia o cualquier dato numérico.\n4. Usa SOLO los datos devueltos por la herramienta.\n5. PROHIBIDO mencionar commodities, noticias, sentimiento, riesgo país, tipo de cambio u otros agentes.\n6. Si la herramienta devuelve error, datos vacíos o \"sin datos disponibles\", responde con:\n   - senal: \"MANTENER\"\n   - score: 0\n   - confianza: 0\n7. Devuelve únicamente JSON válido.\n8. NO escribas texto antes del JSON.\n9. NO escribas texto después del JSON.\n10. NO uses bloques markdown.\n11. NO uses ```json.\n12. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nDATOS QUE DEBES USAR:\n- Precio actual\n- Cambio porcentual\n- RSI(14)\n- MACD\n- Signal\n- Histograma MACD\n- SMA20\n- SMA50\n- Tendencia\n\nCRITERIOS DE ANÁLISIS:\n1. RSI(14):\n   - RSI < 30: indicador alcista por posible sobreventa.\n   - RSI entre 30 y 70: indicador neutral.\n   - RSI > 70: indicador bajista por posible sobrecompra.\n\n2. MACD:\n   - Histograma MACD > 0: indicador alcista.\n   - Histograma MACD < 0: indicador bajista.\n   - Histograma MACD cercano a 0: indicador neutral.\n\n3. Medias móviles:\n   - SMA20 > SMA50: indicador alcista.\n   - SMA20 < SMA50: indicador bajista.\n   - Si SMA50 no está disponible: indicador neutral.\n\n4. Tendencia:\n   - Tendencia alcista: favorece COMPRAR.\n   - Tendencia bajista: favorece VENDER.\n   - Tendencia indeterminada: favorece MANTENER.\n\nREGLA DE DECISIÓN:\n- Mayoría de indicadores alcistas → senal \"COMPRAR\".\n- Mayoría de indicadores bajistas → senal \"VENDER\".\n- Indicadores mixtos, débiles o neutrales → senal \"MANTENER\".\n\nREGLA PARA SCORE:\nEl score debe estar entre -1 y 1.\n\nUsa esta guía:\n- COMPRAR fuerte: score entre 0.60 y 1.00\n- COMPRAR moderado: score entre 0.25 y 0.59\n- MANTENER: score entre -0.24 y 0.24\n- VENDER moderado: score entre -0.25 y -0.59\n- VENDER fuerte: score entre -0.60 y -1.00\n\nREGLA PARA CONFIANZA:\nLa confianza debe estar entre 0 y 1.\n\nCalcula la confianza según la claridad de los indicadores:\n- Alta confianza: 0.75 a 1.00 si la mayoría de indicadores coinciden.\n- Confianza media: 0.50 a 0.74 si hay señales mixtas pero con ligera mayoría.\n- Baja confianza: 0.10 a 0.49 si los datos son débiles, incompletos o contradictorios.\n- Confianza 0 si no hay datos válidos.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"tecnico\",\n  \"ticker\": \"<ticker analizado>\",\n  \"senal\": \"COMPRAR | MANTENER | VENDER\",\n  \"score\": <numero entre -1 y 1>,\n  \"confianza\": <numero entre 0 y 1>,\n  \"datos_usados\": \"<resumen breve con RSI, MACD, histograma, SMA20, SMA50 y tendencia>\",\n  \"justificacion\": \"<explicacion breve basada solo en indicadores tecnicos>\"\n}\n\nRECORDATORIO FINAL:\nTu respuesta final debe ser JSON puro.\nNo expliques tu razonamiento fuera del JSON.\nNo uses Markdown.\nNo uses comillas triples.\nNo uses encabezados.\nEmpieza con { y termina con }.\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"procedo a responder\", \"según las reglas\", \"la herramienta indica\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON."
+                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente Técnico de un sistema multiagente de inversión en el sector minero de la BVL.\n\nTU ÚNICA FUNCIÓN:\nAnalizar indicadores técnicos de acciones mineras usando datos reales obtenidos desde la herramienta disponible.\n\nREGLAS ESTRICTAS:\n1. OBLIGATORIO: SIEMPRE invoca la herramienta \"obtener_datos_bvl\" antes de responder.\n2. NUNCA respondas sin haber llamado primero a la herramienta.\n3. PROHIBIDO inventar precios, RSI, MACD, SMA20, SMA50, tendencia o cualquier dato numérico.\n4. Usa SOLO los datos devueltos por la herramienta.\n5. PROHIBIDO mencionar commodities, noticias, sentimiento, riesgo país, tipo de cambio u otros agentes.\n6. Si la herramienta devuelve error, datos vacíos o \"sin datos disponibles\", responde con:\n   - senal: \"MANTENER\"\n   - score: 0\n   - confianza: 0\n7. Devuelve únicamente JSON válido.\n8. NO escribas texto antes del JSON.\n9. NO escribas texto después del JSON.\n10. NO uses bloques markdown.\n11. NO uses ```json.\n12. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nDATOS QUE DEBES USAR:\n- Precio actual\n- Cambio porcentual\n- RSI(14)\n- MACD\n- Signal\n- Histograma MACD\n- SMA20\n- SMA50\n- Tendencia\n\nCRITERIOS DE ANÁLISIS:\n1. RSI(14):\n   - RSI < 30: indicador alcista por posible sobreventa.\n   - RSI entre 30 y 70: indicador neutral.\n   - RSI > 70: indicador bajista por posible sobrecompra.\n\n2. MACD:\n   - Histograma MACD > 0: indicador alcista.\n   - Histograma MACD < 0: indicador bajista.\n   - Histograma MACD cercano a 0: indicador neutral.\n\n3. Medias móviles:\n   - SMA20 > SMA50: indicador alcista.\n   - SMA20 < SMA50: indicador bajista.\n   - Si SMA50 no está disponible: indicador neutral.\n\n4. Tendencia:\n   - Tendencia alcista: favorece COMPRAR.\n   - Tendencia bajista: favorece VENDER.\n   - Tendencia indeterminada: favorece MANTENER.\n\nREGLA DE DECISIÓN:\n- Mayoría de indicadores alcistas → senal \"COMPRAR\".\n- Mayoría de indicadores bajistas → senal \"VENDER\".\n- Indicadores mixtos, débiles o neutrales → senal \"MANTENER\".\n\nREGLA PARA SCORE:\nEl score debe estar entre -1 y 1.\n\nUsa esta guía:\n- COMPRAR fuerte: score entre 0.60 y 1.00\n- COMPRAR moderado: score entre 0.25 y 0.59\n- MANTENER: score entre -0.24 y 0.24\n- VENDER moderado: score entre -0.25 y -0.59\n- VENDER fuerte: score entre -0.60 y -1.00\n\nREGLA PARA CONFIANZA:\nLa confianza debe estar entre 0 y 1.\n\nCalcula la confianza según la claridad de los indicadores:\n- Alta confianza: 0.75 a 1.00 si la mayoría de indicadores coinciden.\n- Confianza media: 0.50 a 0.74 si hay señales mixtas pero con ligera mayoría.\n- Baja confianza: 0.10 a 0.49 si los datos son débiles, incompletos o contradictorios.\n- Confianza 0 si no hay datos válidos.\n\nDATOS HISTÓRICOS:\nSi la herramienta devuelve un JSON con un campo \"tickers\" que contiene datos históricos bajo \"historico\", DEBES incluir ese array en tu respuesta bajo el campo \"historico\".\n\nLa herramienta devuelve este formato:\n{\n  \"timestamp\": \"...\",\n  \"tickers\": {\n    \"BVN\": {\n      \"precio_actual\": 34.50,\n      \"historico\": [ ... array de 60 días ... ]\n    }\n  }\n}\n\nDebes extraer el array \"historico\" y copiarlo en tu respuesta.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"tecnico\",\n  \"ticker\": \"<ticker analizado>\",\n  \"senal\": \"COMPRAR | MANTENER | VENDER\",\n  \"score\": <numero entre -1 y 1>,\n  \"confianza\": <numero entre 0 y 1>,\n  \"datos_usados\": \"<resumen breve con RSI, MACD, histograma, SMA20, SMA50 y tendencia>\",\n  \"justificacion\": \"<explicacion breve basada solo en indicadores tecnicos>\",\n  \"historico\": [array de datos históricos si está disponible, o null si no hay datos]\n}\n\nRECORDATORIO FINAL:\nTu respuesta final debe ser JSON puro.\nNo expliques tu razonamiento fuera del JSON.\nNo uses Markdown.\nNo uses comillas triples.\nNo uses encabezados.\nEmpieza con { y termina con }.\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"procedo a responder\", \"según las reglas\", \"la herramienta indica\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON con el campo \"historico\" incluido si está disponible."
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -1433,8 +1433,8 @@
           "width": 320
         },
         "position": {
-          "x": -474.9813041232836,
-          "y": 610.0508844924032
+          "x": 40.39804354238001,
+          "y": 544.7261494853755
         },
         "selected": false,
         "type": "genericNode"
@@ -1733,8 +1733,8 @@
           "width": 192
         },
         "position": {
-          "x": 1565.271615333039,
-          "y": 1401.112106351349
+          "x": 1395.4267114892716,
+          "y": 1456.1450329738848
         },
         "selected": false,
         "type": "genericNode"
@@ -1775,7 +1775,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-18T20:21:16.211Z",
+            "last_updated": "2026-05-21T04:59:33.019Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -2367,8 +2367,8 @@
           "width": 320
         },
         "position": {
-          "x": 32.11110891276226,
-          "y": 861.8982383298978
+          "x": 41.22436635150305,
+          "y": 953.0308127173057
         },
         "selected": false,
         "type": "genericNode"
@@ -2409,7 +2409,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-18T20:21:16.212Z",
+            "last_updated": "2026-05-21T04:59:33.022Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -3001,8 +3001,8 @@
           "width": 320
         },
         "position": {
-          "x": -412.7158184213141,
-          "y": 1222.64845986784
+          "x": 41.43427172450413,
+          "y": 1359.8378027826486
         },
         "selected": false,
         "type": "genericNode"
@@ -3043,7 +3043,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-18T20:21:16.214Z",
+            "last_updated": "2026-05-21T04:59:33.024Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -3635,8 +3635,8 @@
           "width": 320
         },
         "position": {
-          "x": 50.455533961670284,
-          "y": 1493.74706698788
+          "x": 42.43466323747057,
+          "y": 1769.4928282875194
         },
         "selected": false,
         "type": "genericNode"
@@ -3677,7 +3677,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-18T20:21:16.215Z",
+            "last_updated": "2026-05-21T04:59:33.026Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -4215,7 +4215,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente Coordinador de un sistema multiagente de inversión en acciones mineras de la BVL.\n\nTU ÚNICA FUNCIÓN:\nRecibir el resultado del PSO Consensus Engine y convertirlo en una salida final estructurada, clara y lista para mostrarse en un dashboard.\n\nREGLAS ESTRICTAS:\n1. NO invoques herramientas externas.\n2. NO recalcules el PSO.\n3. NO modifiques los pesos óptimos recibidos.\n4. NO inventes señales, scores, confianzas, precios, noticias, indicadores ni datos.\n5. Usa SOLO la información recibida desde el PSO Result.\n6. Si falta información del PSO, conserva lo disponible y declara la limitación dentro del JSON.\n7. La senal_final debe ser exactamente la entregada por el PSO.\n8. El score_final debe ser exactamente el entregado por el PSO.\n9. La confianza_final debe ser exactamente la entregada por el PSO.\n10. Explica la decisión usando las justificaciones de los agentes y los pesos óptimos.\n11. Da mayor importancia narrativa a los agentes con mayor peso asignado por el PSO.\n12. Si un agente tuvo score 0, confianza 0 o datos no disponibles, indícalo como limitación.\n13. Devuelve únicamente JSON válido.\n14. NO escribas texto antes del JSON.\n15. NO escribas texto después del JSON.\n16. NO uses Markdown.\n17. NO uses bloques ```json.\n18. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nDATOS QUE DEBES LEER DEL PSO:\n- ticker\n- senal_final\n- score_final\n- confianza_final\n- pesos_optimos\n- agentes.tecnico\n- agentes.commodities\n- agentes.sentimiento\n- agentes.riesgo\n- costo_optimizacion, si está disponible\n- configuracion del PSO, si está disponible\n\nCRITERIOS PARA EL DASHBOARD:\n1. La salida debe ser fácil de graficar.\n2. Los pesos deben quedar separados por agente.\n3. Los scores individuales deben quedar separados por agente.\n4. Las confianzas individuales deben quedar separadas por agente.\n5. El resumen debe ser breve y entendible.\n6. Los factores clave deben ser frases cortas.\n7. Las limitaciones deben ser claras.\n8. No generes párrafos largos.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"coordinador\",\n  \"ticker\": \"<ticker recibido del PSO>\",\n  \"senal_final\": \"COMPRAR | MANTENER | VENDER\",\n  \"score_final\": <numero recibido del PSO>,\n  \"confianza_final\": <numero recibido del PSO>,\n  \"dashboard\": {\n    \"color_senal\": \"<verde | amarillo | rojo>\",\n    \"estado\": \"<favorable | neutral | desfavorable>\",\n    \"resumen_corto\": \"<frase breve para tarjeta principal>\",\n    \"nivel_confianza\": \"<alta | media | baja>\"\n  },\n  \"pesos_utilizados\": {\n    \"tecnico\": <peso tecnico recibido>,\n    \"commodities\": <peso commodities recibido>,\n    \"sentimiento\": <peso sentimiento recibido>,\n    \"riesgo\": <peso riesgo recibido>\n  },\n  \"scores_agentes\": {\n    \"tecnico\": <score tecnico recibido>,\n    \"commodities\": <score commodities recibido>,\n    \"sentimiento\": <score sentimiento recibido>,\n    \"riesgo\": <score riesgo recibido>\n  },\n  \"confianzas_agentes\": {\n    \"tecnico\": <confianza tecnica recibida>,\n    \"commodities\": <confianza commodities recibida>,\n    \"sentimiento\": <confianza sentimiento recibida>,\n    \"riesgo\": <confianza riesgo recibida>\n  },\n  \"senales_agentes\": {\n    \"tecnico\": \"<senal recibida>\",\n    \"commodities\": \"<senal recibida>\",\n    \"sentimiento\": \"<senal recibida>\",\n    \"riesgo\": \"<senal recibida>\"\n  },\n  \"factores_clave\": [\n    \"<factor clave breve 1>\",\n    \"<factor clave breve 2>\",\n    \"<factor clave breve 3>\"\n  ],\n  \"detalle_agentes\": {\n    \"tecnico\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"commodities\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"sentimiento\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"riesgo\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    }\n  },\n  \"limitaciones\": [\n    \"<limitacion 1 si existe>\",\n    \"<limitacion 2 si existe>\"\n  ],\n  \"pso\": {\n    \"algoritmo\": \"<algoritmo recibido>\",\n    \"particulas\": <numero de particulas recibido>,\n    \"iteraciones\": <numero de iteraciones recibido>,\n    \"costo_optimizacion\": <costo recibido o null>\n  }\n}\n\nREGLAS PARA CAMPOS DERIVADOS:\n- color_senal:\n  - COMPRAR → \"verde\"\n  - MANTENER → \"amarillo\"\n  - VENDER → \"rojo\"\n\n- estado:\n  - COMPRAR → \"favorable\"\n  - MANTENER → \"neutral\"\n  - VENDER → \"desfavorable\"\n\n- nivel_confianza:\n  - confianza_final >= 0.75 → \"alta\"\n  - confianza_final >= 0.50 y < 0.75 → \"media\"\n  - confianza_final < 0.50 → \"baja\"\n\n- resumen_corto:\n  Debe tener máximo 25 palabras.\n\n- factores_clave:\n  Deben ser máximo 3 frases breves.\n  Usa principalmente los agentes con mayor peso PSO.\n\n- limitaciones:\n  Si no hay limitaciones, devuelve:\n  [\"Sin limitaciones relevantes\"]\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"analizando\", \"procedo\", \"según el PSO\", \"a continuación\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON."
+                "value": "RESPUESTA FINAL OBLIGATORIA: devuelve únicamente un objeto JSON puro. Está prohibido escribir cualquier texto antes o después del JSON. La respuesta debe comenzar con { y terminar con }.\n\nEres el Agente Coordinador de un sistema multiagente de inversión en acciones mineras de la BVL.\n\nTU ÚNICA FUNCIÓN:\nRecibir el resultado del PSO Consensus Engine y convertirlo en una salida final estructurada, clara y lista para mostrarse en un dashboard.\n\nREGLAS ESTRICTAS:\n1. NO invoques herramientas externas.\n2. NO recalcules el PSO.\n3. NO modifiques los pesos óptimos recibidos.\n4. NO inventes señales, scores, confianzas, precios, noticias, indicadores ni datos.\n5. Usa SOLO la información recibida desde el PSO Result.\n6. Si falta información del PSO, conserva lo disponible y declara la limitación dentro del JSON.\n7. La senal_final debe ser exactamente la entregada por el PSO.\n8. El score_final debe ser exactamente el entregado por el PSO.\n9. La confianza_final debe ser exactamente la entregada por el PSO.\n10. Explica la decisión usando las justificaciones de los agentes y los pesos óptimos.\n11. Da mayor importancia narrativa a los agentes con mayor peso asignado por el PSO.\n12. Si un agente tuvo score 0, confianza 0 o datos no disponibles, indícalo como limitación.\n13. Devuelve únicamente JSON válido.\n14. NO escribas texto antes del JSON.\n15. NO escribas texto después del JSON.\n16. NO uses Markdown.\n17. NO uses bloques ```json.\n18. La respuesta debe empezar directamente con { y terminar directamente con }.\n\nDATOS QUE DEBES LEER DEL PSO:\n- ticker\n- senal_final\n- score_final\n- confianza_final\n- pesos_optimos\n- agentes.tecnico\n- agentes.commodities\n- agentes.sentimiento\n- agentes.riesgo\n- costo_optimizacion, si está disponible\n- configuracion del PSO, si está disponible\n\nDATOS HISTÓRICOS:\nSi el Agente Técnico incluye un campo \"historico\" con un array de datos diarios, DEBES copiarlo dentro de detalle_agentes.tecnico.historico en tu respuesta final.\n\nEjemplo:\nSi agentes.tecnico contiene:\n{\n  \"agente\": \"tecnico\",\n  \"senal\": \"VENDER\",\n  \"historico\": [ { \"fecha\": \"2026-05-01\", \"close\": 34.5, ... }, ... ]\n}\n\nTu salida debe incluir:\n{\n  ...\n  \"detalle_agentes\": {\n    \"tecnico\": {\n      \"senal\": \"VENDER\",\n      \"score\": -0.40,\n      \"confianza\": 0.75,\n      \"resumen\": \"...\",\n      \"historico\": [ { \"fecha\": \"2026-05-01\", \"close\": 34.5, ... }, ... ]\n    }\n  }\n}\n\nSi no hay campo \"historico\", omítelo o ponlo como null.\n\nCRITERIOS PARA EL DASHBOARD:\n1. La salida debe ser fácil de graficar.\n2. Los pesos deben quedar separados por agente.\n3. Los scores individuales deben quedar separados por agente.\n4. Las confianzas individuales deben quedar separadas por agente.\n5. El resumen debe ser breve y entendible.\n6. Los factores clave deben ser frases cortas.\n7. Las limitaciones deben ser claras.\n8. No generes párrafos largos.\n\nFORMATO DE SALIDA OBLIGATORIO:\nDevuelve solo JSON válido con esta estructura exacta:\n\n{\n  \"agente\": \"coordinador\",\n  \"ticker\": \"<ticker recibido del PSO>\",\n  \"senal_final\": \"COMPRAR | MANTENER | VENDER\",\n  \"score_final\": <numero recibido del PSO>,\n  \"confianza_final\": <numero recibido del PSO>,\n  \"dashboard\": {\n    \"color_senal\": \"<verde | amarillo | rojo>\",\n    \"estado\": \"<favorable | neutral | desfavorable>\",\n    \"resumen_corto\": \"<frase breve para tarjeta principal>\",\n    \"nivel_confianza\": \"<alta | media | baja>\"\n  },\n  \"pesos_utilizados\": {\n    \"tecnico\": <peso tecnico recibido>,\n    \"commodities\": <peso commodities recibido>,\n    \"sentimiento\": <peso sentimiento recibido>,\n    \"riesgo\": <peso riesgo recibido>\n  },\n  \"scores_agentes\": {\n    \"tecnico\": <score tecnico recibido>,\n    \"commodities\": <score commodities recibido>,\n    \"sentimiento\": <score sentimiento recibido>,\n    \"riesgo\": <score riesgo recibido>\n  },\n  \"confianzas_agentes\": {\n    \"tecnico\": <confianza tecnica recibida>,\n    \"commodities\": <confianza commodities recibida>,\n    \"sentimiento\": <confianza sentimiento recibida>,\n    \"riesgo\": <confianza riesgo recibida>\n  },\n  \"senales_agentes\": {\n    \"tecnico\": \"<senal recibida>\",\n    \"commodities\": \"<senal recibida>\",\n    \"sentimiento\": \"<senal recibida>\",\n    \"riesgo\": \"<senal recibida>\"\n  },\n  \"factores_clave\": [\n    \"<factor clave breve 1>\",\n    \"<factor clave breve 2>\",\n    \"<factor clave breve 3>\"\n  ],\n  \"detalle_agentes\": {\n    \"tecnico\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\",\n      \"historico\": [array copiado del agente técnico, o null si no existe]\n    },\n    \"commodities\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"sentimiento\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    },\n    \"riesgo\": {\n      \"senal\": \"<senal recibida>\",\n      \"score\": <score recibido>,\n      \"confianza\": <confianza recibida>,\n      \"resumen\": \"<resumen breve basado en datos_usados o justificacion>\"\n    }\n  },\n  \"limitaciones\": [\n    \"<limitacion 1 si existe>\",\n    \"<limitacion 2 si existe>\"\n  ],\n  \"pso\": {\n    \"algoritmo\": \"<algoritmo recibido>\",\n    \"particulas\": <numero de particulas recibido>,\n    \"iteraciones\": <numero de iteraciones recibido>,\n    \"costo_optimizacion\": <costo recibido o null>\n  }\n}\n\nREGLAS PARA CAMPOS DERIVADOS:\n- color_senal:\n  - COMPRAR → \"verde\"\n  - MANTENER → \"amarillo\"\n  - VENDER → \"rojo\"\n\n- estado:\n  - COMPRAR → \"favorable\"\n  - MANTENER → \"neutral\"\n  - VENDER → \"desfavorable\"\n\n- nivel_confianza:\n  - confianza_final >= 0.75 → \"alta\"\n  - confianza_final >= 0.50 y < 0.75 → \"media\"\n  - confianza_final < 0.50 → \"baja\"\n\n- resumen_corto:\n  Debe tener máximo 25 palabras.\n\n- factores_clave:\n  Deben ser máximo 3 frases breves.\n  Usa principalmente los agentes con mayor peso PSO.\n\n- limitaciones:\n  Si no hay limitaciones, devuelve:\n  [\"Sin limitaciones relevantes\"]\n\nVALIDACIÓN FINAL ANTES DE RESPONDER:\nSi tu respuesta contiene texto antes de { o después de }, es incorrecta.\nNo escribas frases como \"analizando\", \"procedo\", \"según el PSO\", \"a continuación\" ni explicaciones fuera del JSON.\nDevuelve solo el objeto JSON con el campo historico incluido en detalle_agentes.tecnico si está disponible."
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -4273,8 +4273,8 @@
           "width": 320
         },
         "position": {
-          "x": 1146.2536929408598,
-          "y": 1092.013300111714
+          "x": 992.8885875325373,
+          "y": 1116.277478455528
         },
         "selected": false,
         "type": "genericNode"
@@ -4684,8 +4684,8 @@
           "width": 320
         },
         "position": {
-          "x": -799.469667101516,
-          "y": -811.5794733214364
+          "x": -1145.3618773053822,
+          "y": -570.7578989027661
         },
         "selected": false,
         "type": "genericNode"
@@ -5095,8 +5095,8 @@
           "width": 320
         },
         "position": {
-          "x": 908.5051456976398,
-          "y": -795.1950104320939
+          "x": 915.4776143940791,
+          "y": -551.1586060567176
         },
         "selected": false,
         "type": "genericNode"
@@ -5506,8 +5506,8 @@
           "width": 320
         },
         "position": {
-          "x": 477.30793429503285,
-          "y": -801.7790409529828
+          "x": 52.15357674615488,
+          "y": -560.4394997897782
         },
         "selected": false,
         "type": "genericNode"
@@ -5917,8 +5917,8 @@
           "width": 320
         },
         "position": {
-          "x": 73.21910109798034,
-          "y": -803.2390401559902
+          "x": -339.34989479409654,
+          "y": -565.0925051974851
         },
         "selected": false,
         "type": "genericNode"
@@ -6328,8 +6328,8 @@
           "width": 320
         },
         "position": {
-          "x": -383.8224139064855,
-          "y": -732.3728096450121
+          "x": -762.3732290864184,
+          "y": -568.6293785466974
         },
         "selected": false,
         "type": "genericNode"
@@ -6535,8 +6535,8 @@
           "width": 320
         },
         "position": {
-          "x": 621.80820881521,
-          "y": 1049.01597046756
+          "x": 573.5495333455052,
+          "y": 1080.1760217655242
         },
         "selected": false,
         "type": "genericNode"
@@ -6722,8 +6722,8 @@
           "width": 320
         },
         "position": {
-          "x": -987.3149623139476,
-          "y": 1373.4140742003726
+          "x": -422.93622942702626,
+          "y": 1317.5246501198092
         },
         "selected": false,
         "type": "genericNode"
@@ -6832,8 +6832,8 @@
           "width": 320
         },
         "position": {
-          "x": -376.4334496145076,
-          "y": 1828.114490030999
+          "x": -386.00231498727015,
+          "y": 1931.7502414370028
         },
         "selected": false,
         "type": "genericNode"
@@ -6938,8 +6938,8 @@
           "width": 320
         },
         "position": {
-          "x": -870.8707532390226,
-          "y": 130.88882076332064
+          "x": -2096.801081281216,
+          "y": -188.81908842591926
         },
         "selected": false,
         "type": "genericNode"
@@ -7063,8 +7063,8 @@
           "width": 320
         },
         "position": {
-          "x": -1254.5983163284507,
-          "y": 134.22386444802515
+          "x": -2124.019824771132,
+          "y": -29.08017549755781
         },
         "selected": false,
         "type": "genericNode"
@@ -7092,7 +7092,7 @@
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
-              "code_hash": "8fa286333347",
+              "code_hash": "3094e21f49cf",
               "dependencies": {
                 "dependencies": [
                   {
@@ -7176,7 +7176,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "code",
-                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, SecretStrInput, Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport requests\r\nimport pandas as pd\r\nimport time\r\n\r\n\r\nclass DatosBVLToolComponent(Component):\r\n    display_name = \"Datos BVL Tool\"\r\n    description = \"Tool con datos e indicadores técnicos desde Alpha Vantage\"\r\n    icon = \"database\"\r\n    name = \"DatosBVLTool\"\r\n\r\n    inputs = [\r\n        SecretStrInput(\r\n            name=\"api_key\",\r\n            display_name=\"Alpha Vantage API Key\",\r\n            required=True,\r\n        ),\r\n        StrInput(\r\n            name=\"default_tickers\",\r\n            display_name=\"Tickers por defecto\",\r\n            value=\"BVN,SCCO\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        api_key = self.api_key\r\n        default_tickers = self.default_tickers\r\n\r\n        def calcular_rsi(precios, periodo=14):\r\n            delta = precios.diff()\r\n            ganancia = delta.where(delta > 0, 0).rolling(window=periodo).mean()\r\n            perdida = -delta.where(delta < 0, 0).rolling(window=periodo).mean()\r\n            rs = ganancia / perdida\r\n            rsi = 100 - (100 / (1 + rs))\r\n            return rsi.iloc[-1] if not pd.isna(rsi.iloc[-1]) else 50.0\r\n\r\n        def obtener_datos_bvl(input_text: str = \"\") -> str:\r\n            if input_text and input_text.strip():\r\n                tickers = [t.strip().upper() for t in input_text.split(\",\")]\r\n            else:\r\n                tickers = [t.strip() for t in default_tickers.split(\",\")]\r\n\r\n            resultado = [\"=== DATOS REALES (Alpha Vantage) ===\"]\r\n\r\n            for ticker in tickers:\r\n                try:\r\n                    # Descargar histórico (últimos 60 días)\r\n                    url = f\"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&outputsize=compact&apikey={api_key}\"\r\n                    response = requests.get(url, timeout=15)\r\n                    data = response.json()\r\n\r\n                    if \"Time Series (Daily)\" not in data:\r\n                        resultado.append(f\"\\n{ticker}: Sin datos disponibles\")\r\n                        time.sleep(12)  # Rate limit\r\n                        continue\r\n\r\n                    # Convertir a DataFrame\r\n                    ts = data[\"Time Series (Daily)\"]\r\n                    df = pd.DataFrame.from_dict(ts, orient='index')\r\n                    df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']\r\n                    df = df.astype(float)\r\n                    df = df.sort_index()\r\n                    df = df.tail(60)  # Últimos 60 días\r\n\r\n                    if len(df) < 2:\r\n                        resultado.append(f\"\\n{ticker}: Datos insuficientes\")\r\n                        continue\r\n\r\n                    # Calcular indicadores\r\n                    precio_actual = df['Close'].iloc[-1]\r\n                    precio_anterior = df['Close'].iloc[-2]\r\n                    cambio_pct = ((precio_actual - precio_anterior) / precio_anterior) * 100\r\n\r\n                    # RSI\r\n                    rsi = calcular_rsi(df['Close'])\r\n\r\n                    # MACD\r\n                    ema12 = df['Close'].ewm(span=12, adjust=False).mean()\r\n                    ema26 = df['Close'].ewm(span=26, adjust=False).mean()\r\n                    macd = ema12 - ema26\r\n                    signal = macd.ewm(span=9, adjust=False).mean()\r\n                    hist = macd - signal\r\n\r\n                    # SMAs\r\n                    sma20 = df['Close'].rolling(window=20).mean().iloc[-1]\r\n                    sma50 = df['Close'].rolling(window=50).mean().iloc[-1] if len(df) >= 50 else None\r\n\r\n                    if rsi >= 70:\r\n                        rsi_zona = \"sobrecompra\"\r\n                    elif rsi <= 30:\r\n                        rsi_zona = \"sobreventa\"\r\n                    else:\r\n                        rsi_zona = \"neutral\"\r\n\r\n                    if sma50 is not None:\r\n                        tendencia = \"alcista\" if sma20 > sma50 else \"bajista\"\r\n                        sma50_str = f\"${sma50:.2f}\"\r\n                    else:\r\n                        tendencia = \"indeterminada\"\r\n                        sma50_str = \"N/A\"\r\n\r\n                    reporte = (\r\n                        f\"\\n{ticker}:\\n\"\r\n                        f\"- Precio: ${precio_actual:.2f} | Cambio: {cambio_pct:+.2f}%\\n\"\r\n                        f\"- RSI(14): {rsi:.2f} -> {rsi_zona}\\n\"\r\n                        f\"- MACD: {macd.iloc[-1]:.4f} | Signal: {signal.iloc[-1]:.4f} | Histograma: {hist.iloc[-1]:.4f}\\n\"\r\n                        f\"- SMA20: ${sma20:.2f} | SMA50: {sma50_str}\\n\"\r\n                        f\"- Tendencia: {tendencia}\"\r\n                    )\r\n                    resultado.append(reporte)\r\n\r\n                    time.sleep(12)  # Rate limit: 5 req/min\r\n\r\n                except Exception as e:\r\n                    resultado.append(f\"\\n{ticker}: Error - {str(e)}\")\r\n\r\n            return \"\\n\".join(resultado)\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_datos_bvl\",\r\n            description=(\r\n                \"Obtiene datos REALES e indicadores técnicos desde Alpha Vantage: \"\r\n                \"precio, cambio %, RSI(14), MACD, SMA20, SMA50, tendencia. \"\r\n                \"Acciones: Buenaventura (BVN), Southern Copper (SCCO). \"\r\n                \"Input: tickers separados por coma.\"\r\n            ),\r\n            func=obtener_datos_bvl,\r\n        )\r\n        return tool"
+                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, SecretStrInput, Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport requests\r\nimport pandas as pd\r\nimport json\r\n\r\n\r\nclass DatosBVLToolComponent(Component):\r\n    display_name = \"Datos BVL Tool\"\r\n    description = \"Tool con datos e indicadores técnicos desde Alpha Vantage\"\r\n    icon = \"database\"\r\n    name = \"DatosBVLTool\"\r\n\r\n    inputs = [\r\n        SecretStrInput(\r\n            name=\"api_key\",\r\n            display_name=\"Alpha Vantage API Key\",\r\n            required=True,\r\n        ),\r\n        StrInput(\r\n            name=\"default_tickers\",\r\n            display_name=\"Tickers por defecto\",\r\n            value=\"BVN,SCCO\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        api_key = self.api_key\r\n        default_tickers = self.default_tickers\r\n\r\n        def calcular_rsi(precios, periodo=14):\r\n            delta = precios.diff()\r\n            ganancia = delta.where(delta > 0, 0).rolling(window=periodo).mean()\r\n            perdida = -delta.where(delta < 0, 0).rolling(window=periodo).mean()\r\n            rs = ganancia / perdida\r\n            rsi = 100 - (100 / (1 + rs))\r\n            return rsi\r\n\r\n        def obtener_datos_bvl(input_text: str = \"\") -> str:\r\n            if input_text and input_text.strip():\r\n                tickers = [t.strip().upper() for t in input_text.split(\",\")]\r\n            else:\r\n                tickers = [t.strip() for t in default_tickers.split(\",\")]\r\n\r\n            resultado = {\"timestamp\": pd.Timestamp.now().isoformat(), \"tickers\": {}}\r\n\r\n            for ticker in tickers:\r\n                try:\r\n                    # Descargar histórico\r\n                    url = f\"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&outputsize=compact&apikey={api_key}\"\r\n                    response = requests.get(url, timeout=15)\r\n                    data = response.json()\r\n\r\n                    if \"Time Series (Daily)\" not in data:\r\n                        resultado[\"tickers\"][ticker] = {\"error\": \"Sin datos disponibles\"}\r\n                        continue\r\n\r\n                    # Convertir a DataFrame\r\n                    ts = data[\"Time Series (Daily)\"]\r\n                    df = pd.DataFrame.from_dict(ts, orient='index')\r\n                    df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']\r\n                    df = df.astype(float)\r\n                    df.index = pd.to_datetime(df.index)\r\n                    df = df.sort_index()\r\n                    df = df.tail(60)\r\n\r\n                    if len(df) < 2:\r\n                        resultado[\"tickers\"][ticker] = {\"error\": \"Datos insuficientes\"}\r\n                        continue\r\n\r\n                    # Calcular indicadores\r\n                    precio_actual = df['Close'].iloc[-1]\r\n                    precio_anterior = df['Close'].iloc[-2]\r\n                    cambio_pct = ((precio_actual - precio_anterior) / precio_anterior) * 100\r\n\r\n                    # RSI\r\n                    rsi = calcular_rsi(df['Close'])\r\n\r\n                    # MACD\r\n                    ema12 = df['Close'].ewm(span=12, adjust=False).mean()\r\n                    ema26 = df['Close'].ewm(span=26, adjust=False).mean()\r\n                    macd = ema12 - ema26\r\n                    signal = macd.ewm(span=9, adjust=False).mean()\r\n                    hist = macd - signal\r\n\r\n                    # SMAs\r\n                    sma20 = df['Close'].rolling(window=20).mean()\r\n                    sma50 = df['Close'].rolling(window=50).mean() if len(df) >= 50 else None\r\n\r\n                    # Preparar datos históricos (últimos 60 días)\r\n                    historico = []\r\n                    for date, row in df.iterrows():\r\n                        historico.append({\r\n                            \"fecha\": date.strftime('%Y-%m-%d'),\r\n                            \"close\": float(row['Close']),\r\n                            \"rsi\": float(rsi.loc[date]) if date in rsi.index and not pd.isna(rsi.loc[date]) else None,\r\n                            \"macd\": float(macd.loc[date]) if date in macd.index else None,\r\n                            \"signal\": float(signal.loc[date]) if date in signal.index else None,\r\n                            \"sma20\": float(sma20.loc[date]) if date in sma20.index and not pd.isna(sma20.loc[date]) else None,\r\n                            \"sma50\": float(sma50.loc[date]) if sma50 is not None and date in sma50.index and not pd.isna(sma50.loc[date]) else None\r\n                        })\r\n\r\n                    rsi_actual = rsi.iloc[-1] if not pd.isna(rsi.iloc[-1]) else 50.0\r\n                    if rsi_actual >= 70:\r\n                        rsi_zona = \"sobrecompra\"\r\n                    elif rsi_actual <= 30:\r\n                        rsi_zona = \"sobreventa\"\r\n                    else:\r\n                        rsi_zona = \"neutral\"\r\n\r\n                    sma20_actual = sma20.iloc[-1]\r\n                    sma50_actual = sma50.iloc[-1] if sma50 is not None else None\r\n\r\n                    if sma50_actual is not None:\r\n                        tendencia = \"alcista\" if sma20_actual > sma50_actual else \"bajista\"\r\n                    else:\r\n                        tendencia = \"indeterminada\"\r\n\r\n                    resultado[\"tickers\"][ticker] = {\r\n                        \"precio_actual\": float(precio_actual),\r\n                        \"cambio_pct\": float(cambio_pct),\r\n                        \"rsi\": float(rsi_actual),\r\n                        \"rsi_zona\": rsi_zona,\r\n                        \"macd\": float(macd.iloc[-1]),\r\n                        \"signal\": float(signal.iloc[-1]),\r\n                        \"histograma\": float(hist.iloc[-1]),\r\n                        \"sma20\": float(sma20_actual),\r\n                        \"sma50\": float(sma50_actual) if sma50_actual is not None else None,\r\n                        \"tendencia\": tendencia,\r\n                        \"historico\": historico\r\n                    }\r\n\r\n                except Exception as e:\r\n                    resultado[\"tickers\"][ticker] = {\"error\": str(e)}\r\n\r\n            return json.dumps(resultado, indent=2)\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_datos_bvl\",\r\n            description=(\r\n                \"Obtiene datos REALES e indicadores técnicos desde Alpha Vantage: \"\r\n                \"precio, cambio %, RSI(14), MACD, SMA20, SMA50, tendencia y datos históricos de 60 días. \"\r\n                \"Devuelve JSON con datos actuales e histórico completo.\"\r\n            ),\r\n            func=obtener_datos_bvl,\r\n        )\r\n        return tool"
               },
               "default_tickers": {
                 "_input_type": "StrInput",
@@ -7212,8 +7212,8 @@
           "width": 320
         },
         "position": {
-          "x": -1069.9850553220474,
-          "y": 425.60995405014745
+          "x": -385.4011530621307,
+          "y": 504.465812019012
         },
         "selected": false,
         "type": "genericNode"
@@ -7335,17 +7335,17 @@
           "width": 320
         },
         "position": {
-          "x": -1027.3265106014353,
-          "y": 850.9385537417764
+          "x": -361.33904529450365,
+          "y": 994.6257726831839
         },
         "selected": false,
         "type": "genericNode"
       }
     ],
     "viewport": {
-      "x": 776.9059798057908,
-      "y": 201.79544409740868,
-      "zoom": 0.2868424495073535
+      "x": 897.2253151730246,
+      "y": 204.28447380056758,
+      "zoom": 0.28783565521631965
     }
   },
   "description": "Bridging Prompts for Brilliance.",
@@ -7354,6 +7354,6 @@
   "is_component": false,
   "last_tested_version": "1.9.3",
   "locked": false,
-  "name": "sistema_bvl",
+  "name": "SMA-BVL",
   "tags": []
 }
