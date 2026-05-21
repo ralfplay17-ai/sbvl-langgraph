@@ -841,7 +841,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-21T04:59:33.017Z",
+            "last_updated": "2026-05-21T05:36:44.874Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -1775,7 +1775,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-21T04:59:33.019Z",
+            "last_updated": "2026-05-21T05:36:44.877Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -2409,7 +2409,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-21T04:59:33.022Z",
+            "last_updated": "2026-05-21T05:36:44.878Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -3043,7 +3043,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-21T04:59:33.024Z",
+            "last_updated": "2026-05-21T05:36:44.880Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -3677,7 +3677,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-05-21T04:59:33.026Z",
+            "last_updated": "2026-05-21T05:36:44.881Z",
             "legacy": false,
             "lf_version": "1.9.3",
             "metadata": {
@@ -4684,8 +4684,8 @@
           "width": 320
         },
         "position": {
-          "x": -1145.3618773053822,
-          "y": -570.7578989027661
+          "x": -444.6525381202457,
+          "y": -566.9500629916217
         },
         "selected": false,
         "type": "genericNode"
@@ -5095,8 +5095,8 @@
           "width": 320
         },
         "position": {
-          "x": 915.4776143940791,
-          "y": -551.1586060567176
+          "x": 453.40838290833665,
+          "y": -568.5296297967832
         },
         "selected": false,
         "type": "genericNode"
@@ -5506,8 +5506,8 @@
           "width": 320
         },
         "position": {
-          "x": 52.15357674615488,
-          "y": -560.4394997897782
+          "x": -1517.7117418347711,
+          "y": -568.2291591878112
         },
         "selected": false,
         "type": "genericNode"
@@ -5917,8 +5917,8 @@
           "width": 320
         },
         "position": {
-          "x": -339.34989479409654,
-          "y": -565.0925051974851
+          "x": -801.1178863345873,
+          "y": -566.0633199710094
         },
         "selected": false,
         "type": "genericNode"
@@ -6328,7 +6328,7 @@
           "width": 320
         },
         "position": {
-          "x": -762.3732290864184,
+          "x": -1160.917913104879,
           "y": -568.6293785466974
         },
         "selected": false,
@@ -6840,237 +6840,6 @@
       },
       {
         "data": {
-          "id": "DatosCommoditiesTool-o4SDK",
-          "node": {
-            "base_classes": [
-              "Tool"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "Tool con precios REALES de cobre, oro y plata desde Yahoo Finance.",
-            "display_name": "Datos Commodities Tool",
-            "documentation": "",
-            "edited": true,
-            "field_order": [],
-            "frozen": false,
-            "icon": "trending-up",
-            "legacy": false,
-            "lf_version": "1.9.3",
-            "metadata": {
-              "code_hash": "2d3610441a8e",
-              "dependencies": {
-                "dependencies": [
-                  {
-                    "name": "langflow",
-                    "version": "1.9.3"
-                  },
-                  {
-                    "name": "langchain",
-                    "version": "1.2.17"
-                  },
-                  {
-                    "name": "pydantic",
-                    "version": "2.12.5"
-                  },
-                  {
-                    "name": "yfinance",
-                    "version": "0.2.28"
-                  }
-                ],
-                "total_dependencies": 4
-              },
-              "module": "custom_components.datos_commodities_tool"
-            },
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Tool",
-                "group_outputs": false,
-                "hidden": null,
-                "loop_types": null,
-                "method": "build_tool",
-                "name": "tool_output",
-                "options": null,
-                "required_inputs": null,
-                "selected": "Tool",
-                "tool_mode": true,
-                "types": [
-                  "Tool"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "from langflow.custom import Component\r\nfrom langflow.io import Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import StructuredTool\r\nfrom pydantic import BaseModel, Field\r\nimport yfinance as yf\r\nfrom datetime import datetime\r\n\r\n\r\nclass CommoditiesInput(BaseModel):\r\n    input_text: str = Field(\r\n        default=\"\",\r\n        description=\"Texto opcional. Puede dejarse vacío para obtener oro, plata y cobre.\"\r\n    )\r\n\r\n\r\nclass DatosCommoditiesToolComponent(Component):\r\n    display_name = \"Datos Commodities Tool\"\r\n    description = \"Tool con precios REALES de cobre, oro y plata desde Yahoo Finance.\"\r\n    icon = \"trending-up\"\r\n    name = \"DatosCommoditiesTool\"\r\n\r\n    inputs = []\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n\r\n        def obtener_datos_commodities(input_text: str = \"\") -> str:\r\n            commodities = {\r\n                \"Oro\": \"GC=F\",\r\n                \"Plata\": \"SI=F\",\r\n                \"Cobre\": \"HG=F\",\r\n            }\r\n\r\n            resultado = [f\"=== COMMODITIES REALES ({datetime.now().strftime('%d/%m/%Y %H:%M')}) ===\"]\r\n\r\n            for nombre, ticker in commodities.items():\r\n                try:\r\n                    com = yf.Ticker(ticker)\r\n                    hist = com.history(period=\"5d\")\r\n\r\n                    if hist.empty:\r\n                        resultado.append(f\"\\n{nombre}: Sin datos\")\r\n                        continue\r\n\r\n                    precio_actual = hist[\"Close\"].iloc[-1]\r\n                    precio_anterior = hist[\"Close\"].iloc[-2] if len(hist) > 1 else precio_actual\r\n                    cambio_pct = ((precio_actual - precio_anterior) / precio_anterior) * 100\r\n\r\n                    precio_5d = hist[\"Close\"].iloc[0]\r\n                    tendencia_5d = ((precio_actual - precio_5d) / precio_5d) * 100\r\n\r\n                    if cambio_pct > 0.5:\r\n                        sentido = \"alcista\"\r\n                    elif cambio_pct < -0.5:\r\n                        sentido = \"bajista\"\r\n                    else:\r\n                        sentido = \"estable\"\r\n\r\n                    resultado.append(\r\n                        f\"\\n{nombre} ({ticker}):\\n\"\r\n                        f\"- Precio: ${precio_actual:.2f}\\n\"\r\n                        f\"- Cambio diario: {cambio_pct:+.2f}% ({sentido})\\n\"\r\n                        f\"- Tendencia 5 días: {tendencia_5d:+.2f}%\"\r\n                    )\r\n\r\n                except Exception as e:\r\n                    resultado.append(f\"\\n{nombre}: Error - {str(e)}\")\r\n\r\n            return \"\\n\".join(resultado)\r\n\r\n        tool = StructuredTool.from_function(\r\n            name=\"obtener_precios_commodities\",\r\n            description=(\r\n                \"Obtiene precios REALES de oro, plata y cobre desde Yahoo Finance. \"\r\n                \"Puede llamarse sin argumentos o con un texto opcional. \"\r\n                \"Devuelve precio actual, cambio diario y tendencia de 5 días. \"\r\n                \"Útil para correlacionar con acciones mineras: Oro→BVN, \"\r\n                \"Cobre→SCCO/Cerro Verde, Plata→Volcan/Minsur.\"\r\n            ),\r\n            func=obtener_datos_commodities,\r\n            args_schema=CommoditiesInput,\r\n        )\r\n\r\n        return tool"
-              }
-            },
-            "tool_mode": false
-          },
-          "showNode": true,
-          "type": "DatosCommoditiesTool"
-        },
-        "dragging": false,
-        "id": "DatosCommoditiesTool-o4SDK",
-        "measured": {
-          "height": 141,
-          "width": 320
-        },
-        "position": {
-          "x": -2096.801081281216,
-          "y": -188.81908842591926
-        },
-        "selected": false,
-        "type": "genericNode"
-      },
-      {
-        "data": {
-          "id": "CustomComponent-QXced",
-          "node": {
-            "base_classes": [
-              "Tool"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "Tool con datos REALES de acciones mineras.",
-            "display_name": "Datos BVL Tool",
-            "documentation": "",
-            "edited": true,
-            "field_order": [
-              "default_tickers"
-            ],
-            "frozen": false,
-            "icon": "database",
-            "legacy": false,
-            "lf_version": "1.9.3",
-            "metadata": {
-              "code_hash": "63c691e3c651",
-              "dependencies": {
-                "dependencies": [
-                  {
-                    "name": "langflow",
-                    "version": "1.9.3"
-                  },
-                  {
-                    "name": "langchain",
-                    "version": "1.2.17"
-                  },
-                  {
-                    "name": "yfinance",
-                    "version": "0.2.28"
-                  }
-                ],
-                "total_dependencies": 3
-              },
-              "module": "custom_components.datos_bvl_tool"
-            },
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Tool",
-                "group_outputs": false,
-                "hidden": null,
-                "loop_types": null,
-                "method": "build_tool",
-                "name": "tool_output",
-                "options": null,
-                "required_inputs": null,
-                "selected": "Tool",
-                "tool_mode": true,
-                "types": [
-                  "Tool"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "from langflow.custom import Component\r\nfrom langflow.io import StrInput, Output\r\nfrom langflow.field_typing import Tool\r\nfrom langchain.tools import Tool as LangchainTool\r\nimport yfinance as yf\r\nfrom datetime import datetime\r\n\r\n\r\nclass DatosBVLToolComponent(Component):\r\n    display_name = \"Datos BVL Tool\"\r\n    description = \"Tool con datos REALES de acciones mineras.\"\r\n    icon = \"database\"\r\n    name = \"DatosBVLTool\"\r\n\r\n    inputs = [\r\n        StrInput(\r\n            name=\"default_tickers\",\r\n            display_name=\"Tickers por defecto\",\r\n            value=\"BVN,SCCO\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Tool\", name=\"tool_output\", method=\"build_tool\"),\r\n    ]\r\n\r\n    def build_tool(self) -> Tool:\r\n        def obtener_datos_bvl(input_text: str = \"\") -> str:\r\n            ticker = input_text.strip() if input_text.strip() else \"BVN\"\r\n            \r\n            try:\r\n                data = yf.Ticker(ticker)\r\n                hist = data.history(period=\"60d\")\r\n                \r\n                if len(hist) == 0:\r\n                    return f\"Sin datos para {ticker}\"\r\n                \r\n                precio = hist['Close'].iloc[-1]\r\n                cambio = ((precio - hist['Close'].iloc[-2]) / hist['Close'].iloc[-2]) * 100\r\n                \r\n                return f\"=== {ticker} ===\\nPrecio: ${precio:.2f}\\nCambio: {cambio:+.2f}%\\nDatos: {len(hist)} días\"\r\n                \r\n            except Exception as e:\r\n                return f\"Error: {str(e)}\"\r\n\r\n        tool = LangchainTool(\r\n            name=\"obtener_datos_bvl\",\r\n            description=\"Obtiene precio de BVN o SCCO desde Yahoo Finance.\",\r\n            func=obtener_datos_bvl,\r\n        )\r\n        return tool"
-              },
-              "default_tickers": {
-                "_input_type": "StrInput",
-                "advanced": false,
-                "display_name": "Tickers por defecto",
-                "dynamic": false,
-                "info": "",
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "default_tickers",
-                "override_skip": false,
-                "placeholder": "",
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "track_in_telemetry": false,
-                "type": "str",
-                "value": "BVN,SCCO"
-              }
-            },
-            "tool_mode": false
-          },
-          "showNode": true,
-          "type": "DatosBVLTool"
-        },
-        "dragging": false,
-        "id": "CustomComponent-QXced",
-        "measured": {
-          "height": 207,
-          "width": 320
-        },
-        "position": {
-          "x": -2124.019824771132,
-          "y": -29.08017549755781
-        },
-        "selected": false,
-        "type": "genericNode"
-      },
-      {
-        "data": {
           "id": "CustomComponent-aGlRm",
           "node": {
             "base_classes": [
@@ -7343,9 +7112,9 @@
       }
     ],
     "viewport": {
-      "x": 897.2253151730246,
-      "y": 204.28447380056758,
-      "zoom": 0.28783565521631965
+      "x": 773.7608941003922,
+      "y": 128.60053045860502,
+      "zoom": 0.28717458874925883
     }
   },
   "description": "Bridging Prompts for Brilliance.",
@@ -7354,6 +7123,6 @@
   "is_component": false,
   "last_tested_version": "1.9.3",
   "locked": false,
-  "name": "SMA-BVL",
+  "name": "sistema_bvl",
   "tags": []
 }

@@ -17,7 +17,10 @@ st.set_page_config(
 # -------------------------
 LANGFLOW_URL = "http://localhost:7860/api/v1/run/20cf6881-d257-40ee-94ed-8b944548e1d0"
 LANGFLOW_API_KEY = "sk-zLFi3KHZ-A7I4sNUipaIthBI6u5a9757XExRz19Qkm0"
-ALPHA_VANTAGE_KEY = "473CNXGZR1MY95XL"  # ← REEMPLAZA CON TU API KEY
+ALPHA_VANTAGE_KEY = "AWZAIY1FQ4QTZ3PA"  # ← REEMPLAZA CON TU API KEY
+
+# Flow ID para backtesting (ACTUALIZAR cuando crees el flujo)
+BACKTESTING_FLOW_ID = "FLOW_ID_BACKTESTING_AQUI"
 
 
 # -------------------------
@@ -195,6 +198,24 @@ body {
     border-radius: 14px;
     font-weight: 800;
 }
+
+.tab-button {
+    display: inline-block;
+    border: 2px solid #4a4a47;
+    border-radius: 12px;
+    padding: 12px 28px;
+    margin-right: 10px;
+    color: #c7c7c2;
+    font-weight: 700;
+    background-color: #2c2c2a;
+    cursor: pointer;
+}
+
+.tab-button-active {
+    border: 2px solid #4aa3ff;
+    background-color: #1a3a5f;
+    color: #ffffff;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -209,7 +230,7 @@ def extraer_json_de_texto(texto: str):
     # Intentar parsear directamente
     try:
         data = json.loads(texto)
-        if isinstance(data, dict) and "senal_final" in data:
+        if isinstance(data, dict):
             return data
     except Exception:
         pass
@@ -219,7 +240,7 @@ def extraer_json_de_texto(texto: str):
     if match:
         try:
             data = json.loads(match.group())
-            if isinstance(data, dict) and "senal_final" in data:
+            if isinstance(data, dict):
                 return data
         except Exception:
             pass
@@ -228,7 +249,7 @@ def extraer_json_de_texto(texto: str):
 
 
 def extraer_json_de_langflow_response(response_json):
-    """Busca el JSON final del Agente Coordinador dentro de la respuesta de Langflow."""
+    """Busca el JSON final dentro de la respuesta de Langflow."""
     textos_posibles = []
 
     def recorrer(obj):
@@ -248,7 +269,7 @@ def extraer_json_de_langflow_response(response_json):
         if data:
             return data
 
-    raise ValueError("No se pudo encontrar el JSON final del Coordinador en la respuesta de Langflow.")
+    raise ValueError("No se pudo encontrar JSON en la respuesta de Langflow.")
 
 
 def ejecutar_langflow(ticker):
@@ -273,6 +294,213 @@ def ejecutar_langflow(ticker):
 
     response.raise_for_status()
     return extraer_json_de_langflow_response(response.json())
+
+
+def ejecutar_backtest(ticker, dias):
+    """Ejecuta el backtesting desde Alpha Vantage directamente"""
+    try:
+        # Delay para respetar rate limit de Alpha Vantage (5 req/min)
+        import time
+        time.sleep(15)  # Esperar 15 segundos antes de hacer la petición
+        
+        # Descargar datos
+        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&outputsize=compact&apikey={ALPHA_VANTAGE_KEY}"
+        
+        response = requests.get(url, timeout=20)
+        data = response.json()
+        
+        # DEBUG: Ver qué devuelve la API
+        print(f"DEBUG BACKTEST - Keys en respuesta: {list(data.keys())}")
+        if "Note" in data:
+            print(f"DEBUG BACKTEST - Rate limit: {data['Note']}")
+
+        if "Time Series (Daily)" not in data:
+            error_msg = "No se pudieron obtener datos históricos"
+            if "Note" in data:
+                error_msg = "Rate limit alcanzado - espera 1 minuto"
+            elif "Error Message" in data:
+                error_msg = f"Error API: {data['Error Message']}"
+            return {"error": error_msg}
+
+        # Convertir a DataFrame
+        ts = data["Time Series (Daily)"]
+        df = pd.DataFrame.from_dict(ts, orient='index')
+        df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
+        df = df.astype(float)
+        df.index = pd.to_datetime(df.index)
+        df = df.sort_index()
+        df = df.tail(dias)
+
+        if len(df) < 20:
+            return {"error": "Datos insuficientes para backtesting"}
+
+        # Calcular indicadores
+        def calcular_rsi(precios, periodo=14):
+            delta = precios.diff()
+            ganancia = delta.where(delta > 0, 0).rolling(window=periodo).mean()
+            perdida = -delta.where(delta < 0, 0).rolling(window=periodo).mean()
+            rs = ganancia / perdida
+            return 100 - (100 / (1 + rs))
+
+        df['RSI'] = calcular_rsi(df['Close'])
+        ema12 = df['Close'].ewm(span=12, adjust=False).mean()
+        ema26 = df['Close'].ewm(span=26, adjust=False).mean()
+        df['MACD'] = ema12 - ema26
+        df['Signal'] = df['MACD'].ewm(span=9, adjust=False).mean()
+        df['MACD_Hist'] = df['MACD'] - df['Signal']
+        df['SMA20'] = df['Close'].rolling(window=20).mean()
+        df['SMA50'] = df['Close'].rolling(window=50).mean()
+
+        # Generar señales
+        def generar_senal(row):
+            if pd.isna(row['RSI']) or pd.isna(row['SMA20']) or pd.isna(row['SMA50']):
+                return 'MANTENER'
+            
+            indicadores_alcistas = 0
+            indicadores_bajistas = 0
+            
+            if row['RSI'] < 30:
+                indicadores_alcistas += 1
+            elif row['RSI'] > 70:
+                indicadores_bajistas += 1
+            
+            if row['MACD_Hist'] > 0:
+                indicadores_alcistas += 1
+            elif row['MACD_Hist'] < 0:
+                indicadores_bajistas += 1
+            
+            if row['SMA20'] > row['SMA50']:
+                indicadores_alcistas += 1
+            elif row['SMA20'] < row['SMA50']:
+                indicadores_bajistas += 1
+            
+            if indicadores_alcistas > indicadores_bajistas:
+                return 'COMPRAR'
+            elif indicadores_bajistas > indicadores_alcistas:
+                return 'VENDER'
+            else:
+                return 'MANTENER'
+
+        df['Senal'] = df.apply(generar_senal, axis=1)
+
+        # Simular estrategia PSO
+        posicion = 0
+        capital_inicial = 10000
+        capital = capital_inicial
+        operaciones = []
+        historial_capital = []
+
+        for i in range(len(df)):
+            row = df.iloc[i]
+            precio = row['Close']
+            senal = row['Senal']
+            fecha = df.index[i]
+
+            if senal == 'COMPRAR' and posicion == 0:
+                posicion = capital / precio
+                capital = 0
+                operaciones.append({
+                    'fecha': fecha.strftime('%Y-%m-%d'),
+                    'tipo': 'COMPRA',
+                    'precio': float(precio)
+                })
+            elif senal == 'VENDER' and posicion > 0:
+                capital = posicion * precio
+                operaciones.append({
+                    'fecha': fecha.strftime('%Y-%m-%d'),
+                    'tipo': 'VENTA',
+                    'precio': float(precio),
+                    'ganancia': float(capital - capital_inicial)
+                })
+                posicion = 0
+
+            if posicion > 0:
+                capital_actual = posicion * precio
+            else:
+                capital_actual = capital
+            
+            historial_capital.append({
+                'fecha': fecha.strftime('%Y-%m-%d'),
+                'capital': float(capital_actual)
+            })
+
+        if posicion > 0:
+            capital = posicion * df['Close'].iloc[-1]
+
+        # Calcular métricas
+        capital_final_pso = historial_capital[-1]['capital']
+        retorno_total_pso = (capital_final_pso - capital_inicial) / capital_inicial * 100
+
+        capitales = [h['capital'] for h in historial_capital]
+        retornos_diarios = pd.Series(capitales).pct_change().dropna()
+        
+        if len(retornos_diarios) > 0 and retornos_diarios.std() != 0:
+            sharpe_ratio = (retornos_diarios.mean() / retornos_diarios.std()) * (252 ** 0.5)
+        else:
+            sharpe_ratio = 0
+
+        capital_series = pd.Series(capitales)
+        cummax = capital_series.cummax()
+        drawdown = (capital_series - cummax) / cummax
+        max_drawdown = drawdown.min() * 100
+
+        operaciones_cerradas = [op for op in operaciones if 'ganancia' in op]
+        if len(operaciones_cerradas) > 0:
+            ganadoras = len([op for op in operaciones_cerradas if op['ganancia'] > 0])
+            win_rate = (ganadoras / len(operaciones_cerradas)) * 100
+        else:
+            win_rate = 0
+
+        # Buy & Hold
+        precio_inicial = df['Close'].iloc[0]
+        precio_final = df['Close'].iloc[-1]
+        retorno_buy_hold = (precio_final - precio_inicial) / precio_inicial * 100
+        capital_final_bh = capital_inicial * (1 + retorno_buy_hold / 100)
+
+        # Historial Buy & Hold
+        historial_bh = []
+        for i in range(len(df)):
+            precio = df['Close'].iloc[i]
+            capital_bh = capital_inicial * (precio / precio_inicial)
+            historial_bh.append({
+                'fecha': df.index[i].strftime('%Y-%m-%d'),
+                'capital': float(capital_bh)
+            })
+
+        resultado = {
+            "ticker": ticker,
+            "periodo": {
+                "inicio": df.index[0].strftime('%Y-%m-%d'),
+                "fin": df.index[-1].strftime('%Y-%m-%d'),
+                "dias": len(df)
+            },
+            "estrategia_pso": {
+                "capital_inicial": capital_inicial,
+                "capital_final": float(capital_final_pso),
+                "retorno_total": float(retorno_total_pso),
+                "sharpe_ratio": float(sharpe_ratio),
+                "max_drawdown": float(max_drawdown),
+                "win_rate": float(win_rate),
+                "num_operaciones": len(operaciones_cerradas),
+                "historial_capital": historial_capital
+            },
+            "buy_hold": {
+                "capital_inicial": capital_inicial,
+                "capital_final": float(capital_final_bh),
+                "retorno_total": float(retorno_buy_hold),
+                "historial_capital": historial_bh
+            },
+            "comparacion": {
+                "diferencia_retorno": float(retorno_total_pso - retorno_buy_hold),
+                "ganador": "PSO" if capital_final_pso > capital_final_bh else "Buy & Hold"
+            },
+            "operaciones": operaciones
+        }
+
+        return resultado
+
+    except Exception as e:
+        return {"error": f"Error en backtesting: {str(e)}"}
 
 
 # -------------------------
@@ -412,6 +640,55 @@ def crear_grafico_precio_indicadores(historico_data, ticker):
     return fig
 
 
+def crear_grafico_backtest(data_backtest):
+    """Crea gráfico comparativo de curvas de capital"""
+    if not data_backtest or "error" in data_backtest:
+        return None
+    
+    pso_hist = data_backtest['estrategia_pso']['historial_capital']
+    bh_hist = data_backtest['buy_hold']['historial_capital']
+    
+    df_pso = pd.DataFrame(pso_hist)
+    df_bh = pd.DataFrame(bh_hist)
+    
+    df_pso['fecha'] = pd.to_datetime(df_pso['fecha'])
+    df_bh['fecha'] = pd.to_datetime(df_bh['fecha'])
+    
+    fig = go.Figure()
+    
+    # Curva PSO
+    fig.add_trace(go.Scatter(
+        x=df_pso['fecha'],
+        y=df_pso['capital'],
+        name='Estrategia PSO',
+        line=dict(color='#4aa3ff', width=3)
+    ))
+    
+    # Curva Buy & Hold
+    fig.add_trace(go.Scatter(
+        x=df_bh['fecha'],
+        y=df_bh['capital'],
+        name='Buy & Hold',
+        line=dict(color='#f0a92f', width=3)
+    ))
+    
+    fig.update_layout(
+        title="Evolución del Capital: PSO vs Buy & Hold",
+        xaxis_title="Fecha",
+        yaxis_title="Capital ($)",
+        height=500,
+        plot_bgcolor='#1a1a1a',
+        paper_bgcolor='#2c2c2a',
+        font=dict(color='white'),
+        hovermode='x unified'
+    )
+    
+    fig.update_xaxes(showgrid=True, gridcolor='#3a3a3a')
+    fig.update_yaxes(showgrid=True, gridcolor='#3a3a3a')
+    
+    return fig
+
+
 # -------------------------
 # FUNCIONES UI
 # -------------------------
@@ -445,36 +722,197 @@ def signal_card_class(senal):
 # -------------------------
 st.sidebar.title("Consulta Langflow")
 
+# Selector de vista
+vista = st.sidebar.radio(
+    "Vista",
+    ["Análisis en Vivo", "Backtesting"]
+)
+
 ticker = st.sidebar.selectbox(
     "Selecciona ticker",
     ["BVN", "SCCO"]
 )
 
-modo_comparacion = st.sidebar.checkbox("Modo comparación (BVN vs SCCO)", value=False)
+if vista == "Análisis en Vivo":
+    modo_comparacion = st.sidebar.checkbox("Modo comparación (BVN vs SCCO)", value=False)
 
-if st.sidebar.button("Analizar"):
-    with st.spinner("Ejecutando flujo multiagente en Langflow..."):
-        try:
-            if modo_comparacion:
-                # Analizar ambos tickers
-                data_bvn = ejecutar_langflow("BVN")
-                data_scco = ejecutar_langflow("SCCO")
-                st.session_state["data_bvn"] = data_bvn
-                st.session_state["data_scco"] = data_scco
-                st.session_state["modo_comparacion"] = True
-            else:
-                data_result = ejecutar_langflow(ticker)
-                st.session_state["data"] = data_result
-                st.session_state["modo_comparacion"] = False
-            
-            st.sidebar.success("Análisis completado.")
-        except Exception as e:
-            st.sidebar.error("Error ejecutando Langflow.")
-            st.sidebar.exception(e)
+    if st.sidebar.button("Analizar"):
+        with st.spinner("Ejecutando flujo multiagente en Langflow..."):
+            try:
+                if modo_comparacion:
+                    data_bvn = ejecutar_langflow("BVN")
+                    data_scco = ejecutar_langflow("SCCO")
+                    st.session_state["data_bvn"] = data_bvn
+                    st.session_state["data_scco"] = data_scco
+                    st.session_state["modo_comparacion"] = True
+                else:
+                    data_result = ejecutar_langflow(ticker)
+                    st.session_state["data"] = data_result
+                    st.session_state["modo_comparacion"] = False
+                
+                st.sidebar.success("Análisis completado.")
+            except Exception as e:
+                st.sidebar.error("Error ejecutando Langflow.")
+                st.sidebar.exception(e)
 
-# -------------------------
+elif vista == "Backtesting":
+    periodo = st.sidebar.selectbox(
+        "Período de backtesting",
+        ["3 meses (90 días)", "6 meses (180 días)", "1 año (365 días)"]
+    )
+    
+    dias_map = {
+        "3 meses (90 días)": 90,
+        "6 meses (180 días)": 180,
+        "1 año (365 días)": 365
+    }
+    
+    dias = dias_map[periodo]
+    
+    if st.sidebar.button("Ejecutar Backtest"):
+        with st.spinner(f"Ejecutando backtest de {dias} días..."):
+            try:
+                resultado = ejecutar_backtest(ticker, dias)
+                st.session_state["backtest_data"] = resultado
+                st.sidebar.success("Backtest completado.")
+            except Exception as e:
+                st.sidebar.error("Error ejecutando backtest.")
+                st.sidebar.exception(e)
+
+
+# ========================
+# VISTA: BACKTESTING
+# ========================
+if vista == "Backtesting":
+    st.markdown(
+        """
+        <h1 style="color:white; font-size:28px;">
+            Backtesting — Validación de Rendimiento Histórico
+        </h1>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    if "backtest_data" not in st.session_state:
+        st.info("Selecciona un ticker y período en la barra lateral, luego presiona 'Ejecutar Backtest'.")
+        st.stop()
+    
+    data_bt = st.session_state["backtest_data"]
+    
+    if "error" in data_bt:
+        st.error(f"Error: {data_bt['error']}")
+        st.stop()
+    
+    # Header
+    st.markdown(f"### {data_bt['ticker']} — {data_bt['periodo']['inicio']} al {data_bt['periodo']['fin']} ({data_bt['periodo']['dias']} días)")
+    
+    st.write("")
+    
+    # Métricas comparativas
+    col1, col2, col3 = st.columns(3)
+    
+    pso = data_bt['estrategia_pso']
+    bh = data_bt['buy_hold']
+    comp = data_bt['comparacion']
+    
+    with col1:
+        st.markdown(f"""
+        <div class="card">
+            <div class="card-title">Estrategia PSO</div>
+            <div class="metric-big">{pso['retorno_total']:.2f}%</div>
+            <div class="metric-small">Retorno total</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown(f"""
+        <div class="card">
+            <div class="card-title">Buy & Hold</div>
+            <div class="metric-big">{bh['retorno_total']:.2f}%</div>
+            <div class="metric-small">Retorno total</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        ganador_color = "#19c39c" if comp['ganador'] == "PSO" else "#f0a92f"
+        st.markdown(f"""
+        <div class="card">
+            <div class="card-title">Ganador</div>
+            <div class="metric-big" style="color:{ganador_color};">{comp['ganador']}</div>
+            <div class="metric-small">Diferencia: {comp['diferencia_retorno']:.2f}%</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.write("")
+    
+    # Gráfico de curvas de capital
+    fig_bt = crear_grafico_backtest(data_bt)
+    if fig_bt:
+        st.plotly_chart(fig_bt, use_container_width=True)
+    
+    st.write("")
+    
+    # Métricas detalladas
+    st.markdown("### Métricas de Riesgo y Rendimiento")
+    
+    m1, m2, m3, m4 = st.columns(4)
+    
+    with m1:
+        st.markdown(f"""
+        <div class="card">
+            <div class="card-title">Sharpe Ratio</div>
+            <div class="metric-big">{pso['sharpe_ratio']:.2f}</div>
+            <div class="metric-small">Anualizado</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with m2:
+        st.markdown(f"""
+        <div class="card">
+            <div class="card-title">Max Drawdown</div>
+            <div class="metric-big">{pso['max_drawdown']:.2f}%</div>
+            <div class="metric-small">Pérdida máxima</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with m3:
+        st.markdown(f"""
+        <div class="card">
+            <div class="card-title">Win Rate</div>
+            <div class="metric-big">{pso['win_rate']:.1f}%</div>
+            <div class="metric-small">Operaciones ganadoras</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with m4:
+        st.markdown(f"""
+        <div class="card">
+            <div class="card-title">Operaciones</div>
+            <div class="metric-big">{pso['num_operaciones']}</div>
+            <div class="metric-small">Total ejecutadas</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.write("")
+    
+    # Tabla de operaciones
+    st.markdown("### Historial de Operaciones")
+    
+    ops = data_bt['operaciones']
+    if len(ops) > 0:
+        df_ops = pd.DataFrame(ops)
+        st.dataframe(df_ops, use_container_width=True)
+    else:
+        st.info("No hubo operaciones en este período.")
+    
+    st.stop()
+
+
+# ========================
+# RESTO DEL CÓDIGO ORIGINAL PARA "ANÁLISIS EN VIVO"
+# ========================
+
 # MODO COMPARACIÓN
-# -------------------------
 if st.session_state.get("modo_comparacion", False):
     st.markdown(
         """
@@ -507,7 +945,6 @@ if st.session_state.get("modo_comparacion", False):
             </div>
             """, unsafe_allow_html=True)
             
-            # Métricas
             pesos = data.get("pesos_utilizados", {})
             st.markdown("**Pesos PSO:**")
             st.write(f"Técnico: {pct(pesos.get('tecnico', 0))}% | Commodities: {pct(pesos.get('commodities', 0))}%")
@@ -515,9 +952,7 @@ if st.session_state.get("modo_comparacion", False):
     
     st.stop()
 
-# -------------------------
 # MODO NORMAL
-# -------------------------
 if "data" not in st.session_state:
     st.markdown(
         """
@@ -533,10 +968,7 @@ if "data" not in st.session_state:
 
 data = st.session_state["data"]
 
-
-# -------------------------
 # HEADER
-# -------------------------
 st.markdown(
     """
     <h1 style="color:white; font-size:28px;">
@@ -559,20 +991,14 @@ st.markdown(html_tickers, unsafe_allow_html=True)
 
 st.write("")
 
-
-# -------------------------
 # VALORES SEGUROS
-# -------------------------
 dashboard = data.get("dashboard", {})
 senal_final = data.get("senal_final", "MANTENER")
 score_final = float(data.get("score_final", 0))
 confianza_final = float(data.get("confianza_final", 0))
 nivel_confianza = dashboard.get("nivel_confianza", "baja")
 
-
-# -------------------------
 # MÉTRICAS SUPERIORES
-# -------------------------
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -604,22 +1030,16 @@ with col3:
 
 st.write("")
 
-
-# -------------------------
 # GRÁFICO DE PRECIO E INDICADORES
-# -------------------------
 st.markdown("<h2 style='color:white;'>Análisis Técnico Visual</h2>", unsafe_allow_html=True)
 
-# Buscar datos históricos
 historico = None
 detalle_agentes = data.get("detalle_agentes", {})
 tecnico = detalle_agentes.get("tecnico", {})
 
-# Intentar obtener del Coordinador
 if "historico" in tecnico and tecnico["historico"]:
     historico = tecnico["historico"]
 else:
-    # Fallback: obtener directamente desde Alpha Vantage
     with st.spinner("Obteniendo datos históricos..."):
         historico = obtener_historico_directo(ticker_actual)
 
@@ -634,14 +1054,10 @@ else:
 
 st.write("")
 
-
-# -------------------------
 # CUERPO PRINCIPAL
-# -------------------------
 left, right = st.columns([1, 1])
 
 with left:
-    # Estado de los agentes
     st.markdown('<div class="card" style="min-height:500px;"><div class="card-title" style="font-size:20px;">Estado de los agentes</div>', unsafe_allow_html=True)
     
     nombres = {
@@ -672,7 +1088,6 @@ with left:
         '''
         st.markdown(row_html, unsafe_allow_html=True)
 
-    # PSO row
     st.markdown('''
     <div class="agent-row">
         <div class="agent-name">Agente swarm<br>(PSO)</div>
@@ -712,10 +1127,7 @@ with right:
 
 st.write("")
 
-
-# -------------------------
 # PESOS PSO
-# -------------------------
 st.markdown("<h2 style='color:white;'>Pesos optimizados por PSO</h2>", unsafe_allow_html=True)
 
 p1, p2, p3, p4 = st.columns(4)
@@ -746,10 +1158,7 @@ for col, name, value in zip(
         </div>
         """, unsafe_allow_html=True)
 
-
-# -------------------------
 # DETALLE POR AGENTE
-# -------------------------
 st.markdown("<h2 style='color:white;'>Detalle por agente</h2>", unsafe_allow_html=True)
 
 detalle = data.get("detalle_agentes", {})
@@ -781,10 +1190,7 @@ for idx, key in enumerate(["tecnico", "commodities", "sentimiento", "riesgo"]):
         '''
         st.markdown(card_html, unsafe_allow_html=True)
 
-
-# -------------------------
 # LIMITACIONES
-# -------------------------
 st.markdown("<h2 style='color:white;'>Limitaciones</h2>", unsafe_allow_html=True)
 
 limitaciones = data.get("limitaciones", ["Sin limitaciones relevantes"])
@@ -792,9 +1198,6 @@ limitaciones = data.get("limitaciones", ["Sin limitaciones relevantes"])
 for item in limitaciones:
     st.warning(item)
 
-
-# -------------------------
 # DEBUG OPCIONAL
-# -------------------------
 with st.expander("Ver JSON completo recibido"):
     st.json(data)
