@@ -1,4 +1,5 @@
 import os
+import sys
 import streamlit as st
 import requests
 import json
@@ -8,6 +9,16 @@ from plotly.subplots import make_subplots
 import pandas as pd
 from datetime import datetime
 
+# Módulo BVL: fuente primaria de datos históricos
+_BVL_DATA_DIR = os.path.join(os.path.dirname(__file__), "data_bvl")
+if _BVL_DATA_DIR not in sys.path:
+    sys.path.insert(0, _BVL_DATA_DIR)
+try:
+    from bvl_data import obtener_df_para_backtest, obtener_historico_para_grafico
+    _BVL_DISPONIBLE = True
+except Exception:
+    _BVL_DISPONIBLE = False
+
 st.set_page_config(
     page_title="Soporte de decisión — acciones mineras BVL",
     layout="wide"
@@ -16,12 +27,68 @@ st.set_page_config(
 # -------------------------
 # CONFIG LANGFLOW Y APIs
 # -------------------------
-LANGFLOW_URL = os.environ.get(
-    "LANGFLOW_URL",
-    "http://localhost:7860/api/v1/run/20cf6881-d257-40ee-94ed-8b944548e1d0"
-)
+LANGFLOW_BASE = os.environ.get("LANGFLOW_BASE_URL", "http://localhost:7860")
 LANGFLOW_API_KEY = os.environ.get("LANGFLOW_API_KEY", "")
-ALPHA_VANTAGE_KEY = os.environ.get("ALPHA_VANTAGE_KEY", "")
+LANGFLOW_USER = os.environ.get("LANGFLOW_USER", "langflow")
+LANGFLOW_PASS = os.environ.get("LANGFLOW_PASS", "langflow")
+ALPHA_VANTAGE_KEY = os.environ.get("ALPHA_VANTAGE_KEY", "TPTUYCIWJ2JYRVWQ")
+
+_lf_token: str | None = None
+_lf_api_key: str | None = None
+_lf_flow_id: str | None = None
+
+
+def _lf_login() -> str:
+    r = requests.post(
+        f"{LANGFLOW_BASE}/api/v1/login",
+        data={"username": LANGFLOW_USER, "password": LANGFLOW_PASS},
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        timeout=10,
+    )
+    r.raise_for_status()
+    return r.json()["access_token"]
+
+
+def _lf_get_key() -> str:
+    """Retorna x-api-key válida: la del env var o crea una via login."""
+    global _lf_token, _lf_api_key
+    if LANGFLOW_API_KEY:
+        return LANGFLOW_API_KEY
+    if _lf_api_key:
+        return _lf_api_key
+    if not _lf_token:
+        _lf_token = _lf_login()
+    r = requests.post(
+        f"{LANGFLOW_BASE}/api/v1/api_key/",
+        json={"name": "streamlit-auto"},
+        headers={"Authorization": f"Bearer {_lf_token}", "Content-Type": "application/json"},
+        timeout=10,
+    )
+    r.raise_for_status()
+    _lf_api_key = r.json()["api_key"]
+    return _lf_api_key
+
+
+def _lf_auth_headers() -> dict:
+    return {"Content-Type": "application/json", "x-api-key": _lf_get_key()}
+
+
+def _lf_get_flow_id() -> str:
+    global _lf_flow_id
+    if _lf_flow_id:
+        return _lf_flow_id
+    r = requests.get(f"{LANGFLOW_BASE}/api/v1/flows/", headers=_lf_auth_headers(), timeout=10)
+    r.raise_for_status()
+    flows = r.json() if isinstance(r.json(), list) else r.json().get("items", [])
+    for f in flows:
+        name = f.get("name", "").lower()
+        if "sistema" in name or "bvl" in name or "minera" in name:
+            _lf_flow_id = f["id"]
+            return _lf_flow_id
+    if flows:
+        _lf_flow_id = flows[0]["id"]
+        return _lf_flow_id
+    raise RuntimeError("No se encontró ningún flow en LangFlow")
 
 
 # -------------------------
@@ -275,62 +342,79 @@ def extraer_json_de_langflow_response(response_json):
 
 def ejecutar_langflow(ticker):
     """Ejecuta el flujo de Langflow y devuelve el JSON del coordinador"""
+    global _lf_token, _lf_flow_id
+
+    # Pre-fetch noticias desde app.py para evitar dependencia del SecretStr en LangFlow
+    noticias_bloque = prefetch_noticias_sentimiento(ticker)
+    input_value = f"Analiza {ticker}"
+    if noticias_bloque:
+        input_value += f"\n\n{noticias_bloque}"
+
     payload = {
         "output_type": "chat",
         "input_type": "chat",
-        "input_value": f"Analiza {ticker}"
+        "input_value": input_value,
     }
 
-    headers = {
-        "Content-Type": "application/json",
-        "x-api-key": LANGFLOW_API_KEY
-    }
+    def _run():
+        flow_id = _lf_get_flow_id()
+        url = f"{LANGFLOW_BASE}/api/v1/run/{flow_id}"
+        return requests.post(url, json=payload, headers=_lf_auth_headers(), timeout=240)
 
-    response = requests.post(
-        LANGFLOW_URL,
-        json=payload,
-        headers=headers,
-        timeout=240
-    )
+    response = _run()
+
+    # Si el token expiró, refrescamos y reintentamos una vez
+    if response.status_code in (401, 403) and not LANGFLOW_API_KEY:
+        _lf_token = None
+        _lf_flow_id = None
+        response = _run()
 
     response.raise_for_status()
     return extraer_json_de_langflow_response(response.json())
 
 
-def ejecutar_backtest(ticker, dias):
-    """Ejecuta el backtesting desde Alpha Vantage directamente"""
-    try:
-        # Delay para respetar rate limit de Alpha Vantage (5 req/min)
-        import time
-        time.sleep(15)  # Esperar 15 segundos antes de hacer la petición
-        
-        # Descargar datos
-        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&outputsize=compact&apikey={ALPHA_VANTAGE_KEY}"
-        
-        response = requests.get(url, timeout=20)
-        data = response.json()
-        
-        # DEBUG: Ver qué devuelve la API
-        print(f"DEBUG BACKTEST - Keys en respuesta: {list(data.keys())}")
+def _cargar_df_backtest(ticker, dias):
+    """Carga datos históricos: BVL primero, Alpha Vantage como fallback."""
+    if _BVL_DISPONIBLE:
+        df = obtener_df_para_backtest(ticker, dias)
+        if df is not None and len(df) >= 20:
+            print(f"[BVL] Backtest {ticker}: {len(df)} días desde BVL")
+            return df, None
+
+    # Fallback Alpha Vantage
+    import time
+    time.sleep(15)
+    url = (
+        f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY"
+        f"&symbol={ticker}&outputsize=compact&apikey={ALPHA_VANTAGE_KEY}"
+    )
+    response = requests.get(url, timeout=20)
+    data = response.json()
+    if "Time Series (Daily)" not in data:
+        error_msg = "No se pudieron obtener datos históricos"
         if "Note" in data:
-            print(f"DEBUG BACKTEST - Rate limit: {data['Note']}")
+            error_msg = "Rate limit alcanzado — espera 1 minuto"
+        elif "Error Message" in data:
+            error_msg = f"Error API: {data['Error Message']}"
+        return None, error_msg
 
-        if "Time Series (Daily)" not in data:
-            error_msg = "No se pudieron obtener datos históricos"
-            if "Note" in data:
-                error_msg = "Rate limit alcanzado - espera 1 minuto"
-            elif "Error Message" in data:
-                error_msg = f"Error API: {data['Error Message']}"
-            return {"error": error_msg}
+    ts = data["Time Series (Daily)"]
+    df = pd.DataFrame.from_dict(ts, orient="index")
+    df.columns = ["Open", "High", "Low", "Close", "Volume"]
+    df = df.astype(float)
+    df.index = pd.to_datetime(df.index)
+    df = df.sort_index().tail(dias)
+    return df, None
 
-        # Convertir a DataFrame
-        ts = data["Time Series (Daily)"]
-        df = pd.DataFrame.from_dict(ts, orient='index')
-        df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
-        df = df.astype(float)
-        df.index = pd.to_datetime(df.index)
-        df = df.sort_index()
-        df = df.tail(dias)
+
+def ejecutar_backtest(ticker, dias):
+    """Ejecuta el backtesting con datos de BVL (fallback: Alpha Vantage)"""
+    try:
+        df, error = _cargar_df_backtest(ticker, dias)
+        if error:
+            return {"error": error}
+        if df is None:
+            return {"error": "No se pudieron obtener datos históricos"}
 
         if len(df) < 20:
             return {"error": "Datos insuficientes para backtesting"}
@@ -505,65 +589,171 @@ def ejecutar_backtest(ticker, dias):
 
 
 # -------------------------
+# PRE-FETCH DE NOTICIAS (evita depender del SecretStr en LangFlow)
+# -------------------------
+def prefetch_noticias_sentimiento(ticker: str) -> str:
+    """Obtiene noticias AV y devuelve un bloque de texto listo para inyectar al input de LangFlow."""
+    cache_key = f"_noticias_{ticker}"
+    if cache_key in st.session_state and st.session_state[cache_key]:
+        return st.session_state[cache_key]
+
+    if not ALPHA_VANTAGE_KEY:
+        return ""
+
+    primary = ticker.upper()
+    secondary = "BVN" if primary == "SCCO" else "SCCO"
+
+    def fetch_single(t):
+        try:
+            url = (f"https://www.alphavantage.co/query?function=NEWS_SENTIMENT"
+                   f"&tickers={t}&limit=15&apikey={ALPHA_VANTAGE_KEY}")
+            resp = requests.get(url, timeout=15).json()
+            if resp.get("Information") or resp.get("Note"):
+                return []
+            feed = resp.get("feed", [])
+            relevant = []
+            for art in feed:
+                for ts in art.get("ticker_sentiment", []):
+                    if ts.get("ticker") == t and float(ts.get("relevance_score", 0)) >= 0.05:
+                        art2 = dict(art)
+                        art2["_ts"] = float(ts.get("ticker_sentiment_score", 0))
+                        relevant.append(art2)
+                        break
+            return relevant if relevant else feed
+        except Exception:
+            return []
+
+    articles = fetch_single(primary)
+    if not articles:
+        articles = fetch_single(secondary)
+        if articles:
+            primary = secondary
+
+    if not articles:
+        return ""
+
+    alcistas = bajistas = neutros = 0
+    lineas = []
+    for i, art in enumerate(articles[:8], 1):
+        titulo = art.get("title", "Sin titulo")
+        fecha = art.get("time_published", "")[:8]
+        if len(fecha) == 8:
+            fecha = f"{fecha[:4]}-{fecha[4:6]}-{fecha[6:8]}"
+        label = art.get("overall_sentiment_label", "Neutral")
+        score = float(art.get("overall_sentiment_score", 0))
+        ts_score = art.get("_ts", score)
+        resumen = art.get("summary", "")[:180]
+        if score > 0.15:
+            alcistas += 1
+        elif score < -0.15:
+            bajistas += 1
+        else:
+            neutros += 1
+        lineas.append(
+            f"[{i}] {titulo}\n"
+            f"    Fecha:{fecha} | Sentimiento:{label}({score:+.3f}) | Ticker:{ts_score:+.3f}\n"
+            f"    {resumen}"
+        )
+
+    total = alcistas + bajistas + neutros
+    tendencia = "ALCISTA" if alcistas > bajistas else ("BAJISTA" if bajistas > alcistas else "NEUTRAL")
+    bloque = (
+        f"[NOTICIAS_PREFETCH ticker={primary}]\n"
+        f"Total:{total} | Alcistas:{alcistas} | Bajistas:{bajistas} | Neutras:{neutros}\n"
+        f"Tendencia:{tendencia}\n\n" + "\n\n".join(lineas)
+    )
+    st.session_state[cache_key] = bloque
+    return bloque
+
+
+# -------------------------
 # FUNCIÓN PARA OBTENER HISTÓRICOS
 # -------------------------
+def _calcular_indicadores_historico(df_close):
+    """Calcula RSI, MACD, SMA20, SMA50 sobre una Serie de precios de cierre."""
+    def _rsi(p, n=14):
+        d = p.diff()
+        g = d.where(d > 0, 0).rolling(n).mean()
+        l = -d.where(d < 0, 0).rolling(n).mean()
+        return 100 - (100 / (1 + g / l))
+
+    rsi    = _rsi(df_close)
+    ema12  = df_close.ewm(span=12, adjust=False).mean()
+    ema26  = df_close.ewm(span=26, adjust=False).mean()
+    macd   = ema12 - ema26
+    signal = macd.ewm(span=9, adjust=False).mean()
+    sma20  = df_close.rolling(20).mean()
+    sma50  = df_close.rolling(50).mean() if len(df_close) >= 50 else None
+
+    result = []
+    for date, close in df_close.items():
+        def _v(s):
+            if s is None or date not in s.index:
+                return None
+            v = s.loc[date]
+            return None if pd.isna(v) else float(v)
+        result.append({
+            "fecha":  date.strftime("%Y-%m-%d"),
+            "close":  float(close),
+            "rsi":    _v(rsi),
+            "macd":   _v(macd),
+            "signal": _v(signal),
+            "sma20":  _v(sma20),
+            "sma50":  _v(sma50),
+        })
+    return result
+
+
 def obtener_historico_directo(ticker):
-    """Obtiene datos históricos directamente desde Alpha Vantage como fallback"""
-    try:
-        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&outputsize=compact&apikey={ALPHA_VANTAGE_KEY}"
-        response = requests.get(url, timeout=15)
-        data = response.json()
-        
-        if "Time Series (Daily)" not in data:
+    """Obtiene datos históricos: BVL CSV primero, Alpha Vantage como fallback.
+    Cachea en session_state para evitar múltiples llamadas a la API en la misma sesión."""
+    cache_key = f"_historico_{ticker}"
+    if cache_key in st.session_state and st.session_state[cache_key]:
+        return st.session_state[cache_key]
+
+    historico = None
+
+    # Fuente primaria: BVL CSV local
+    if _BVL_DISPONIBLE:
+        try:
+            historico = obtener_historico_para_grafico(ticker, dias=60)
+            if historico:
+                print(f"[BVL] Histórico gráfico {ticker}: {len(historico)} días desde BVL")
+        except Exception as e:
+            print(f"[BVL] Error gráfico: {e}")
+
+    # Fallback: Alpha Vantage TIME_SERIES_DAILY
+    if not historico:
+        if not ALPHA_VANTAGE_KEY:
+            print("[AV] ALPHA_VANTAGE_KEY no configurada, no se puede obtener histórico")
             return None
-        
-        ts = data["Time Series (Daily)"]
-        df = pd.DataFrame.from_dict(ts, orient='index')
-        df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
-        df = df.astype(float)
-        df.index = pd.to_datetime(df.index)
-        df = df.sort_index()
-        df = df.tail(60)
-        
-        # Calcular RSI
-        def calcular_rsi(precios, periodo=14):
-            delta = precios.diff()
-            ganancia = delta.where(delta > 0, 0).rolling(window=periodo).mean()
-            perdida = -delta.where(delta < 0, 0).rolling(window=periodo).mean()
-            rs = ganancia / perdida
-            rsi = 100 - (100 / (1 + rs))
-            return rsi
-        
-        rsi = calcular_rsi(df['Close'])
-        
-        # Calcular MACD
-        ema12 = df['Close'].ewm(span=12, adjust=False).mean()
-        ema26 = df['Close'].ewm(span=26, adjust=False).mean()
-        macd = ema12 - ema26
-        signal = macd.ewm(span=9, adjust=False).mean()
-        
-        # SMAs
-        sma20 = df['Close'].rolling(window=20).mean()
-        sma50 = df['Close'].rolling(window=50).mean() if len(df) >= 50 else None
-        
-        # Preparar datos
-        historico = []
-        for date, row in df.iterrows():
-            historico.append({
-                "fecha": date.strftime('%Y-%m-%d'),
-                "close": float(row['Close']),
-                "rsi": float(rsi.loc[date]) if date in rsi.index and not pd.isna(rsi.loc[date]) else None,
-                "macd": float(macd.loc[date]) if date in macd.index else None,
-                "signal": float(signal.loc[date]) if date in signal.index else None,
-                "sma20": float(sma20.loc[date]) if date in sma20.index and not pd.isna(sma20.loc[date]) else None,
-                "sma50": float(sma50.loc[date]) if sma50 is not None and date in sma50.index and not pd.isna(sma50.loc[date]) else None
-            })
-        
-        return historico
-        
-    except Exception as e:
-        st.error(f"Error obteniendo datos históricos: {e}")
-        return None
+        try:
+            url = (
+                f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY"
+                f"&symbol={ticker}&outputsize=compact&apikey={ALPHA_VANTAGE_KEY}"
+            )
+            response = requests.get(url, timeout=20)
+            resp_data = response.json()
+
+            if "Time Series (Daily)" not in resp_data:
+                msg = resp_data.get("Note") or resp_data.get("Information") or "sin datos"
+                print(f"[AV] TIME_SERIES_DAILY {ticker}: {msg}")
+                return None
+
+            ts = resp_data["Time Series (Daily)"]
+            df = pd.DataFrame.from_dict(ts, orient="index").astype(float)
+            df.columns = ["Open", "High", "Low", "Close", "Volume"]
+            df.index = pd.to_datetime(df.index)
+            df = df.sort_index().tail(60)
+            historico = _calcular_indicadores_historico(df["Close"])
+            print(f"[AV] Histórico {ticker}: {len(historico)} días desde Alpha Vantage")
+        except Exception as e:
+            print(f"[AV] Error obteniendo histórico {ticker}: {e}")
+            return None
+
+    if historico:
+        st.session_state[cache_key] = historico
+    return historico
 
 
 # -------------------------
@@ -738,6 +928,12 @@ if vista == "Análisis en Vivo":
     modo_comparacion = st.sidebar.checkbox("Modo comparación (BVN vs SCCO)", value=False)
 
     if st.sidebar.button("Analizar"):
+        # Pre-fetch histórico antes del flow para usar datos cacheados en el chart
+        with st.spinner("Precargando datos históricos..."):
+            tickers_a_precargar = ["BVN", "SCCO"] if modo_comparacion else [ticker]
+            for t in tickers_a_precargar:
+                obtener_historico_directo(t)
+
         with st.spinner("Ejecutando flujo multiagente en Langflow..."):
             try:
                 if modo_comparacion:
@@ -750,7 +946,7 @@ if vista == "Análisis en Vivo":
                     data_result = ejecutar_langflow(ticker)
                     st.session_state["data"] = data_result
                     st.session_state["modo_comparacion"] = False
-                
+
                 st.sidebar.success("Análisis completado.")
             except Exception as e:
                 st.sidebar.error("Error ejecutando Langflow.")
@@ -1034,15 +1230,13 @@ st.write("")
 # GRÁFICO DE PRECIO E INDICADORES
 st.markdown("<h2 style='color:white;'>Análisis Técnico Visual</h2>", unsafe_allow_html=True)
 
-historico = None
 detalle_agentes = data.get("detalle_agentes", {})
 tecnico = detalle_agentes.get("tecnico", {})
 
-if "historico" in tecnico and tecnico["historico"]:
-    historico = tecnico["historico"]
-else:
-    with st.spinner("Obteniendo datos históricos..."):
-        historico = obtener_historico_directo(ticker_actual)
+# Siempre obtener historico directamente: BVL primero, Alpha Vantage como fallback.
+# No dependemos del LangFlow response porque el LLM trunca arrays grandes.
+with st.spinner("Cargando datos históricos..."):
+    historico = obtener_historico_directo(ticker_actual)
 
 if historico and len(historico) > 0:
     fig = crear_grafico_precio_indicadores(historico, ticker_actual)

@@ -8,14 +8,22 @@ RUN pip install --no-cache-dir \
     pandas \
     numpy \
     scipy \
-    requests
+    requests \
+    streamlit>=1.35.0
 
-RUN mkdir -p /app/flows
+RUN mkdir -p /app/flows /app/data_bvl/data
 
 COPY sistema_bvl.json /app/flows/sistema_bvl.json
+COPY app.py /app/app.py
+COPY data_bvl/ /app/data_bvl/
+COPY start.sh /app/start.sh
+USER root
+RUN chmod +x /app/start.sh
 
 WORKDIR /app
 
-EXPOSE 7860
+ENV LANGFLOW_LOAD_FLOWS_PATH=/app/flows
 
-CMD langflow run --host 0.0.0.0 --port ${PORT:-7860}
+EXPOSE 7860 8501
+
+CMD ["/app/start.sh"]
