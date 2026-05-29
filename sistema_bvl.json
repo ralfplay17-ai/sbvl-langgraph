@@ -513,6 +513,34 @@
         "sourceHandle": "{œdataTypeœ:œDeepSeekModelComponentœ,œidœ:œDeepSeekModelComponent-xKCYBœ,œnameœ:œmodel_outputœ,œoutput_typesœ:[œLanguageModelœ]}",
         "target": "Agent-ivsIj",
         "targetHandle": "{œfieldNameœ:œmodelœ,œidœ:œAgent-ivsIjœ,œinputTypesœ:[œLanguageModelœ],œtypeœ:œmodelœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ChatInput",
+            "id": "ChatInput-zpHDh",
+            "name": "message",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "Agent-2DK9d",
+            "inputTypes": [
+              "Message"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-ChatInput-zpHDh{\"dataType\":\"ChatInput\",\"id\":\"ChatInput-zpHDh\",\"name\":\"message\",\"output_types\":[\"Message\"]}-Agent-vfY8N{\"fieldName\":\"input_value\",\"id\":\"Agent-vfY8N\",\"inputTypes\":[\"Message\"],\"type\":\"str\"}",
+        "selected": false,
+        "source": "ChatInput-zpHDh",
+        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-zpHDhœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-vfY8N",
+        "targetHandle": "{\"fieldName\":\"input_value\",\"id\":\"Agent-vfY8N\",\"inputTypes\":[\"Message\"],\"type\":\"str\"}"
       }
     ],
     "nodes": [
