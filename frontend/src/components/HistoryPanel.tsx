@@ -41,11 +41,11 @@ export function HistoryPanel({ history, onSelect }: Props) {
               </span>
             </div>
             <div className="text-right">
+              <p className="text-white font-bold text-base">
+                {item.score_final.toFixed(3)}
+              </p>
               <p className="text-muted text-xs">
                 {format(new Date(item.created_at), "dd MMM, HH:mm", { locale: es })}
-              </p>
-              <p className="text-[#bfbfba] text-xs">
-                Score: {item.score_final.toFixed(3)}
               </p>
             </div>
           </button>
