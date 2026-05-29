@@ -1,88 +1,96 @@
-# Sistema Multiagente para Inversión en Mineras BVL
+# Sistema Multiagente BVL
 
-Dashboard de soporte a la toma de decisiones basado en Swarm Intelligence (PSO) con dos vistas: análisis en vivo y backtesting histórico.
+Sistema de soporte a decisiones de inversión en acciones mineras de la Bolsa de Valores de Lima (BVL), basado en un grafo multiagente con PSO Consensus Engine.
 
-## Vistas
+## Stack
 
-### Análisis en Vivo
-- Orquestación multiagente vía Langflow (4 agentes especializados + coordinador PSO)
-- Señal consolidada: COMPRAR / MANTENER / VENDER con score y confianza
-- Gráfico interactivo de precio con SMA20, SMA50, RSI (14) y MACD
-- Panel de estado de agentes con pesos optimizados por PSO
-- Modo comparación simultánea BVN vs SCCO
-
-### Backtesting
-- Datos históricos desde BVL (fallback: Alpha Vantage)
-- Simula estrategia PSO (señales por RSI + MACD + SMA) vs Buy & Hold
-- Períodos: 3, 6 o 12 meses
-- Métricas: retorno total, Sharpe ratio, max drawdown, win rate, nº operaciones
-- Gráfico comparativo de curvas de capital
-
-## Agentes
-
-| Agente | Especialización |
+| Capa | Tecnología |
 |---|---|
-| Técnico | Indicadores de precio y volumen |
-| Commodities | Precio del cobre y materias primas |
-| Sentimiento | Noticias y prensa financiera |
-| Riesgo | Tipo de cambio y factores macro |
-| Coordinador (PSO) | Consenso ponderado con 50 partículas, 100 iteraciones |
+| Orquestación | LangGraph |
+| LLM | DeepSeek (`deepseek-chat`) |
+| API | FastAPI |
+| Frontend | React 18 + TypeScript + Tailwind CSS |
+| Base de datos | Supabase (opcional) |
 
-## Tecnologías
+## Arquitectura
 
-- **Streamlit** — interfaz web
-- **Langflow** — orquestación de agentes IA
-- **DeepSeek API** — modelo LLM de los agentes
-- **Alpha Vantage** — datos históricos de precios
-- **PySwarms (GlobalBestPSO)** — optimización de pesos de agentes
-- **Plotly** — gráficos interactivos
-- **Pandas** — procesamiento de series temporales
-- **Cloudflare Tunnel** — acceso público seguro sin exponer puertos
+```
+Usuario → FastAPI → LangGraph
+                      ├── Agente Técnico     (Alpha Vantage / BVL)
+                      ├── Agente Commodities  (Twelve Data / Alpha Vantage)
+                      ├── Agente Sentimiento  (Alpha Vantage News)
+                      └── Agente Riesgo       (BCRP API)
+                              ↓
+                      PSO Consensus Engine   (PySwarms GlobalBestPSO)
+                              ↓
+                      Agente Coordinador
+                              ↓
+                      Respuesta final → Frontend React
+```
+
+## Inicio rápido
+
+### 1. Variables de entorno
+
+```bash
+cp .env.example .env
+# Editar .env con tus API keys
+```
+
+### 2. Modo desarrollo
+
+```bash
+# Instalar dependencias
+make install
+
+# Terminal 1 — backend (http://localhost:8000)
+make dev-backend
+
+# Terminal 2 — frontend (http://localhost:5173)
+make dev-frontend
+```
+
+### 3. Docker
+
+```bash
+make build
+make up
+# Backend: http://localhost:8000
+# Frontend: http://localhost:3000
+```
 
 ## Estructura
 
 ```
-sistema-bvl-cloud/
-├── app.py                    # Dashboard Streamlit
-├── sistema_bvl.json          # Flow multiagente (LangFlow)
-├── start.sh                  # Entrypoint del contenedor LangFlow
-├── Dockerfile                # Imagen LangFlow + agentes
-├── Dockerfile.streamlit      # Imagen Streamlit
-├── docker-compose.yml        # Servicios: langflow, streamlit, cloudflared
-├── docker-compose.override.yml  # Puertos locales para desarrollo
-├── cloudflared/
-│   └── config.yml            # Rutas del túnel Cloudflare
-├── data_bvl/                 # Módulo de datos BVL (scraper + CSV cache)
-│   ├── bvl_data.py
-│   ├── api_scraper.py
-│   ├── analytics.py
-│   ├── config.py
-│   ├── storage.py
-│   └── main.py
-├── requirements.txt          # Dependencias Streamlit
-└── .env.example              # Variables de entorno requeridas
+├── backend/
+│   ├── agents/       — 4 agentes especializados + coordinador
+│   ├── api/          — FastAPI: endpoints y routers
+│   ├── db/           — Cliente Supabase (opcional)
+│   ├── graph/        — Grafo LangGraph (paralelismo + PSO)
+│   ├── pso/          — PSO Consensus Engine (PySwarms)
+│   └── tools/        — Herramientas de datos externos
+├── frontend/
+│   └── src/
+│       ├── components/
+│       ├── pages/    — Dashboard, Backtesting
+│       ├── lib/      — Cliente HTTP
+│       └── types/
+├── Dockerfile        — Imagen backend
+├── docker-compose.yml
+└── railway.toml      — Deploy en Railway
 ```
 
-## Despliegue con Docker
+## API
 
-```bash
-# Copiar y completar variables de entorno
-cp .env.example .env
+| Endpoint | Descripción |
+|---|---|
+| `GET /health` | Estado del servidor |
+| `POST /analysis/run` | Ejecutar análisis multiagente |
+| `GET /analysis/history` | Historial de análisis |
+| `POST /backtest/run` | Backtesting histórico |
+| `GET /docs` | Documentación interactiva |
 
-# Levantar todos los servicios
-docker-compose up -d
+## Acciones soportadas
 
-# Ver logs
-docker-compose logs -f
-```
-
-### Variables de entorno (.env)
-
-```
-DEEPSEEK_API_KEY=tu_clave_deepseek
-CLOUDFLARE_TUNNEL_TOKEN=tu_token_cloudflare
-```
-
-## Autor
-
-Ramiro Alfaro Honores — UPAO, 2026
+- **BVN** — Compañía de Minas Buenaventura (commodity: Oro)
+- **SCCO** — Southern Copper Corporation (commodity: Cobre)

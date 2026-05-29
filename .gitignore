@@ -1,32 +1,27 @@
-# Secretos y entorno
+# Entorno y secretos
 .env
 .env.local
-
-# Configuración local del editor
-.claude/
 
 # Python
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-.Python
-*.egg-info/
-dist/
-build/
 .venv/
 venv/
-env/
+*.egg-info/
 
-# Datos generados
-data_bvl/data/
+# Frontend
+frontend/node_modules/
+frontend/dist/
 
-# IDEs
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
+.claude/
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log

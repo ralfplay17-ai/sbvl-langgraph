@@ -1,8 +1,0 @@
-tunnel: 96fbfcd9-4e00-41cd-9b66-0a1d342e82af
-
-ingress:
-  - hostname: langflow.sistemamultiagentesbvl.site
-    service: http://langflow:7860
-  - hostname: app.sistemamultiagentesbvl.site
-    service: http://streamlit:8501
-  - service: http_status:404

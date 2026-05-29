@@ -1,25 +1,19 @@
-FROM langflowai/langflow:latest
-
-RUN pip install --no-cache-dir \
-    pyswarms==1.3.0 \
-    newsapi-python==0.2.7 \
-    pandas \
-    numpy \
-    scipy \
-    requests
-
-RUN mkdir -p /app/flows /app/data_bvl/data
-
-COPY sistema_bvl.json /app/flows/sistema_bvl.json
-COPY data_bvl/ /app/data_bvl/
-COPY start.sh /app/start.sh
-USER root
-RUN chmod +x /app/start.sh
+FROM python:3.11-slim
 
 WORKDIR /app
 
-ENV LANGFLOW_LOAD_FLOWS_PATH=/app/flows
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-EXPOSE 7860
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["/app/start.sh"]
+COPY backend/ ./backend/
+
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+EXPOSE ${PORT:-8000}
+
+CMD uvicorn backend.api.main:app --host 0.0.0.0 --port ${PORT:-8000}
