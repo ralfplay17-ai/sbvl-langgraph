@@ -1,0 +1,8 @@
+services:
+  langflow:
+    ports:
+      - "7860:7860"
+
+  streamlit:
+    ports:
+      - "8501:8501"

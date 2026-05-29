@@ -19,13 +19,16 @@ services:
       - "8501"
     environment:
       - PORT=8501
+      - LANGFLOW_BASE_URL=http://langflow:7860
     restart: unless-stopped
     networks:
       - tunnel-net
 
   cloudflared:
     image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run
+    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./cloudflared/config.yml:/etc/cloudflared/config.yml
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
     restart: unless-stopped
