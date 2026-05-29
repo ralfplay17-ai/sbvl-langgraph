@@ -32,19 +32,21 @@ export function HistoryPanel({ history, onSelect }: Props) {
           <button
             key={item.id}
             onClick={() => onSelect(item)}
-            className="w-full text-left flex items-center justify-between p-3 rounded-xl hover:bg-surface transition-colors border border-transparent hover:border-border"
+            className="w-full text-left flex items-start justify-between p-3 rounded-xl hover:bg-surface transition-colors border border-transparent hover:border-border"
           >
-            <div>
-              <span className="text-white font-bold mr-2">{item.ticker}</span>
-              <span className={clsx('text-xs font-bold px-2 py-0.5 rounded-full', senalColor[item.senal_final])}>
-                {item.senal_final}
-              </span>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2">
+                <span className="text-white font-bold">{item.ticker}</span>
+                <span className={clsx('text-xs font-bold px-2 py-0.5 rounded-full', senalColor[item.senal_final])}>
+                  {item.senal_final}
+                </span>
+              </div>
             </div>
-            <div className="text-right">
-              <p className="text-white font-bold text-base">
+            <div className="text-right flex flex-col gap-0.5">
+              <p className="text-white font-bold text-base leading-tight">
                 {item.score_final.toFixed(3)}
               </p>
-              <p className="text-muted text-xs">
+              <p className="text-muted text-xs leading-tight">
                 {format(new Date(item.created_at), "dd MMM, HH:mm", { locale: es })}
               </p>
             </div>
