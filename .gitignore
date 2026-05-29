@@ -2,7 +2,7 @@
 .env
 .env.local
 
-# Claude Code (configuración local con permisos y claves)
+# Configuración local del editor
 .claude/
 
 # Python

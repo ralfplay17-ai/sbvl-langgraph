@@ -119,11 +119,5 @@ for flow_meta in flow_list:
 print(f"[start] Inyeccion completada. Total nodos actualizados: {updated_total}")
 PYEOF
 
-# 5. Arrancar Streamlit
-echo "[start] Arrancando Streamlit..."
-streamlit run /app/app.py \
-    --server.port=${STREAMLIT_PORT:-8501} \
-    --server.address=0.0.0.0 &
-
-# 6. Mantener el contenedor vivo con LangFlow en primer plano
+# 5. Mantener el contenedor vivo con LangFlow en primer plano
 wait $LANGFLOW_PID

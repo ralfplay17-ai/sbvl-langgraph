@@ -12,14 +12,14 @@ Dashboard de soporte a la toma de decisiones basado en Swarm Intelligence (PSO) 
 - Modo comparación simultánea BVN vs SCCO
 
 ### Backtesting
-- Descarga datos históricos desde Alpha Vantage (Daily Time Series)
+- Datos históricos desde BVL (fallback: Alpha Vantage)
 - Simula estrategia PSO (señales por RSI + MACD + SMA) vs Buy & Hold
 - Períodos: 3, 6 o 12 meses
 - Métricas: retorno total, Sharpe ratio, max drawdown, win rate, nº operaciones
 - Gráfico comparativo de curvas de capital
-- Historial de operaciones en tabla
 
 ## Agentes
+
 | Agente | Especialización |
 |---|---|
 | Técnico | Indicadores de precio y volumen |
@@ -29,21 +29,60 @@ Dashboard de soporte a la toma de decisiones basado en Swarm Intelligence (PSO) 
 | Coordinador (PSO) | Consenso ponderado con 50 partículas, 100 iteraciones |
 
 ## Tecnologías
+
 - **Streamlit** — interfaz web
 - **Langflow** — orquestación de agentes IA
-- **DeepSeek API** — modelo LLM de los agentes (via Langflow)
-- **Alpha Vantage** — datos históricos de precios (backtesting e indicadores)
+- **DeepSeek API** — modelo LLM de los agentes
+- **Alpha Vantage** — datos históricos de precios
 - **PySwarms (GlobalBestPSO)** — optimización de pesos de agentes
-- **Plotly** — gráficos interactivos (precio, RSI, MACD, curvas de capital)
+- **Plotly** — gráficos interactivos
 - **Pandas** — procesamiento de series temporales
-- **NewsAPI / BCRP API** — datos macro y sentimiento (via Langflow)
+- **Cloudflare Tunnel** — acceso público seguro sin exponer puertos
 
-## Ejecución
-```bash
-streamlit run app.py
+## Estructura
+
+```
+sistema-bvl-cloud/
+├── app.py                    # Dashboard Streamlit
+├── sistema_bvl.json          # Flow multiagente (LangFlow)
+├── start.sh                  # Entrypoint del contenedor LangFlow
+├── Dockerfile                # Imagen LangFlow + agentes
+├── Dockerfile.streamlit      # Imagen Streamlit
+├── docker-compose.yml        # Servicios: langflow, streamlit, cloudflared
+├── docker-compose.override.yml  # Puertos locales para desarrollo
+├── cloudflared/
+│   └── config.yml            # Rutas del túnel Cloudflare
+├── data_bvl/                 # Módulo de datos BVL (scraper + CSV cache)
+│   ├── bvl_data.py
+│   ├── api_scraper.py
+│   ├── analytics.py
+│   ├── config.py
+│   ├── storage.py
+│   └── main.py
+├── requirements.txt          # Dependencias Streamlit
+└── .env.example              # Variables de entorno requeridas
 ```
 
-Requiere Langflow corriendo en `localhost:7860` con el flujo multiagente importado.
+## Despliegue con Docker
+
+```bash
+# Copiar y completar variables de entorno
+cp .env.example .env
+
+# Levantar todos los servicios
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+```
+
+### Variables de entorno (.env)
+
+```
+DEEPSEEK_API_KEY=tu_clave_deepseek
+CLOUDFLARE_TUNNEL_TOKEN=tu_token_cloudflare
+```
 
 ## Autor
-Ramiro Alfaro Honores — UPAO, Junio 2026
+
+Ramiro Alfaro Honores — UPAO, 2026
