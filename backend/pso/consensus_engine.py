@@ -155,13 +155,13 @@ def run_pso(
     bounds = (np.zeros(4), np.ones(4))
 
     optimizer = ps.single.GlobalBestPSO(
-        n_particles=50,
+        n_particles=20,
         dimensions=4,
         options=options,
         bounds=bounds,
     )
 
-    cost, best_pos = optimizer.optimize(objective_function, iters=100, verbose=False)
+    cost, best_pos = optimizer.optimize(objective_function, iters=50, verbose=False)
 
     pesos_optimos = np.abs(best_pos)
     if pesos_optimos.sum() == 0:
@@ -188,8 +188,8 @@ def run_pso(
         "motor": "PSO Consensus Engine",
         "algoritmo": "PySwarms GlobalBestPSO",
         "configuracion": {
-            "particulas": 50,
-            "iteraciones": 100,
+            "particulas": 20,
+            "iteraciones": 50,
             "dimensiones": 4,
         },
         "ticker": ticker_final,
