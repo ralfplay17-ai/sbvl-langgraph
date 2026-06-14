@@ -134,7 +134,7 @@ export default function Page() {
             </Tabs.Content>
 
             <Tabs.Content value="historial" forceMount className="data-[state=inactive]:hidden">
-              <HistoryTab />
+              <HistoryTab isActive={activeTab === "historial"} />
             </Tabs.Content>
           </div>
         </Tabs.Root>
