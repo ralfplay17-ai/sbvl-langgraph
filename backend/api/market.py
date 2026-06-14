@@ -97,34 +97,80 @@ async def get_historico(ticker: str, dias: int = 60):
 
 @router.get("/market/commodities")
 async def get_commodities():
+    def _closes_yf(symbol: str):
+        """Intenta obtener series de cierre desde yfinance."""
+        try:
+            import pandas as pd
+            data = yf.download(symbol, period="20d", progress=False, auto_adjust=True)
+            if data.empty or len(data) < 2:
+                return None
+            closes = data["Close"]
+            if hasattr(closes, "squeeze"):
+                closes = closes.squeeze()
+            closes = closes.dropna()
+            return closes if len(closes) >= 2 else None
+        except Exception:
+            return None
+
+    def _closes_av_fx(from_sym: str, av_key: str):
+        """Fallback Alpha Vantage FX diario para XAU y XAG."""
+        try:
+            import pandas as pd
+            r = requests.get(
+                "https://www.alphavantage.co/query",
+                params={"function": "FX_DAILY", "from_symbol": from_sym,
+                        "to_symbol": "USD", "outputsize": "compact", "apikey": av_key},
+                timeout=15,
+            )
+            series = r.json().get("Time Series FX (Daily)", {})
+            if not series:
+                return None
+            dates = sorted(series.keys())[-20:]
+            closes = pd.Series(
+                [float(series[d]["4. close"]) for d in dates],
+                index=pd.to_datetime(dates),
+            )
+            return closes if len(closes) >= 2 else None
+        except Exception:
+            return None
+
     def _fetch():
+        from config import get_settings
+        av_key = get_settings().alpha_vantage_key
+
+        # (nombre, yf_symbol, av_fx_sym_fallback, label, unit)
         metals = [
-            ("Oro",   "GC=F", "XAU/USD", "oz"),
-            ("Plata", "SI=F", "XAG/USD", "oz"),
-            ("Cobre", "HG=F", "HG=F",    "lb"),
+            ("Oro",   "GC=F", "XAU", "XAU/USD", "oz"),
+            ("Plata", "SI=F", "XAG", "XAG/USD", "oz"),
+            ("Cobre", "HG=F", None,  "HG=F",    "lb"),
         ]
         result = {}
-        for nombre, symbol, label, unit in metals:
-            try:
-                hist = yf.Ticker(symbol).history(period="15d")
-                if hist.empty or len(hist) < 2:
-                    result[nombre] = {"error": "Sin datos"}
-                    continue
-                closes = hist["Close"].dropna()
-                ph = float(closes.iloc[-1])
-                pa = float(closes.iloc[-2])
-                p5 = float(closes.iloc[-5]) if len(closes) >= 5 else float(closes.iloc[0])
-                result[nombre] = {
-                    "label": label, "unit": unit,
-                    "precio": round(ph, 2),
-                    "cambio_dia_pct": round((ph - pa) / pa * 100, 2),
-                    "tendencia_5d_pct": round((ph - p5) / p5 * 100, 2),
-                    "closes": [round(c, 2) for c in closes.tolist()],
-                    "dates":  [d.strftime("%d/%m") for d in closes.index],
-                    "fuente": "yfinance",
-                }
-            except Exception as e:
-                result[nombre] = {"error": str(e)}
+        for nombre, symbol, av_sym, label, unit in metals:
+            closes = _closes_yf(symbol)
+
+            if closes is None and av_sym and av_key:
+                closes = _closes_av_fx(av_sym, av_key)
+
+            # Último fallback para cobre: ETF COPX
+            if closes is None and symbol == "HG=F":
+                closes = _closes_yf("COPX")
+
+            if closes is None or len(closes) < 2:
+                result[nombre] = {"error": "Sin datos"}
+                continue
+
+            ph = float(closes.iloc[-1])
+            pa = float(closes.iloc[-2])
+            p5 = float(closes.iloc[-5]) if len(closes) >= 5 else float(closes.iloc[0])
+            result[nombre] = {
+                "label": label, "unit": unit,
+                "precio": round(ph, 2),
+                "cambio_dia_pct": round((ph - pa) / pa * 100, 2),
+                "tendencia_5d_pct": round((ph - p5) / p5 * 100, 2),
+                "closes": [round(float(c), 2) for c in closes.tolist()],
+                "dates":  [d.strftime("%d/%m") for d in closes.index],
+                "fuente": "yfinance/alphavantage",
+            }
         return result
 
     return await asyncio.to_thread(_fetch)
