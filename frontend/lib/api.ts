@@ -1,6 +1,6 @@
 import type {
   AnalysisResult, BacktestResult, CommodityData,
-  HistoricoPoint, Noticia, PrecioRT, SSEEvent, TickerOption, PSOConfig,
+  HistoricoPoint, HistoryRecord, Noticia, PrecioRT, SSEEvent, TickerOption, PSOConfig,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
@@ -112,7 +112,7 @@ export async function runBacktest(ticker: string, dias: number): Promise<Backtes
 
 // ─── History ──────────────────────────────────────────────────────────────────
 
-export async function getHistory(ticker?: string, limit = 20): Promise<AnalysisResult[]> {
+export async function getHistory(ticker?: string, limit = 50): Promise<HistoryRecord[]> {
   const qs = ticker ? `?ticker=${ticker}&limit=${limit}` : `?limit=${limit}`;
-  return get<AnalysisResult[]>(`/api/history${qs}`);
+  return get<HistoryRecord[]>(`/api/history${qs}`);
 }

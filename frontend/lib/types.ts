@@ -118,3 +118,18 @@ export interface TickerOption {
   value: string;
   label: string;
 }
+
+export interface HistoryRecord {
+  id: string;
+  ticker: string;
+  senal_final: Senal;
+  score_final: number;
+  confianza_final: number;
+  pso_config: Partial<PSOConfig>;
+  agentes_result: Record<string, AgentResult>;
+  pso_result: {
+    pesos: Record<string, number>;
+    convergencia: number[];
+  };
+  created_at: string;
+}

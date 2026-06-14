@@ -7,6 +7,7 @@ import AnalysisTab from "@/components/tabs/AnalysisTab";
 import CommoditiesTab from "@/components/tabs/CommoditiesTab";
 import NewsTab from "@/components/tabs/NewsTab";
 import BacktestTab from "@/components/tabs/BacktestTab";
+import HistoryTab from "@/components/tabs/HistoryTab";
 import { streamAnalysis } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import type { AnalysisResult, BacktestResult, PSOConfig, SSEEvent } from "@/lib/types";
@@ -20,6 +21,7 @@ const TABS = [
   { value: "commodities",label: "Commodities"  },
   { value: "noticias",   label: "Noticias"     },
   { value: "backtest",   label: "Backtesting"  },
+  { value: "historial",  label: "Historial"    },
 ];
 
 export default function Page() {
@@ -129,6 +131,10 @@ export default function Page() {
                 onLoading={setBtLoading}
                 onError={setBtError}
               />
+            </Tabs.Content>
+
+            <Tabs.Content value="historial" forceMount className="data-[state=inactive]:hidden">
+              <HistoryTab />
             </Tabs.Content>
           </div>
         </Tabs.Root>
