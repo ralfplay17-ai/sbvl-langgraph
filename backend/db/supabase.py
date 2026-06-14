@@ -43,11 +43,12 @@ async def guardar_analisis(resultado: dict) -> None:
 
 
 async def obtener_historial(ticker: str | None = None, limit: int = 20) -> list[dict]:
-    client = _client()
-    if not client:
-        return []
+    import asyncio
     try:
-        import asyncio
+        client = _client()
+        if not client:
+            return []
+
         def _query():
             q = client.table("analysis_history").select("*").order("created_at", desc=True).limit(limit)
             if ticker:
@@ -55,17 +56,20 @@ async def obtener_historial(ticker: str | None = None, limit: int = 20) -> list[
             return q.execute()
 
         resp = await asyncio.to_thread(_query)
-        return resp.data or []
-    except Exception:
+        data = resp.data or []
+        logger.info("[supabase] Historial: %d registros devueltos (ticker=%s)", len(data), ticker)
+        return data
+    except Exception as e:
+        logger.error("[supabase] Error al obtener historial: %s", e)
         return []
 
 
 async def obtener_ultimo_analisis(ticker: str) -> dict | None:
-    client = _client()
-    if not client:
-        return None
+    import asyncio
     try:
-        import asyncio
+        client = _client()
+        if not client:
+            return None
         resp = await asyncio.to_thread(
             lambda: client.table("analysis_history")
                 .select("*")
@@ -76,5 +80,6 @@ async def obtener_ultimo_analisis(ticker: str) -> dict | None:
         )
         data = resp.data or []
         return data[0] if data else None
-    except Exception:
+    except Exception as e:
+        logger.error("[supabase] Error al obtener último análisis: %s", e)
         return None
