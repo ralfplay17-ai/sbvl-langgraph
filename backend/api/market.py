@@ -134,26 +134,55 @@ async def get_commodities():
         except Exception:
             return None
 
+    def _closes_twelvedata(symbol: str, td_key: str):
+        """Fallback Twelve Data para XAU/USD, XAG/USD, HG/USD."""
+        try:
+            import pandas as pd
+            r = requests.get(
+                "https://api.twelvedata.com/time_series",
+                params={"symbol": symbol, "interval": "1day",
+                        "outputsize": 20, "apikey": td_key},
+                timeout=15,
+            )
+            data = r.json()
+            values = data.get("values", [])
+            if not values:
+                return None
+            values = list(reversed(values))
+            closes = pd.Series(
+                [float(v["close"]) for v in values],
+                index=pd.to_datetime([v["datetime"] for v in values]),
+            )
+            return closes if len(closes) >= 2 else None
+        except Exception:
+            return None
+
     def _fetch():
         from config import get_settings
-        av_key = get_settings().alpha_vantage_key
+        s = get_settings()
+        av_key = s.alpha_vantage_key
+        td_key = s.twelvedata_key
 
-        # (nombre, yf_symbol, av_fx_sym_fallback, label, unit)
+        # (nombre, yf_symbol, av_fx_sym, td_symbol, label, unit)
         metals = [
-            ("Oro",   "GC=F", "XAU", "XAU/USD", "oz"),
-            ("Plata", "SI=F", "XAG", "XAG/USD", "oz"),
-            ("Cobre", "HG=F", None,  "HG=F",    "lb"),
+            ("Oro",   "GC=F", "XAU", "XAU/USD", "XAU/USD", "oz"),
+            ("Plata", "SI=F", "XAG", "XAG/USD", "XAG/USD", "oz"),
+            ("Cobre", "HG=F", None,  None,       "HG=F",    "lb"),
         ]
         result = {}
-        for nombre, symbol, av_sym, label, unit in metals:
-            closes = _closes_yf(symbol)
+        for nombre, yf_sym, av_sym, td_sym, label, unit in metals:
+            closes = _closes_yf(yf_sym)
 
             if closes is None and av_sym and av_key:
                 closes = _closes_av_fx(av_sym, av_key)
 
-            # Último fallback para cobre: ETF COPX
-            if closes is None and symbol == "HG=F":
+            if closes is None and td_sym and td_key:
+                closes = _closes_twelvedata(td_sym, td_key)
+
+            if closes is None and yf_sym == "HG=F":
                 closes = _closes_yf("COPX")
+                if closes is None and td_key:
+                    closes = _closes_twelvedata("HG/USD", td_key)
 
             if closes is None or len(closes) < 2:
                 result[nombre] = {"error": "Sin datos"}
@@ -169,7 +198,7 @@ async def get_commodities():
                 "tendencia_5d_pct": round((ph - p5) / p5 * 100, 2),
                 "closes": [round(float(c), 2) for c in closes.tolist()],
                 "dates":  [d.strftime("%d/%m") for d in closes.index],
-                "fuente": "yfinance/alphavantage",
+                "fuente": "yfinance/alphavantage/twelvedata",
             }
         return result
 
@@ -182,9 +211,9 @@ async def get_noticias(ticker: str):
     import feedparser
     from config import get_settings
 
-    av_key = get_settings().alpha_vantage_key
-    av_arts: list[dict] = []
-    rss_arts: list[dict] = []
+    s = get_settings()
+    av_key      = s.alpha_vantage_key
+    newsapi_key = s.newsapi_key
 
     def _fetch_av():
         if not av_key:
@@ -237,13 +266,51 @@ async def get_noticias(ticker: str):
         except Exception:
             return []
 
+    def _fetch_newsapi():
+        """Fallback NewsAPI cuando Alpha Vantage y RSS no retornan resultados."""
+        if not newsapi_key:
+            return []
+        try:
+            company_names = {
+                "BVN": "Buenaventura", "SCCO": "Southern Copper",
+                "CVERDEC1": "Cerro Verde", "MINSURI1": "Minsur",
+                "VOLCABC1": "Volcan", "NEXAPEC1": "Nexa Resources",
+                "BROCALC1": "El Brocal", "SHPC1": "Shougang",
+                "PODERC1": "Poderosa", "MOROCOC1": "Morococha",
+            }
+            query = company_names.get(ticker, ticker) + " Peru mineria"
+            r = requests.get(
+                "https://newsapi.org/v2/everything",
+                params={"q": query, "language": "es", "sortBy": "publishedAt",
+                        "pageSize": 8, "apiKey": newsapi_key},
+                timeout=15,
+            )
+            data = r.json()
+            arts = []
+            for art in data.get("articles", []):
+                arts.append({
+                    "titulo":    art.get("title", ""),
+                    "publicado": art.get("publishedAt", "")[:10],
+                    "link":      art.get("url", ""),
+                    "resumen":   (art.get("description") or "")[:220],
+                    "fuente":    art.get("source", {}).get("name", "NewsAPI"),
+                })
+            return arts
+        except Exception:
+            return []
+
     av_arts, rss_arts = await asyncio.gather(
         asyncio.to_thread(_fetch_av),
         asyncio.to_thread(_fetch_rss),
     )
 
+    # Activar NewsAPI solo si ambas fuentes principales fallaron
+    newsapi_arts: list[dict] = []
+    if not av_arts and not rss_arts and newsapi_key:
+        newsapi_arts = await asyncio.to_thread(_fetch_newsapi)
+
     return {
         "ticker": ticker,
         "alpha_vantage": av_arts,
-        "google_news": rss_arts,
+        "google_news": rss_arts if rss_arts else newsapi_arts,
     }

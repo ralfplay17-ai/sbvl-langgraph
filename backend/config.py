@@ -7,6 +7,8 @@ class Settings(BaseSettings):
     deepseek_api_key: str = ""
     deepseek_model: str = "deepseek-chat"
     alpha_vantage_key: str = ""
+    twelvedata_key: str = ""
+    newsapi_key: str = ""
     supabase_url: str = ""
     supabase_service_key: str = ""
     allowed_origins: str = "http://localhost:3000"

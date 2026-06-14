@@ -12,7 +12,9 @@ def obtener_noticias_bvl(ticker: str) -> str:
     Input: ticker de la empresa (ej: BVN, SCCO).
     """
     from config import get_settings
-    av_key = get_settings().alpha_vantage_key
+    s = get_settings()
+    av_key      = s.alpha_vantage_key
+    newsapi_key = s.newsapi_key
 
     av_arts: list[dict] = []
     rss_arts: list[dict] = []
@@ -64,18 +66,48 @@ def obtener_noticias_bvl(ticker: str) -> str:
     except Exception:
         pass
 
-    alcistas  = len([a for a in av_arts if a["score"] > 0.15])
-    bajistas  = len([a for a in av_arts if a["score"] < -0.15])
+    # Fallback NewsAPI si ambas fuentes principales están vacías
+    newsapi_arts: list[dict] = []
+    if not av_arts and not rss_arts and newsapi_key:
+        try:
+            company_names = {
+                "BVN": "Buenaventura", "SCCO": "Southern Copper",
+                "CVERDEC1": "Cerro Verde", "MINSURI1": "Minsur",
+                "VOLCABC1": "Volcan", "NEXAPEC1": "Nexa Resources",
+            }
+            query = company_names.get(ticker, ticker) + " Peru mineria"
+            r = requests.get(
+                "https://newsapi.org/v2/everything",
+                params={"q": query, "language": "es", "sortBy": "publishedAt",
+                        "pageSize": 8, "apiKey": newsapi_key},
+                timeout=15,
+            )
+            for art in r.json().get("articles", []):
+                newsapi_arts.append({
+                    "titulo":    art.get("title", ""),
+                    "publicado": art.get("publishedAt", "")[:10],
+                    "link":      art.get("url", ""),
+                    "resumen":   (art.get("description") or "")[:220],
+                    "score":     0.0,
+                    "label":     "Neutral",
+                    "fuente":    art.get("source", {}).get("name", "NewsAPI"),
+                })
+        except Exception:
+            pass
+
+    todas_noticias = av_arts + (rss_arts if rss_arts else newsapi_arts)
+    alcistas  = len([a for a in av_arts if a.get("score", 0) > 0.15])
+    bajistas  = len([a for a in av_arts if a.get("score", 0) < -0.15])
     tendencia = "ALCISTA" if alcistas > bajistas else ("BAJISTA" if bajistas > alcistas else "NEUTRAL")
 
     return json.dumps({
         "ticker": ticker,
         "resumen_sentimiento": {
-            "total_noticias": len(av_arts) + len(rss_arts),
+            "total_noticias": len(todas_noticias),
             "alcistas": alcistas,
             "bajistas": bajistas,
             "tendencia": tendencia,
         },
         "alpha_vantage": av_arts[:10],
-        "google_news": rss_arts[:5],
+        "google_news": (rss_arts if rss_arts else newsapi_arts)[:5],
     }, ensure_ascii=False)
