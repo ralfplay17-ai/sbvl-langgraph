@@ -39,6 +39,9 @@ export default function Page() {
   const [btError,   setBtError]   = useState<string | null>(null);
   const [btDias,    setBtDias]    = useState(90);
 
+  // Trigger para refrescar historial automáticamente cuando termina un análisis
+  const [histRefresh, setHistRefresh] = useState(0);
+
   const handleAnalyze = useCallback(() => {
     if (loading) return;
     setLoading(true);
@@ -53,6 +56,7 @@ export default function Page() {
         if (event.type === "final" && event.result) {
           setResult(event.result as AnalysisResult);
           setLoading(false);
+          setTimeout(() => setHistRefresh(n => n + 1), 2000);
         }
         if (event.type === "error" || event.type === "close") {
           setLoading(false);
@@ -134,7 +138,7 @@ export default function Page() {
             </Tabs.Content>
 
             <Tabs.Content value="historial" forceMount className="data-[state=inactive]:hidden">
-              <HistoryTab isActive={activeTab === "historial"} />
+              <HistoryTab isActive={activeTab === "historial"} refreshTrigger={histRefresh} />
             </Tabs.Content>
           </div>
         </Tabs.Root>

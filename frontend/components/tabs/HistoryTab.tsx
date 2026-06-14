@@ -72,7 +72,7 @@ function sortedAgents(result: Record<string, { senal: string; score?: number; co
   });
 }
 
-export default function HistoryTab({ isActive }: { isActive: boolean }) {
+export default function HistoryTab({ isActive, refreshTrigger = 0 }: { isActive: boolean; refreshTrigger?: number }) {
   const [records,       setRecords]       = useState<HistoryRecord[]>([]);
   const [loading,       setLoading]       = useState(false);
   const [error,         setError]         = useState<string | null>(null);
@@ -97,6 +97,10 @@ export default function HistoryTab({ isActive }: { isActive: boolean }) {
   useEffect(() => {
     if (isActive) load();
   }, [isActive]);
+
+  useEffect(() => {
+    if (refreshTrigger > 0) load();
+  }, [refreshTrigger]);
 
   const allTickers = [...new Set(records.map(r => r.ticker))].sort();
   const filtered   = filterTicker ? records.filter(r => r.ticker === filterTicker) : records;
