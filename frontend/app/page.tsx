@@ -1,0 +1,122 @@
+"use client";
+
+import { useState, useCallback } from "react";
+import * as Tabs from "@radix-ui/react-tabs";
+import Sidebar from "@/components/layout/Sidebar";
+import AnalysisTab from "@/components/tabs/AnalysisTab";
+import CommoditiesTab from "@/components/tabs/CommoditiesTab";
+import NewsTab from "@/components/tabs/NewsTab";
+import BacktestTab from "@/components/tabs/BacktestTab";
+import { streamAnalysis } from "@/lib/api";
+import { cn } from "@/lib/utils";
+import type { AnalysisResult, PSOConfig, SSEEvent } from "@/lib/types";
+
+const DEFAULT_PSO: PSOConfig = {
+  n_particles: 50, iters: 100, c1: 0.5, c2: 0.3, w: 0.9,
+};
+
+const TABS = [
+  { value: "analisis",   label: "Análisis"    },
+  { value: "commodities",label: "Commodities"  },
+  { value: "noticias",   label: "Noticias"     },
+  { value: "backtest",   label: "Backtesting"  },
+];
+
+export default function Page() {
+  const [ticker,    setTicker]    = useState("BVN");
+  const [capital,   setCapital]   = useState(10_000);
+  const [psoConfig, setPsoConfig] = useState<PSOConfig>(DEFAULT_PSO);
+  const [loading,   setLoading]   = useState(false);
+  const [result,    setResult]    = useState<AnalysisResult | null>(null);
+  const [events,    setEvents]    = useState<SSEEvent[]>([]);
+  const [activeTab, setActiveTab] = useState("analisis");
+
+  const handleAnalyze = useCallback(() => {
+    if (loading) return;
+    setLoading(true);
+    setResult(null);
+    setEvents([]);
+
+    const stop = streamAnalysis(
+      ticker,
+      psoConfig,
+      (event) => {
+        setEvents((prev) => [...prev, event]);
+        if (event.type === "final" && event.result) {
+          setResult(event.result as AnalysisResult);
+          setLoading(false);
+        }
+        if (event.type === "error" || event.type === "close") {
+          setLoading(false);
+        }
+      },
+      (err) => {
+        console.error("SSE error:", err);
+        setLoading(false);
+      },
+    );
+
+    // Limpieza automática después de 5 min
+    const timeout = setTimeout(() => { stop(); setLoading(false); }, 300_000);
+    return () => { stop(); clearTimeout(timeout); };
+  }, [ticker, psoConfig, loading]);
+
+  return (
+    <div className="flex min-h-screen">
+      <Sidebar
+        ticker={ticker}
+        capital={capital}
+        psoConfig={psoConfig}
+        loading={loading}
+        onTickerChange={(t) => { setTicker(t); setResult(null); setEvents([]); }}
+        onCapitalChange={setCapital}
+        onPSOChange={setPsoConfig}
+        onAnalyze={handleAnalyze}
+      />
+
+      <main className="flex-1 overflow-auto">
+        <Tabs.Root value={activeTab} onValueChange={setActiveTab}>
+          <Tabs.List className="flex border-b border-border px-6 pt-4 gap-1 sticky top-0 bg-background z-10">
+            {TABS.map(({ value, label }) => (
+              <Tabs.Trigger
+                key={value}
+                value={value}
+                className={cn(
+                  "px-4 py-2 text-sm font-semibold rounded-t-lg transition-colors select-none",
+                  "data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-blue-500",
+                  "data-[state=inactive]:text-zinc-500 data-[state=inactive]:hover:text-zinc-300"
+                )}
+              >
+                {label}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+
+          <div className="p-6">
+            <Tabs.Content value="analisis">
+              <AnalysisTab
+                result={result}
+                events={events}
+                loading={loading}
+                ticker={ticker}
+                capital={capital}
+              />
+            </Tabs.Content>
+
+            <Tabs.Content value="commodities">
+              <CommoditiesTab />
+            </Tabs.Content>
+
+            <Tabs.Content value="noticias">
+              <NewsTab ticker={ticker} />
+            </Tabs.Content>
+
+            <Tabs.Content value="backtest">
+              <BacktestTab ticker={ticker} />
+            </Tabs.Content>
+          </div>
+        </Tabs.Root>
+      </main>
+    </div>
+  );
+}

@@ -1,0 +1,203 @@
+import asyncio
+import requests
+import yfinance as yf
+from fastapi import APIRouter
+from core.indicators import calcular_indicadores_ohlc
+
+router = APIRouter()
+
+BVL_API_BASE = "https://dataondemand.bvl.com.pe/v1"
+BVL_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "https://www.bvl.com.pe/",
+    "Origin": "https://www.bvl.com.pe",
+}
+
+TICKERS_BVL = {
+    "BVN":      "BVN — Buenaventura",
+    "SCCO":     "SCCO — Southern Copper",
+    "CVERDEC1": "CVERDEC1 — Cerro Verde",
+    "MINSURI1": "MINSURI1 — Minsur",
+    "VOLCABC1": "VOLCABC1 — Volcan",
+    "NEXAPEC1": "NEXAPEC1 — Nexa Resources",
+    "BROCALC1": "BROCALC1 — El Brocal",
+    "SHPC1":    "SHPC1 — Shougang Hierro",
+    "PODERC1":  "PODERC1 — Poderosa",
+    "MOROCOC1": "MOROCOC1 — Morococha",
+    "LUISAI1":  "LUISAI1 — Santa Luisa",
+    "ATACOBC1": "ATACOBC1 — Atacocha",
+    "MINCORC1": "MINCORC1 — Cía Corona",
+    "PERUBAI1": "PERUBAI1 — Perubar",
+    "FOSPACC1": "FOSPACC1 — Fosfatos Pacífico",
+    "CASTROC1": "CASTROC1 — Castrovirreyna",
+}
+
+
+@router.get("/market/tickers")
+def get_tickers():
+    return {"tickers": [{"value": k, "label": v} for k, v in TICKERS_BVL.items()]}
+
+
+@router.get("/market/price/{ticker}")
+async def get_price(ticker: str):
+    def _fetch():
+        try:
+            r = requests.get(BVL_API_BASE + "/issuers", headers=BVL_HEADERS, timeout=10)
+            r.raise_for_status()
+            company_code = next(
+                (x["companyCode"] for x in r.json() if x.get("tkrCode") == ticker and x.get("active", True)),
+                None,
+            )
+            if not company_code:
+                return None
+            r2 = requests.get(BVL_API_BASE + f"/issuers/{company_code}/value", headers=BVL_HEADERS, timeout=10)
+            r2.raise_for_status()
+            for emisor in r2.json():
+                for lv in emisor.get("listLastValue", []):
+                    if lv.get("tkrCode") == ticker:
+                        def _f(v):
+                            try: return float(v) if v not in (None,"","-","0") else None
+                            except: return None
+                        return {
+                            "ticker": ticker,
+                            "precio": _f(lv.get("close") or lv.get("last")),
+                            "variacion_pct": _f(lv.get("var")),
+                            "volumen": int(float(lv["quantityNegotiated"])) if lv.get("quantityNegotiated") else None,
+                            "moneda": (lv.get("coin") or "S/.").strip(),
+                            "nombre": lv.get("companyName", ticker),
+                        }
+        except Exception:
+            return None
+        return None
+
+    result = await asyncio.to_thread(_fetch)
+    return result or {"ticker": ticker, "error": "No disponible"}
+
+
+@router.get("/market/historico/{ticker}")
+async def get_historico(ticker: str, dias: int = 60):
+    def _fetch():
+        try:
+            hist = yf.Ticker(ticker).history(period=f"{dias}d")
+            if hist.empty or len(hist) < 10:
+                return None
+            import pandas as pd
+            df = hist[["Open", "High", "Low", "Close", "Volume"]].copy()
+            df.index = pd.to_datetime(df.index).tz_localize(None)
+            return calcular_indicadores_ohlc(df)
+        except Exception:
+            return None
+
+    data = await asyncio.to_thread(_fetch)
+    if not data:
+        return {"error": f"Sin datos históricos para {ticker}"}
+    return {"ticker": ticker, "historico": data}
+
+
+@router.get("/market/commodities")
+async def get_commodities():
+    def _fetch():
+        metals = [
+            ("Oro",   "GC=F", "XAU/USD", "oz"),
+            ("Plata", "SI=F", "XAG/USD", "oz"),
+            ("Cobre", "HG=F", "HG=F",    "lb"),
+        ]
+        result = {}
+        for nombre, symbol, label, unit in metals:
+            try:
+                hist = yf.Ticker(symbol).history(period="15d")
+                if hist.empty or len(hist) < 2:
+                    result[nombre] = {"error": "Sin datos"}
+                    continue
+                closes = hist["Close"].dropna()
+                ph = float(closes.iloc[-1])
+                pa = float(closes.iloc[-2])
+                p5 = float(closes.iloc[-5]) if len(closes) >= 5 else float(closes.iloc[0])
+                result[nombre] = {
+                    "label": label, "unit": unit,
+                    "precio": round(ph, 2),
+                    "cambio_dia_pct": round((ph - pa) / pa * 100, 2),
+                    "tendencia_5d_pct": round((ph - p5) / p5 * 100, 2),
+                    "closes": [round(c, 2) for c in closes.tolist()],
+                    "dates":  [d.strftime("%d/%m") for d in closes.index],
+                    "fuente": "yfinance",
+                }
+            except Exception as e:
+                result[nombre] = {"error": str(e)}
+        return result
+
+    return await asyncio.to_thread(_fetch)
+
+
+@router.get("/market/noticias/{ticker}")
+async def get_noticias(ticker: str):
+    import re
+    import feedparser
+    from config import get_settings
+
+    av_key = get_settings().alpha_vantage_key
+    av_arts: list[dict] = []
+    rss_arts: list[dict] = []
+
+    def _fetch_av():
+        if not av_key:
+            return []
+        try:
+            r = requests.get(
+                f"https://www.alphavantage.co/query?function=NEWS_SENTIMENT"
+                f"&tickers={ticker}&limit=15&apikey={av_key}",
+                timeout=15,
+            )
+            data = r.json()
+            if data.get("Information") or data.get("Note"):
+                return []
+            arts = []
+            for art in data.get("feed", []):
+                for ts in art.get("ticker_sentiment", []):
+                    if ts.get("ticker") == ticker and float(ts.get("relevance_score", 0)) >= 0.05:
+                        fd = art.get("time_published", "")[:8]
+                        if len(fd) == 8:
+                            fd = f"{fd[:4]}-{fd[4:6]}-{fd[6:8]}"
+                        arts.append({
+                            "titulo": art.get("title", ""),
+                            "fecha": fd, "fuente": art.get("source", ""),
+                            "score": float(art.get("overall_sentiment_score", 0)),
+                            "label": art.get("overall_sentiment_label", "Neutral"),
+                            "resumen": art.get("summary", "")[:220],
+                            "url": art.get("url", ""),
+                        })
+                        break
+            return arts
+        except Exception:
+            return []
+
+    def _fetch_rss():
+        try:
+            q = requests.utils.quote(f"{ticker} Peru minera bolsa Lima")
+            feed = feedparser.parse(
+                f"https://news.google.com/rss/search?q={q}&hl=es-419&gl=PE&ceid=PE:es-419"
+            )
+            arts = []
+            for entry in (feed.entries or [])[:8]:
+                resumen = re.sub(r"<[^>]+>", "", entry.get("summary", ""))[:220]
+                arts.append({
+                    "titulo": entry.get("title", ""),
+                    "publicado": entry.get("published", ""),
+                    "link": entry.get("link", ""),
+                    "resumen": resumen,
+                })
+            return arts
+        except Exception:
+            return []
+
+    av_arts, rss_arts = await asyncio.gather(
+        asyncio.to_thread(_fetch_av),
+        asyncio.to_thread(_fetch_rss),
+    )
+
+    return {
+        "ticker": ticker,
+        "alpha_vantage": av_arts,
+        "google_news": rss_arts,
+    }
