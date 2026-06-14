@@ -78,22 +78,51 @@ async def get_price(ticker: str):
 @router.get("/market/historico/{ticker}")
 async def get_historico(ticker: str, dias: int = 60):
     def _fetch():
+        import pandas as pd
+        import requests as req
+
+        # 1. yfinance
         try:
-            import pandas as pd
             data = yf.download(ticker, period=f"{dias}d", progress=False, auto_adjust=True)
-            if data.empty or len(data) < 10:
-                return None
-            df = data.copy()
-            close = df["Close"]
-            if hasattr(close, "squeeze"):
-                close = close.squeeze()
-            df["Close"] = close
-            cols = [c for c in ["Open", "High", "Low", "Close", "Volume"] if c in df.columns]
-            df = df[cols]
-            df.index = pd.to_datetime(df.index).tz_localize(None)
-            return calcular_indicadores_ohlc(df)
+            if not data.empty and len(data) >= 10:
+                df = data.copy()
+                close = df["Close"]
+                if hasattr(close, "squeeze"):
+                    close = close.squeeze()
+                df["Close"] = close
+                cols = [c for c in ["Open", "High", "Low", "Close", "Volume"] if c in df.columns]
+                df = df[cols]
+                df.index = pd.to_datetime(df.index).tz_localize(None)
+                return calcular_indicadores_ohlc(df)
         except Exception:
-            return None
+            pass
+
+        # 2. Twelve Data
+        from config import get_settings
+        td_key = get_settings().twelvedata_key
+        if td_key:
+            try:
+                r = req.get(
+                    "https://api.twelvedata.com/time_series",
+                    params={"symbol": ticker, "interval": "1day",
+                            "outputsize": dias + 30, "apikey": td_key},
+                    timeout=20,
+                )
+                values = r.json().get("values", [])
+                if values and len(values) >= 10:
+                    values = list(reversed(values))
+                    df = pd.DataFrame(values)
+                    df.index = pd.to_datetime(df["datetime"])
+                    df = df.drop(columns=["datetime"])
+                    for col in df.columns:
+                        df[col] = pd.to_numeric(df[col], errors="coerce")
+                    df.columns = [c.capitalize() for c in df.columns]
+                    df.index = df.index.tz_localize(None)
+                    return calcular_indicadores_ohlc(df)
+            except Exception:
+                pass
+
+        return None
 
     data = await asyncio.to_thread(_fetch)
     if not data:

@@ -6,14 +6,47 @@ from core.indicators import wilder_rsi
 def _download(symbol: str, **kwargs):
     import yfinance as yf
     import pandas as pd
-    data = yf.download(symbol, progress=False, auto_adjust=True, **kwargs)
-    if data.empty:
+    try:
+        data = yf.download(symbol, progress=False, auto_adjust=True, **kwargs)
+        if not data.empty:
+            closes = data["Close"]
+            if hasattr(closes, "squeeze"):
+                closes = closes.squeeze()
+            data["Close"] = closes
+            return data
+    except Exception:
+        pass
+    return pd.DataFrame()
+
+
+def _download_td(symbol: str, outputsize: int = 365) -> "pd.DataFrame":
+    import pandas as pd
+    import requests
+    from config import get_settings
+    td_key = get_settings().twelvedata_key
+    if not td_key:
         return pd.DataFrame()
-    closes = data["Close"]
-    if hasattr(closes, "squeeze"):
-        closes = closes.squeeze()
-    data["Close"] = closes
-    return data
+    try:
+        r = requests.get(
+            "https://api.twelvedata.com/time_series",
+            params={"symbol": symbol, "interval": "1day",
+                    "outputsize": outputsize, "apikey": td_key},
+            timeout=20,
+        )
+        values = r.json().get("values", [])
+        if not values:
+            return pd.DataFrame()
+        values = list(reversed(values))
+        df = pd.DataFrame(values)
+        df.index = pd.to_datetime(df["datetime"])
+        df = df.drop(columns=["datetime"])
+        for col in ["open", "high", "low", "close", "volume"]:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors="coerce")
+        df.columns = [c.capitalize() for c in df.columns]
+        return df
+    except Exception:
+        return pd.DataFrame()
 
 
 def _benchmark(fecha_ini, fecha_fin) -> dict:
@@ -52,7 +85,11 @@ def ejecutar_backtest(ticker: str, dias: int) -> dict:
     try:
         hist = _download(ticker, period=f"{dias}d")
         if hist.empty:
+            hist = _download_td(ticker, outputsize=min(dias + 30, 500))
+
+        if hist.empty:
             return {"error": f"Sin datos para {ticker}"}
+
         cols = [c for c in ["Open", "High", "Low", "Close", "Volume"] if c in hist.columns]
         df = hist[cols].copy()
         if "Close" not in df.columns:
