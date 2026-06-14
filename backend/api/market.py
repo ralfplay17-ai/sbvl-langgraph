@@ -79,11 +79,17 @@ async def get_price(ticker: str):
 async def get_historico(ticker: str, dias: int = 60):
     def _fetch():
         try:
-            hist = yf.Ticker(ticker).history(period=f"{dias}d")
-            if hist.empty or len(hist) < 10:
-                return None
             import pandas as pd
-            df = hist[["Open", "High", "Low", "Close", "Volume"]].copy()
+            data = yf.download(ticker, period=f"{dias}d", progress=False, auto_adjust=True)
+            if data.empty or len(data) < 10:
+                return None
+            df = data.copy()
+            close = df["Close"]
+            if hasattr(close, "squeeze"):
+                close = close.squeeze()
+            df["Close"] = close
+            cols = [c for c in ["Open", "High", "Low", "Close", "Volume"] if c in df.columns]
+            df = df[cols]
             df.index = pd.to_datetime(df.index).tz_localize(None)
             return calcular_indicadores_ohlc(df)
         except Exception:

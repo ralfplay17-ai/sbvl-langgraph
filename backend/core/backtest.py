@@ -3,11 +3,23 @@ import numpy as np
 from core.indicators import wilder_rsi
 
 
-def _benchmark(fecha_ini, fecha_fin) -> dict:
+def _download(symbol: str, **kwargs):
     import yfinance as yf
-    for sym in ("^SPBLPGPT", "EPU"):
+    import pandas as pd
+    data = yf.download(symbol, progress=False, auto_adjust=True, **kwargs)
+    if data.empty:
+        return pd.DataFrame()
+    closes = data["Close"]
+    if hasattr(closes, "squeeze"):
+        closes = closes.squeeze()
+    data["Close"] = closes
+    return data
+
+
+def _benchmark(fecha_ini, fecha_fin) -> dict:
+    for sym in ("EPU", "^SPBLPGPT"):
         try:
-            hist = yf.Ticker(sym).history(start=fecha_ini, end=fecha_fin)
+            hist = _download(sym, start=fecha_ini, end=fecha_fin)
             if hist.empty or len(hist) < 20:
                 continue
             closes = hist["Close"].dropna()
@@ -37,13 +49,14 @@ def _senal_row(row) -> str:
 
 
 def ejecutar_backtest(ticker: str, dias: int) -> dict:
-    import yfinance as yf
-
     try:
-        hist = yf.Ticker(ticker).history(period=f"{dias}d")
+        hist = _download(ticker, period=f"{dias}d")
         if hist.empty:
             return {"error": f"Sin datos para {ticker}"}
-        df = hist[["Open", "High", "Low", "Close", "Volume"]].copy()
+        cols = [c for c in ["Open", "High", "Low", "Close", "Volume"] if c in hist.columns]
+        df = hist[cols].copy()
+        if "Close" not in df.columns:
+            return {"error": f"Sin datos de cierre para {ticker}"}
         df.index = pd.to_datetime(df.index).tz_localize(None)
         df = df.sort_index().tail(dias)
 
