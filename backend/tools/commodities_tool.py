@@ -41,31 +41,60 @@ def _closes_av_fx(from_sym: str, av_key: str):
         return None
 
 
+def _closes_twelvedata(symbol: str, td_key: str):
+    try:
+        import pandas as pd
+        r = requests.get(
+            "https://api.twelvedata.com/time_series",
+            params={"symbol": symbol, "interval": "1day",
+                    "outputsize": 20, "apikey": td_key},
+            timeout=15,
+        )
+        values = r.json().get("values", [])
+        if not values:
+            return None
+        values = list(reversed(values))
+        closes = pd.Series(
+            [float(v["close"]) for v in values],
+            index=pd.to_datetime([v["datetime"] for v in values]),
+        )
+        return closes if len(closes) >= 2 else None
+    except Exception:
+        return None
+
+
 @tool
 def obtener_datos_commodities(ticker: str) -> str:
     """
     Obtiene precios actuales de metales (Oro, Plata, Cobre) relevantes para mineras BVL.
-    Devuelve precio, cambio diario % y tendencia 5 días. Fuentes: yfinance con fallback Alpha Vantage.
-    Input: ticker de la acción (se usa para contextualizar, siempre devuelve los 3 metales).
+    Devuelve precio, cambio diario % y tendencia 5 días.
+    Fuentes: yfinance → Alpha Vantage → Twelve Data (ETF proxy).
+    Input: ticker de la acción (contextualiza el análisis, siempre devuelve los 3 metales).
     """
     from config import get_settings
-    av_key = get_settings().alpha_vantage_key
+    s = get_settings()
+    av_key = s.alpha_vantage_key
+    td_key = s.twelvedata_key
 
+    # (nombre, yf_futuro, av_fx_sym, td_etf_sym, label, unit)
     metals = [
-        ("Oro",   "GC=F", "XAU", "XAU/USD", "oz"),
-        ("Plata", "SI=F", "XAG", "XAG/USD", "oz"),
-        ("Cobre", "HG=F", None,  "HG=F",    "lb"),
+        ("Oro",   "GC=F", "XAU", "GLD",  "XAU/USD", "oz"),
+        ("Plata", "SI=F", "XAG", "SLV",  "XAG/USD", "oz"),
+        ("Cobre", "HG=F", None,  "COPX", "HG=F",    "lb"),
     ]
     result: dict[str, dict] = {}
 
-    for nombre, symbol, av_sym, label, unit in metals:
-        closes = _closes_yf(symbol)
+    for nombre, yf_sym, av_sym, td_etf, label, unit in metals:
+        closes = _closes_yf(yf_sym)
 
         if closes is None and av_sym and av_key:
             closes = _closes_av_fx(av_sym, av_key)
 
-        if closes is None and symbol == "HG=F":
-            closes = _closes_yf("COPX")
+        if closes is None and td_key:
+            closes = _closes_twelvedata(td_etf, td_key)
+
+        if closes is None:
+            closes = _closes_yf(td_etf)
 
         if closes is None or len(closes) < 2:
             result[nombre] = {"error": "Sin datos"}
@@ -80,7 +109,7 @@ def obtener_datos_commodities(ticker: str) -> str:
             "precio": round(ph, 2),
             "cambio_dia_pct": round((ph - pa) / pa * 100, 2),
             "tendencia_5d_pct": round((ph - p5) / p5 * 100, 2),
-            "fuente": "yfinance/alphavantage",
+            "fuente": "yfinance/alphavantage/twelvedata",
         }
 
     return json.dumps({"ticker_referencia": ticker, "commodities": result}, ensure_ascii=False)

@@ -163,26 +163,25 @@ async def get_commodities():
         av_key = s.alpha_vantage_key
         td_key = s.twelvedata_key
 
-        # (nombre, yf_symbol, av_fx_sym, td_symbol, label, unit)
+        # (nombre, yf_primary, av_fx_sym, td_etf_sym, label, unit)
+        # td_etf_sym: ETF accesible en plan gratuito de Twelve Data
         metals = [
-            ("Oro",   "GC=F", "XAU", "XAU/USD", "XAU/USD", "oz"),
-            ("Plata", "SI=F", "XAG", "XAG/USD", "XAG/USD", "oz"),
-            ("Cobre", "HG=F", None,  None,       "HG=F",    "lb"),
+            ("Oro",   "GC=F", "XAU", "GLD",  "XAU/USD", "oz"),
+            ("Plata", "SI=F", "XAG", "SLV",  "XAG/USD", "oz"),
+            ("Cobre", "HG=F", None,  "COPX", "HG=F",    "lb"),
         ]
         result = {}
-        for nombre, yf_sym, av_sym, td_sym, label, unit in metals:
+        for nombre, yf_sym, av_sym, td_etf, label, unit in metals:
             closes = _closes_yf(yf_sym)
 
             if closes is None and av_sym and av_key:
                 closes = _closes_av_fx(av_sym, av_key)
 
-            if closes is None and td_sym and td_key:
-                closes = _closes_twelvedata(td_sym, td_key)
+            if closes is None and td_key:
+                closes = _closes_twelvedata(td_etf, td_key)
 
-            if closes is None and yf_sym == "HG=F":
-                closes = _closes_yf("COPX")
-                if closes is None and td_key:
-                    closes = _closes_twelvedata("HG/USD", td_key)
+            if closes is None:
+                closes = _closes_yf(td_etf)  # ETF vía yfinance como último recurso
 
             if closes is None or len(closes) < 2:
                 result[nombre] = {"error": "Sin datos"}
