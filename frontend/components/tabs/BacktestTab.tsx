@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import BacktestChart from "@/components/charts/BacktestChart";
 import { runBacktest } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import type { BacktestResult } from "@/lib/types";
 
-interface Props { ticker: string }
+interface Props {
+  ticker: string;
+  result: BacktestResult | null;
+  loading: boolean;
+  error: string | null;
+  dias: number;
+  onDiasChange: (d: number) => void;
+  onResult: (r: BacktestResult | null) => void;
+  onLoading: (v: boolean) => void;
+  onError: (e: string | null) => void;
+}
 
 const PERIODOS = [
   { label: "3 meses (90 días)",  dias: 90  },
@@ -25,23 +34,18 @@ function MetricCard({ label, value, sub, color }: { label: string; value: string
   );
 }
 
-export default function BacktestTab({ ticker }: Props) {
-  const [dias, setDias]       = useState(90);
-  const [result, setResult]   = useState<BacktestResult | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError]     = useState<string | null>(null);
-
+export default function BacktestTab({ ticker, result, loading, error, dias, onDiasChange, onResult, onLoading, onError }: Props) {
   const run = async () => {
-    setLoading(true);
-    setError(null);
+    onLoading(true);
+    onError(null);
     try {
       const r = await runBacktest(ticker, dias);
-      if (r.error) setError(r.error);
-      else setResult(r);
+      if (r.error) onError(r.error);
+      else onResult(r);
     } catch (e) {
-      setError(String(e));
+      onError(String(e));
     } finally {
-      setLoading(false);
+      onLoading(false);
     }
   };
 
@@ -60,7 +64,7 @@ export default function BacktestTab({ ticker }: Props) {
           {PERIODOS.map(({ label, dias: d }) => (
             <button
               key={d}
-              onClick={() => setDias(d)}
+              onClick={() => onDiasChange(d)}
               className={cn(
                 "text-xs px-3 py-1.5 rounded-lg border transition-all",
                 dias === d

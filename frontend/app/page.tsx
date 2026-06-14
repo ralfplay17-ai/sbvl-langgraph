@@ -9,7 +9,7 @@ import NewsTab from "@/components/tabs/NewsTab";
 import BacktestTab from "@/components/tabs/BacktestTab";
 import { streamAnalysis } from "@/lib/api";
 import { cn } from "@/lib/utils";
-import type { AnalysisResult, PSOConfig, SSEEvent } from "@/lib/types";
+import type { AnalysisResult, BacktestResult, PSOConfig, SSEEvent } from "@/lib/types";
 
 const DEFAULT_PSO: PSOConfig = {
   n_particles: 50, iters: 100, c1: 0.5, c2: 0.3, w: 0.9,
@@ -30,6 +30,12 @@ export default function Page() {
   const [result,    setResult]    = useState<AnalysisResult | null>(null);
   const [events,    setEvents]    = useState<SSEEvent[]>([]);
   const [activeTab, setActiveTab] = useState("analisis");
+
+  // Estado del backtest elevado para persistir entre cambios de pestaña
+  const [btResult,  setBtResult]  = useState<BacktestResult | null>(null);
+  const [btLoading, setBtLoading] = useState(false);
+  const [btError,   setBtError]   = useState<string | null>(null);
+  const [btDias,    setBtDias]    = useState(90);
 
   const handleAnalyze = useCallback(() => {
     if (loading) return;
@@ -68,7 +74,7 @@ export default function Page() {
         capital={capital}
         psoConfig={psoConfig}
         loading={loading}
-        onTickerChange={(t) => { setTicker(t); setResult(null); setEvents([]); }}
+        onTickerChange={(t) => { setTicker(t); setResult(null); setEvents([]); setBtResult(null); setBtError(null); }}
         onCapitalChange={setCapital}
         onPSOChange={setPsoConfig}
         onAnalyze={handleAnalyze}
@@ -112,7 +118,17 @@ export default function Page() {
             </Tabs.Content>
 
             <Tabs.Content value="backtest">
-              <BacktestTab ticker={ticker} />
+              <BacktestTab
+                ticker={ticker}
+                result={btResult}
+                loading={btLoading}
+                error={btError}
+                dias={btDias}
+                onDiasChange={setBtDias}
+                onResult={setBtResult}
+                onLoading={setBtLoading}
+                onError={setBtError}
+              />
             </Tabs.Content>
           </div>
         </Tabs.Root>
