@@ -99,7 +99,7 @@ export default function Page() {
           </Tabs.List>
 
           <div className="p-6">
-            <Tabs.Content value="analisis">
+            <Tabs.Content value="analisis" forceMount className="data-[state=inactive]:hidden">
               <AnalysisTab
                 result={result}
                 events={events}
@@ -109,15 +109,15 @@ export default function Page() {
               />
             </Tabs.Content>
 
-            <Tabs.Content value="commodities">
+            <Tabs.Content value="commodities" forceMount className="data-[state=inactive]:hidden">
               <CommoditiesTab />
             </Tabs.Content>
 
-            <Tabs.Content value="noticias">
+            <Tabs.Content value="noticias" forceMount className="data-[state=inactive]:hidden">
               <NewsTab ticker={ticker} />
             </Tabs.Content>
 
-            <Tabs.Content value="backtest">
+            <Tabs.Content value="backtest" forceMount className="data-[state=inactive]:hidden">
               <BacktestTab
                 ticker={ticker}
                 result={btResult}
