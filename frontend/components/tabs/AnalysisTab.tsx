@@ -15,11 +15,12 @@ interface Props {
   loading: boolean;
   ticker: string;
   capital: number;
+  acciones: number;
 }
 
 const AGENTES = ["tecnico", "commodities", "sentimiento", "riesgo"];
 
-export default function AnalysisTab({ result, events, loading, ticker, capital }: Props) {
+export default function AnalysisTab({ result, events, loading, ticker, capital, acciones }: Props) {
   const [historico, setHistorico]   = useState<HistoricoPoint[]>([]);
   const [precio, setPrecio]         = useState<PrecioRT | null>(null);
   const [loadingChart, setLoadingChart] = useState(false);
@@ -78,7 +79,7 @@ export default function AnalysisTab({ result, events, loading, ticker, capital }
 
       {/* Simulador */}
       {result && (
-        <SimulatorCard data={result} capital={capital} precio={precio} />
+        <SimulatorCard data={result} capital={capital} acciones={acciones} precio={precio} />
       )}
 
       {/* Gráfico técnico candlestick */}

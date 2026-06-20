@@ -27,6 +27,7 @@ const TABS = [
 export default function Page() {
   const [ticker,    setTicker]    = useState("BVN");
   const [capital,   setCapital]   = useState(10_000);
+  const [acciones,  setAcciones]  = useState(0);
   const [psoConfig, setPsoConfig] = useState<PSOConfig>(DEFAULT_PSO);
   const [loading,   setLoading]   = useState(false);
   const [result,    setResult]    = useState<AnalysisResult | null>(null);
@@ -78,10 +79,12 @@ export default function Page() {
       <Sidebar
         ticker={ticker}
         capital={capital}
+        acciones={acciones}
         psoConfig={psoConfig}
         loading={loading}
         onTickerChange={(t) => { setTicker(t); setResult(null); setEvents([]); setBtResult(null); setBtError(null); }}
         onCapitalChange={setCapital}
+        onAccionesChange={setAcciones}
         onPSOChange={setPsoConfig}
         onAnalyze={handleAnalyze}
       />
@@ -112,6 +115,7 @@ export default function Page() {
                 loading={loading}
                 ticker={ticker}
                 capital={capital}
+                acciones={acciones}
               />
             </Tabs.Content>
 

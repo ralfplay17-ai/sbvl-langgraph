@@ -9,17 +9,19 @@ import { cn } from "@/lib/utils";
 interface Props {
   ticker: string;
   capital: number;
+  acciones: number;
   psoConfig: PSOConfig;
   loading: boolean;
   onTickerChange: (t: string) => void;
   onCapitalChange: (c: number) => void;
+  onAccionesChange: (a: number) => void;
   onPSOChange: (cfg: PSOConfig) => void;
   onAnalyze: () => void;
 }
 
 export default function Sidebar({
-  ticker, capital, psoConfig, loading,
-  onTickerChange, onCapitalChange, onPSOChange, onAnalyze,
+  ticker, capital, acciones, psoConfig, loading,
+  onTickerChange, onCapitalChange, onAccionesChange, onPSOChange, onAnalyze,
 }: Props) {
   const [tickers, setTickers] = useState<TickerOption[]>([]);
   const [precio, setPrecio]   = useState<PrecioRT | null>(null);
@@ -94,6 +96,22 @@ export default function Sidebar({
           onChange={(e) => onCapitalChange(Number(e.target.value))}
           className="w-full bg-zinc-900 border border-border text-zinc-200 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
+      </div>
+
+      {/* Acciones en cartera */}
+      <div>
+        <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-1.5">
+          Acciones en cartera
+        </label>
+        <input
+          type="number"
+          min={0} max={10_000_000} step={1}
+          value={acciones}
+          onChange={(e) => onAccionesChange(Number(e.target.value))}
+          placeholder="0"
+          className="w-full bg-zinc-900 border border-border text-zinc-200 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        />
+        <p className="text-[10px] text-zinc-600 mt-1">Para simular señal de venta</p>
       </div>
 
       {/* PSO Config */}
