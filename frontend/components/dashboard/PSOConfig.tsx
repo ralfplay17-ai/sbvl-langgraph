@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import * as Slider from "@radix-ui/react-slider";
-import { cn } from "@/lib/utils";
 import type { PSOConfig } from "@/lib/types";
 
 interface Props {

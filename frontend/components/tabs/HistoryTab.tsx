@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { getHistory } from "@/lib/api";
-import type { HistoryRecord, Senal } from "@/lib/types";
+import type { HistoryRecord } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { RefreshCw, ChevronDown, ChevronUp, History } from "lucide-react";
 
@@ -96,11 +96,11 @@ export default function HistoryTab({ isActive, refreshTrigger = 0 }: { isActive:
 
   useEffect(() => {
     if (isActive) load();
-  }, [isActive]);
+  }, [isActive, load]);
 
   useEffect(() => {
     if (refreshTrigger > 0) load();
-  }, [refreshTrigger]);
+  }, [refreshTrigger, load]);
 
   const allTickers = [...new Set(records.map(r => r.ticker))].sort();
   const filtered   = filterTicker ? records.filter(r => r.ticker === filterTicker) : records;

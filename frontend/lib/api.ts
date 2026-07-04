@@ -1,5 +1,5 @@
 import type {
-  AnalysisResult, BacktestResult, CommodityData,
+  BacktestResult, CommodityData,
   HistoricoPoint, HistoryRecord, Noticia, PrecioRT, SSEEvent, TickerOption, PSOConfig,
 } from "./types";
 

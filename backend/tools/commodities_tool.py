@@ -6,7 +6,6 @@ from langchain_core.tools import tool
 
 def _closes_yf(symbol: str):
     try:
-        import pandas as pd
         data = yf.download(symbol, period="20d", progress=False, auto_adjust=True)
         if data.empty or len(data) < 2:
             return None

@@ -1,10 +1,10 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from config import get_settings
-from api import analyze, backtest, market, history
+from fastapi import FastAPI  # noqa: E402
+from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
+from config import get_settings  # noqa: E402
+from api import analyze, backtest, market, history  # noqa: E402
 
 app = FastAPI(title="Sistema BVL API", version="2.0.0", docs_url="/docs")
 

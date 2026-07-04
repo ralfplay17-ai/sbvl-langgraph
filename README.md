@@ -1,4 +1,4 @@
-# SBVL-LangGraph — Sistema de Análisis Multia-gente para la BVL
+# SBVL-LangGraph — Sistema de Análisis Multiagente para la BVL
 
 Dashboard de análisis de acciones mineras de la **Bolsa de Valores de Lima (BVL)** impulsado por un sistema de agentes LLM coordinados con **LangGraph** y consenso por **PSO (Particle Swarm Optimization)**.
 
@@ -17,7 +17,9 @@ Dado un ticker de la BVL (ej. `SCCO`, `BVN`), el sistema lanza 4 agentes LLM en 
 
 Los 4 scores (`-1.0` → `+1.0`) son combinados por un optimizador PSO que encuentra los pesos óptimos para cada agente. El resultado es una señal consolidada **COMPRAR / MANTENER / VENDER** con nivel de confianza.
 
-El proceso se transmite en tiempo real vía **Server-Sent Events (SSE)** al dashboard.
+El proceso se transmite en tiempo real vía **Server-Sent Events (SSE)** al dashboard, incluyendo
+el tiempo total de ejecución del flujo (segundos) y, si algún agente falla (ej. LLM sin saldo,
+fuente de datos caída), una ventana emergente con el error real reportado.
 
 ---
 
@@ -53,11 +55,19 @@ El proceso se transmite en tiempo real vía **Server-Sent Events (SSE)** al dash
 
 | Dato | Fuente primaria | Fallback 1 | Fallback 2 |
 |---|---|---|---|
-| Precio acción BVL | BVL API (dataondemand) | — | — |
-| OHLC histórico | yfinance | Twelve Data | — |
+| Precio acción BVL (tiempo real) | BVL API (dataondemand) | — | — |
+| OHLC histórico (gráfico de velas) | yfinance | Twelve Data | — |
+| Serie histórica para RSI/MACD (agente Técnico) | CSV local / BVL API | Alpha Vantage | — |
 | Commodities | yfinance futuros (GC=F, SI=F, HG=F) | Alpha Vantage FX | Twelve Data ETFs (GLD, SLV, COPX) |
 | Noticias | Alpha Vantage News | Google News RSS | NewsAPI |
-| Macro (USD/PEN, tasas) | BCRP API | — | — |
+| Tipo de cambio USD/PEN | BCRP API | Alpha Vantage FX | Twelve Data |
+| Tasa interbancaria | BCRP API | — | — |
+
+> **Nota:** la API del BCRP (`estadisticas.bcrp.gob.pe`) está protegida por un WAF (Incapsula) que
+> bloquea peticiones automatizadas (devuelve un challenge HTML en vez de JSON). Cuando falla, el
+> tipo de cambio cae al fallback de Alpha Vantage/Twelve Data; la tasa interbancaria no tiene fuente
+> alternativa gratuita y queda como dato no disponible ese ciclo (el agente de Riesgo sigue
+> funcionando, solo con confianza reducida).
 
 ---
 
@@ -229,7 +239,7 @@ sbvl-langgraph/
 │   │   └── layout.tsx
 │   ├── components/
 │   │   ├── charts/         # ECharts: velas, backtest, sparkline
-│   │   ├── dashboard/      # SignalBanner, AgentCard, PSOConfig
+│   │   ├── dashboard/      # SignalBanner, AgentCard, PSOConfig, SystemErrorModal
 │   │   ├── layout/         # Sidebar
 │   │   └── tabs/           # AnalysisTab, CommoditiesTab, NewsTab, BacktestTab
 │   ├── lib/
@@ -243,14 +253,24 @@ sbvl-langgraph/
 
 ---
 
-## Tests
+## Tests y calidad de código
 
 ```bash
+# Backend — tests
 cd backend
 pytest tests/ -v
+
+# Backend — lint (requiere: pip install ruff)
+ruff check .
+
+# Frontend — lint + type-check
+cd frontend
+npm run lint
+npx tsc --noEmit
 ```
 
-Cubre: parsing de output de agentes (10 casos), indicadores técnicos RSI/MACD/SMA (13 casos).
+Los tests del backend cubren: parsing de output de agentes (10 casos), indicadores técnicos
+RSI/MACD/SMA (13 casos).
 
 ---
 

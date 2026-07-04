@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 
 def wilder_rsi(close: pd.Series, periodo: int = 14) -> pd.Series:

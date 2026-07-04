@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from core.indicators import wilder_rsi
 
 
@@ -72,12 +71,18 @@ def _senal_row(row) -> str:
     if pd.isna(row["RSI"]) or pd.isna(row["SMA20"]) or pd.isna(row["SMA50"]):
         return "MANTENER"
     alc = baj = 0
-    if row["RSI"] < 30:       alc += 1
-    elif row["RSI"] > 70:     baj += 1
-    if row["MACD_H"] > 0:     alc += 1
-    elif row["MACD_H"] < 0:   baj += 1
-    if row["SMA20"] > row["SMA50"]:   alc += 1
-    elif row["SMA20"] < row["SMA50"]: baj += 1
+    if row["RSI"] < 30:
+        alc += 1
+    elif row["RSI"] > 70:
+        baj += 1
+    if row["MACD_H"] > 0:
+        alc += 1
+    elif row["MACD_H"] < 0:
+        baj += 1
+    if row["SMA20"] > row["SMA50"]:
+        alc += 1
+    elif row["SMA20"] < row["SMA50"]:
+        baj += 1
     return "COMPRAR" if alc > baj else ("VENDER" if baj > alc else "MANTENER")
 
 

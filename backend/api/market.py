@@ -57,8 +57,10 @@ async def get_price(ticker: str):
                 for lv in emisor.get("listLastValue", []):
                     if lv.get("tkrCode") == ticker:
                         def _f(v):
-                            try: return float(v) if v not in (None,"","-","0") else None
-                            except: return None
+                            try:
+                                return float(v) if v not in (None, "", "-", "0") else None
+                            except (TypeError, ValueError):
+                                return None
                         return {
                             "ticker": ticker,
                             "precio": _f(lv.get("close") or lv.get("last")),
@@ -135,7 +137,6 @@ async def get_commodities():
     def _closes_yf(symbol: str):
         """Intenta obtener series de cierre desde yfinance."""
         try:
-            import pandas as pd
             data = yf.download(symbol, period="20d", progress=False, auto_adjust=True)
             if data.empty or len(data) < 2:
                 return None
