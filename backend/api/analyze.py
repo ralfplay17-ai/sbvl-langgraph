@@ -1,5 +1,6 @@
 import json
 import asyncio
+import time
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
@@ -51,6 +52,7 @@ async def analyze_sse(request: AnalyzeRequest):
     }
 
     queue: asyncio.Queue = asyncio.Queue()
+    inicio = time.perf_counter()
 
     async def _run_graph():
         try:
@@ -71,6 +73,8 @@ async def analyze_sse(request: AnalyzeRequest):
             event = await queue.get()
             if event["type"] == "done":
                 break
+            if event["type"] == "final":
+                event["result"]["tiempo_ejecucion_s"] = round(time.perf_counter() - inicio, 2)
             yield "data: " + json.dumps(event, ensure_ascii=False) + "\n\n"
             if event["type"] == "final":
                 # Guardar en Supabase de forma no bloqueante

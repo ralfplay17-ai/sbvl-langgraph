@@ -30,6 +30,12 @@ export default function SignalBanner({ data, precio }: Props) {
         Confianza: <span className="text-zinc-200 font-semibold">{pct}%</span>
         {" · "}
         <span className="capitalize">{data.dashboard.nivel_confianza}</span>
+        {typeof data.tiempo_ejecucion_s === "number" && (
+          <>
+            {" · "}
+            {data.tiempo_ejecucion_s.toFixed(1)}s
+          </>
+        )}
       </p>
       {precio?.precio && (
         <p className="text-sm mt-1 text-zinc-500">

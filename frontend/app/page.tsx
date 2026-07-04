@@ -8,6 +8,7 @@ import CommoditiesTab from "@/components/tabs/CommoditiesTab";
 import NewsTab from "@/components/tabs/NewsTab";
 import BacktestTab from "@/components/tabs/BacktestTab";
 import HistoryTab from "@/components/tabs/HistoryTab";
+import SystemErrorModal from "@/components/dashboard/SystemErrorModal";
 import { streamAnalysis } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import type { AnalysisResult, BacktestResult, PSOConfig, SSEEvent } from "@/lib/types";
@@ -33,6 +34,7 @@ export default function Page() {
   const [result,    setResult]    = useState<AnalysisResult | null>(null);
   const [events,    setEvents]    = useState<SSEEvent[]>([]);
   const [activeTab, setActiveTab] = useState("analisis");
+  const [systemError, setSystemError] = useState<string | null>(null);
 
   // Estado del backtest elevado para persistir entre cambios de pestaña
   const [btResult,  setBtResult]  = useState<BacktestResult | null>(null);
@@ -48,6 +50,7 @@ export default function Page() {
     setLoading(true);
     setResult(null);
     setEvents([]);
+    setSystemError(null);
 
     const stop = streamAnalysis(
       ticker,
@@ -55,16 +58,25 @@ export default function Page() {
       (event) => {
         setEvents((prev) => [...prev, event]);
         if (event.type === "final" && event.result) {
-          setResult(event.result as AnalysisResult);
+          const finalResult = event.result as AnalysisResult;
+          setResult(finalResult);
           setLoading(false);
+          if (finalResult.error_sistema) {
+            setSystemError(finalResult.error_sistema);
+          }
           setTimeout(() => setHistRefresh(n => n + 1), 2000);
         }
-        if (event.type === "error" || event.type === "close") {
+        if (event.type === "error") {
+          setSystemError(event.message ?? "Error desconocido durante el análisis.");
+          setLoading(false);
+        }
+        if (event.type === "close") {
           setLoading(false);
         }
       },
       (err) => {
         console.error("SSE error:", err);
+        setSystemError(err.message || "No se pudo conectar con el servidor de análisis.");
         setLoading(false);
       },
     );
@@ -76,6 +88,7 @@ export default function Page() {
 
   return (
     <div className="flex min-h-screen">
+      <SystemErrorModal message={systemError} onClose={() => setSystemError(null)} />
       <Sidebar
         ticker={ticker}
         capital={capital}

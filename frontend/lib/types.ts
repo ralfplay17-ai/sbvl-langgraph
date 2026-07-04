@@ -28,6 +28,8 @@ export interface AnalysisResult {
   pso_config: Partial<PSOConfig>;
   detalle_agentes: Record<string, AgentResult>;
   factores_clave: string[];
+  error_sistema?: string | null;
+  tiempo_ejecucion_s?: number;
   dashboard: {
     nivel_confianza: "alta" | "media" | "baja";
     color_senal: "verde" | "amarillo" | "rojo";

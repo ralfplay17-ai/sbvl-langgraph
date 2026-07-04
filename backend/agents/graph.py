@@ -28,8 +28,9 @@ async def agentes_paralelo(state: AnalysisState) -> dict:
             result = {
                 "agente": name, "ticker": ticker,
                 "senal": "MANTENER", "score": 0.0, "confianza": 0.3,
-                "datos_usados": f"Error: {str(e)[:100]}",
+                "datos_usados": f"Error: {str(e)[:200]}",
                 "justificacion": "Fallo durante la ejecución del agente.",
+                "error": True,
             }
         results[name] = result
         events.append({"type": "agent_complete", "agent": name, "result": result})
@@ -92,11 +93,17 @@ async def coordinador(state: AnalysisState) -> dict:
         if s:
             factores.append(f"[{nombre.upper()}] {s[:120]}")
 
+    errores_sistema: list[str] = []
+    for ag_data in ag.values():
+        if ag_data.get("error") and ag_data.get("datos_usados") not in errores_sistema:
+            errores_sistema.append(ag_data["datos_usados"])
+
     resultado = {
         "ticker": ticker,
         "senal_final": senal,
         "score_final": score,
         "confianza_final": conf,
+        "error_sistema": " | ".join(errores_sistema) if errores_sistema else None,
         "pesos_utilizados": pso.get("pesos_utilizados", {}),
         "historial_convergencia": pso.get("historial_convergencia", []),
         "pso_config": pso.get("config", {}),
