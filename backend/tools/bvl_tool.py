@@ -32,8 +32,14 @@ TICKER_MAP: dict[str, str] = {
 }
 
 AV_TICKER_MAP: dict[str, str] = {
-    "BUENAVC1": "BVN", "SCCO": "SCCO",
+    "BUENAVC1": "BVN",    # Buenaventura — ADR propio en NYSE
+    "SCCO": "SCCO",       # Southern Copper — cotiza directo en NYSE
+    "NEXAPEC1": "NEXA",   # Nexa Resources Perú — proxy: ADR de la matriz Nexa Resources S.A. (NYSE)
 }
+# El resto de nemónicos (CVERDEC1, MINSURI1, VOLCABC1, ATACOBC1, BROCALC1, SHPC1,
+# PODERC1, MOROCOC1, LUISAI1, MINCORC1, PERUBAI1, FOSPACC1, CASTROC1) solo cotizan
+# en la BVL y no tienen ADR ni listado en EEUU, por lo que no existe símbolo válido
+# en Alpha Vantage para ellos.
 
 
 def _detectar_nemonico(text: str) -> str:
@@ -117,10 +123,10 @@ def _cargar_serie(nemonico: str, av_key: str) -> pd.Series | None:
     except Exception:
         pass
 
-    # 3. Alpha Vantage
-    if av_key:
+    # 3. Alpha Vantage (solo si el nemónico tiene un símbolo válido mapeado)
+    av_sym = AV_TICKER_MAP.get(nemonico)
+    if av_key and av_sym:
         try:
-            av_sym = AV_TICKER_MAP.get(nemonico, nemonico)
             r = requests.get(
                 f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY"
                 f"&symbol={av_sym}&outputsize=compact&apikey={av_key}",
