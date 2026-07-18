@@ -1,4 +1,5 @@
 """Fixtures y helpers compartidos por los tests E2E (Selenium)."""
+import json
 import os
 import time
 
@@ -36,6 +37,45 @@ def driver():
 @pytest.fixture
 def wait(driver):
     return WebDriverWait(driver, 20)
+
+
+class NetworkLog:
+    """Acumula eventos Network.requestWillBeSent del log de performance de CDP.
+
+    driver.get_log("performance") DRENA el buffer en cada llamada -- no es una
+    lectura idempotente. Si se llama varias veces sueltas (p. ej. una vez
+    dentro de un wait.until en polling y otra vez después), las llamadas
+    posteriores solo ven eventos NUEVOS desde la última lectura, no el
+    historial completo. Esta clase mantiene un acumulador propio para poder
+    contar peticiones de forma confiable en cualquier momento del test.
+    """
+
+    def __init__(self, driver):
+        self._driver = driver
+        self._entries: list[dict] = []
+
+    def _drain(self):
+        self._entries.extend(self._driver.get_log("performance"))
+
+    def count(self, url_substring: str, method: str | None = None) -> int:
+        self._drain()
+        total = 0
+        for entry in self._entries:
+            try:
+                msg = json.loads(entry["message"])["message"]
+            except (KeyError, ValueError):
+                continue
+            if msg.get("method") != "Network.requestWillBeSent":
+                continue
+            request = msg.get("params", {}).get("request", {})
+            if url_substring in request.get("url", "") and (method is None or request.get("method") == method):
+                total += 1
+        return total
+
+
+@pytest.fixture
+def network(driver):
+    return NetworkLog(driver)
 
 
 def abrir_dashboard(driver, wait):

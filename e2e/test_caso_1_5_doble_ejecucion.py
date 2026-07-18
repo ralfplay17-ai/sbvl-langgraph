@@ -7,9 +7,13 @@ el guard `if (loading) return;` de handleAnalyze (page.tsx) realmente evita
 la doble ejecución, en vez de confiar solo en observar el atributo
 `disabled` del botón (que en este entorno puede resolverse demasiado rápido
 para capturarlo de forma confiable, ver nota en conftest/caso 1.1).
-"""
-import json
 
+Nota: se filtra explícitamente por método HTTP "POST", porque el navegador
+emite un preflight CORS `OPTIONS /api/analyze` además del POST real (la app
+cruza orígenes: frontend :3000 -> backend :8000 con Content-Type:
+application/json) -- ambos matchean la URL, así que contar sin filtrar por
+método siempre daría 2 aunque solo hubiera UN análisis disparado.
+"""
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -21,30 +25,7 @@ from conftest import (
 )
 
 
-def contar_requests_analyze(driver, http_method: str = "POST") -> int:
-    """Cuenta peticiones de red a /api/analyze filtrando por método HTTP.
-
-    El navegador emite un preflight CORS `OPTIONS /api/analyze` además del
-    `POST /api/analyze` real (la app cruza orígenes: frontend :3000 -> backend
-    :8000 con Content-Type: application/json). Ambos matchean la URL, así que
-    contar sin filtrar por método siempre da 2 aunque solo haya UN análisis
-    disparado -- hay que filtrar explícitamente por request.method == "POST".
-    """
-    total = 0
-    for entry in driver.get_log("performance"):
-        try:
-            msg = json.loads(entry["message"])["message"]
-        except (KeyError, ValueError):
-            continue
-        if msg.get("method") != "Network.requestWillBeSent":
-            continue
-        request = msg.get("params", {}).get("request", {})
-        if "/api/analyze" in request.get("url", "") and request.get("method") == http_method:
-            total += 1
-    return total
-
-
-def test_caso_1_5_prevencion_doble_ejecucion_concurrente(driver, wait):
+def test_caso_1_5_prevencion_doble_ejecucion_concurrente(driver, wait, network):
     abrir_dashboard(driver, wait)
     seleccionar_ticker(driver, wait, "BVN")
 
@@ -68,7 +49,7 @@ def test_caso_1_5_prevencion_doble_ejecucion_concurrente(driver, wait):
     esperar_analisis_terminado(driver)
     cerrar_modal_error_si_existe(driver, wait)
 
-    n_requests = contar_requests_analyze(driver, "POST")
+    n_requests = network.count("/api/analyze", "POST")
     print(f"[INFO] Peticiones POST /api/analyze observadas: {n_requests}")
     assert n_requests == 1, (
         f"Se esperaba exactamente 1 petición a /api/analyze tras el doble clic, "

@@ -17,8 +17,6 @@ reaparezca; si no la hubo, que el cambio de ticker igualmente dispare un
 nuevo fetch de precio para el ticker nuevo (efecto observable del reseteo
 de estado en el Sidebar, independiente de si el análisis llegó a "final").
 """
-import json
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
@@ -32,22 +30,7 @@ from conftest import (
 )
 
 
-def contar_get_precio(driver, ticker: str) -> int:
-    total = 0
-    for entry in driver.get_log("performance"):
-        try:
-            msg = json.loads(entry["message"])["message"]
-        except (KeyError, ValueError):
-            continue
-        if msg.get("method") != "Network.requestWillBeSent":
-            continue
-        request = msg.get("params", {}).get("request", {})
-        if request.get("method") == "GET" and f"/api/market/price/{ticker}" in request.get("url", ""):
-            total += 1
-    return total
-
-
-def test_caso_1_2_cambio_de_ticker_limpia_resultado_previo(driver, wait):
+def test_caso_1_2_cambio_de_ticker_limpia_resultado_previo(driver, wait, network):
     # Paso 1: ejecutar un análisis completo para BVN y esperar el resultado final
     abrir_dashboard(driver, wait)
     seleccionar_ticker(driver, wait, "BVN")
@@ -78,7 +61,7 @@ def test_caso_1_2_cambio_de_ticker_limpia_resultado_previo(driver, wait):
 
     # Verificación independiente del resultado: el cambio de ticker dispara un
     # nuevo fetch de precio para SCCO (evidencia de que onTickerChange corrió).
-    wait.until(lambda d: contar_get_precio(d, "SCCO") >= 1)
+    wait.until(lambda d: network.count("/api/market/price/SCCO", "GET") >= 1)
     print("[OK] El cambio de ticker disparó un nuevo GET /api/market/price/SCCO")
 
     # El selector debe reflejar el nuevo ticker seleccionado
