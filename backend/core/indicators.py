@@ -12,38 +12,6 @@ def wilder_rsi(close: pd.Series, periodo: int = 14) -> pd.Series:
     return (100 - (100 / (1 + rs))).clip(0, 100).reindex(close.index)
 
 
-def calcular_indicadores(close: pd.Series) -> list[dict]:
-    close = close[close > 0].dropna()
-    rsi = wilder_rsi(close)
-    ema12 = close.ewm(span=12, adjust=False).mean()
-    ema26 = close.ewm(span=26, adjust=False).mean()
-    macd = ema12 - ema26
-    signal = macd.ewm(span=9, adjust=False).mean()
-    sma20 = close.rolling(20).mean()
-    sma50 = close.rolling(50).mean() if len(close) >= 50 else None
-
-    rows = []
-    for dt, precio in close.items():
-        def _v(s, _dt=dt):
-            if s is None or _dt not in s.index:
-                return None
-            v = s.loc[_dt]
-            return None if pd.isna(v) else float(v)
-        rows.append({
-            "fecha":  dt.strftime("%Y-%m-%d"),
-            "close":  float(precio),
-            "open":   float(precio),
-            "high":   float(precio),
-            "low":    float(precio),
-            "rsi":    _v(rsi),
-            "macd":   _v(macd),
-            "signal": _v(signal),
-            "sma20":  _v(sma20),
-            "sma50":  _v(sma50),
-        })
-    return rows
-
-
 def calcular_indicadores_ohlc(df: pd.DataFrame) -> list[dict]:
     """Versión con OHLC completo para candlestick."""
     close = df["Close"][df["Close"] > 0].dropna()

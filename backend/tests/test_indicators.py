@@ -4,7 +4,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from core.indicators import wilder_rsi, calcular_indicadores, calcular_indicadores_ohlc
+from core.indicators import wilder_rsi, calcular_indicadores_ohlc
 
 
 def _series(values):
@@ -51,38 +51,6 @@ class TestWilderRSI:
         rsi = wilder_rsi(_series(prices))
         valid = rsi.dropna()
         assert len(valid) > 0
-
-
-class TestCalcularIndicadores:
-    def test_returns_list_of_dicts(self):
-        prices = [float(i) for i in range(50, 110)]
-        result = calcular_indicadores(_series(prices))
-        assert isinstance(result, list)
-        assert len(result) > 0
-
-    def test_required_keys(self):
-        prices = [float(i) for i in range(50, 110)]
-        row = calcular_indicadores(_series(prices))[-1]
-        for key in ("fecha", "close", "open", "high", "low", "rsi", "macd", "signal", "sma20", "sma50"):
-            assert key in row, f"Falta clave '{key}'"
-
-    def test_sma20_none_when_insufficient(self):
-        prices = [float(i) for i in range(1, 20)]  # < 20 puntos
-        result = calcular_indicadores(_series(prices))
-        # Los últimos puntos sin 20 datos deben tener sma20=None
-        assert result[-1]["sma20"] is None
-
-    def test_sma50_none_when_insufficient(self):
-        prices = [float(i) for i in range(1, 45)]  # < 50 puntos
-        result = calcular_indicadores(_series(prices))
-        assert result[-1]["sma50"] is None
-
-    def test_sma_values_populated_with_enough_data(self):
-        prices = [float(i) for i in range(1, 80)]
-        result = calcular_indicadores(_series(prices))
-        last = result[-1]
-        assert last["sma20"] is not None
-        assert last["sma50"] is not None
 
 
 class TestCalcularIndicadoresOHLC:
