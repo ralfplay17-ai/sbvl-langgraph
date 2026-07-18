@@ -7,6 +7,8 @@ def _download(symbol: str, **kwargs):
     import pandas as pd
     try:
         data = yf.download(symbol, progress=False, auto_adjust=True, **kwargs)
+        if isinstance(data.columns, pd.MultiIndex):
+            data.columns = data.columns.get_level_values(0)
         if not data.empty:
             closes = data["Close"]
             if hasattr(closes, "squeeze"):
