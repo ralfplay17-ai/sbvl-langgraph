@@ -28,6 +28,8 @@ def _estado_inicial(ticker="BVN"):
 
 
 def test_grafo_camino_feliz(monkeypatch):
+    monkeypatch.setattr(graph_module, "get_llm", lambda: None)
+
     async def ok_tecnico(ticker, llm):
         return _agent_result("tecnico", ticker, "COMPRAR", 0.6, 0.8)
 
@@ -62,6 +64,8 @@ def test_grafo_camino_feliz(monkeypatch):
 
 
 def test_grafo_degrada_cuando_un_agente_falla(monkeypatch):
+    monkeypatch.setattr(graph_module, "get_llm", lambda: None)
+
     async def falla_tecnico(ticker, llm):
         raise RuntimeError("timeout simulado del LLM")
 

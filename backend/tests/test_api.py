@@ -62,6 +62,7 @@ def _agent_result(nombre, ticker, senal, score, confianza):
 
 
 def test_analyze_sse_stream_completo(monkeypatch):
+    monkeypatch.setattr(graph_module, "get_llm", lambda: None)
     monkeypatch.setattr(graph_module, "run_tecnico", _make_agent("tecnico", "COMPRAR", 0.5, 0.7))
     monkeypatch.setattr(graph_module, "run_commodities", _make_agent("commodities", "MANTENER", 0.0, 0.5))
     monkeypatch.setattr(graph_module, "run_sentimiento", _make_agent("sentimiento", "COMPRAR", 0.4, 0.6))
